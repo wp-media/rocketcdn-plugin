@@ -1,88 +1,88 @@
 {
-	"name": "wp-media/rocketcdn-plugin",
-	"description": "RocketCDN WordPress plugin",
-	"keywords": [
-		"wordpress",
-		"cdn"
-	],
-	"homepage": "https://rocketcdn.me",
-	"license": "GPL-3.0-or-later",
-	"authors": [
-		{
-			"name": "WP Media",
-			"email": "contact@wp-media.me",
-			"homepage": "https://wp-media.me"
-		}
-	],
-	"type": "wordpress-plugin",
-	"config": {
-		"sort-packages": true
-	},
-	"support": {
-		"issues": "https://github.com/wp-media/rocketcdn-plugin/issues",
-		"source": "https://github.com/wp-media/rocketcdn-plugin"
-	},
-	"require": {
-		"php": ">=7.0",
-		"composer/installers": "~1.0",
-		"psr/container": "1.0.0"
-	},
-	"require-dev": {
-		"php": "^7 || ^8",
-		"brain/monkey": "^2.0",
+    "name": "wp-media/rocketcdn-plugin",
+    "description": "RocketCDN WordPress plugin",
+    "keywords": [
+        "wordpress",
+        "cdn"
+    ],
+    "homepage": "https://rocketcdn.me",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "WP Media",
+            "email": "contact@wp-media.me",
+            "homepage": "https://wp-media.me"
+        }
+    ],
+    "type": "wordpress-plugin",
+    "config": {
+        "sort-packages": true
+    },
+    "support": {
+        "issues": "https://github.com/wp-media/rocketcdn-plugin/issues",
+        "source": "https://github.com/wp-media/rocketcdn-plugin"
+    },
+    "require": {
+        "php": ">=7.0",
+        "composer/installers": "~1.0",
+        "psr/container": "1.0.0"
+    },
+    "require-dev": {
+        "php": "^7 || ^8",
+        "brain/monkey": "^2.0",
         "coenjacobs/mozart": "^0.7",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-		"league/container": "^3.3",
-		"phpcompatibility/phpcompatibility-wp": "^2.0",
-		"phpstan/phpstan": "^0.12",
-		"phpunit/phpunit": "^7.5",
-		"phpunit/php-file-iterator": "2.0.3",
-		"roave/security-advisories": "dev-master",
-		"szepeviktor/phpstan-wordpress": "^0.7.0",
-		"wp-coding-standards/wpcs": "^2",
-		"wp-media/phpunit": "^2.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"RocketCDN\\": "src/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"RocketCDN\\Tests\\": "tests/"
-		}
-	},
-	"extra": {
-		"mozart": {
-			"dep_namespace": "RocketCDN\\Dependencies\\",
-			"dep_directory": "/src/Dependencies/",
-			"classmap_directory": "/src/classes/dependencies/",
-			"classmap_prefix": "RocketCDN_",
-			"packages": [
-				"league/container"
-			]
-		}
-	},
-	"scripts": {
-		"test-unit": "\"vendor/bin/phpunit\" --testsuite unit --colors=always --configuration tests/Unit/phpunit.xml.dist",
-		"test-integration": "\"vendor/bin/phpunit\" --testsuite integration --colors=always --configuration tests/Integration/phpunit.xml.dist --exclude-group AdminOnly",
-		"test-integration-adminonly": "\"vendor/bin/phpunit\" --testsuite integration --colors=always --configuration tests/Integration/phpunit.xml.dist --group AdminOnly",
-		"run-tests": [
-			"@test-unit",
-			"@test-integration",
-			"@test-integration-adminonly"
-		],
-		"run-stan":"vendor/bin/phpstan analyze --memory-limit=2G --no-progress",
-		"phpcs": "phpcs --basepath=.",
-		"phpcs:fix": "phpcbf",
-		"post-install-cmd": [
-			"\"vendor/bin/mozart\" compose",
-			"composer dump-autoload"
-		],
-		"post-update-cmd": [
-			"\"vendor/bin/mozart\" compose",
-			"composer dump-autoload"
-		],
-		"code-coverage": "\"vendor/bin/phpunit\" --testsuite unit --colors=always --configuration tests/Unit/phpunit.xml.dist --coverage-clover=tests/report/coverage.clover"
-	}
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "league/container": "^3.3",
+        "phpcompatibility/phpcompatibility-wp": "^2.0",
+        "phpstan/phpstan": "^0.12",
+        "phpunit/phpunit": "^7.5",
+        "phpunit/php-file-iterator": "2.0.3",
+        "roave/security-advisories": "dev-master",
+        "szepeviktor/phpstan-wordpress": "^0.7.0",
+        "wp-coding-standards/wpcs": "^2",
+        "wp-media/phpunit": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RocketCDN\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RocketCDN\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "mozart": {
+            "dep_namespace": "RocketCDN\\Dependencies\\",
+            "dep_directory": "/src/Dependencies/",
+            "classmap_directory": "/src/classes/dependencies/",
+            "classmap_prefix": "RocketCDN_",
+            "packages": [
+                "league/container"
+            ]
+        }
+    },
+    "scripts": {
+        "test-unit": "\"vendor/bin/phpunit\" --testsuite unit --colors=always --configuration tests/Unit/phpunit.xml.dist",
+        "test-integration": "\"vendor/bin/phpunit\" --testsuite integration --colors=always --configuration tests/Integration/phpunit.xml.dist --exclude-group AdminOnly",
+        "test-integration-adminonly": "\"vendor/bin/phpunit\" --testsuite integration --colors=always --configuration tests/Integration/phpunit.xml.dist --group AdminOnly",
+        "run-tests": [
+            "@test-unit",
+            "@test-integration",
+            "@test-integration-adminonly"
+        ],
+        "run-stan":"vendor/bin/phpstan analyze --memory-limit=2G --no-progress",
+        "phpcs": "phpcs --basepath=.",
+        "phpcs:fix": "phpcbf",
+        "post-install-cmd": [
+            "\"vendor/bin/mozart\" compose",
+            "composer dump-autoload"
+        ],
+        "post-update-cmd": [
+            "\"vendor/bin/mozart\" compose",
+            "composer dump-autoload"
+        ],
+        "code-coverage": "\"vendor/bin/phpunit\" --testsuite unit --colors=always --configuration tests/Unit/phpunit.xml.dist --coverage-clover=tests/report/coverage.clover"
+    }
 }
