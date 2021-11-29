@@ -7,6 +7,7 @@ use RocketCDN\Dependencies\League\Container\Container;
 use RocketCDN\Dependencies\League\Container\ServiceProvider\ServiceProviderInterface;
 use RocketCDN\EventManagement\EventManager;
 use RocketCDN\EventManagement\SubscriberInterface;
+use RocketCDN\Options\Options;
 
 class Plugin {
 	/**
@@ -67,7 +68,15 @@ class Plugin {
 			function () {
 				return new EventManager();
 			}
-			);
+		);
+
+		$this->container->add( 'template_basepath', realpath( plugin_dir_path( __DIR__ ) ) . '/views/' );
+		$this->container->add(
+			'options',
+			function () {
+				return new Options( 'rocketcdn_' );
+			}
+		);
 
 		foreach ( $this->get_service_providers() as $service_provider ) {
 			$service_provider_instance = new $service_provider();
