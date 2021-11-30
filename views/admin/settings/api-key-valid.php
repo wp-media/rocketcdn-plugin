@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 			</form>
 			<?php esc_html_e( 'Purge Cache', 'rocketcdn' ); ?>
 			<button><?php esc_html_e( 'Clear cache', 'rocketcdn' ); ?></button>
-			<p><?php esc_html_e( 'Clear your CDN cache to make sure your site shows your content\'s most recent version', 'rocketcdn' ); ?></p>
+			<p><?php esc_html_e( "Clear your CDN cache to make sure your site shows your content's most recent version.", 'rocketcdn' ); ?></p>
 		</section>
 		<section>
 			<h2><?php esc_html_e( 'Your subscription', 'rocketcdn' ); ?></h2>

@@ -36,7 +36,7 @@ class Page {
 	 *
 	 * @return void
 	 */
-	public function configure() {
+	public function configure_settings() {
 		register_setting(
 			'rocketcdn',
 			'rocketcdn_api_key',
