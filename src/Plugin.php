@@ -98,6 +98,7 @@ class Plugin {
 		return [
 			'RocketCDN\Admin\Settings\ServiceProvider',
 			'RocketCDN\Admin\Notices\ServiceProvider',
+			'RocketCDN\Admin\AdminBar\ServiceProvider',
 		];
 	}
 
