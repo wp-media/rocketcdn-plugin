@@ -37,7 +37,11 @@ class CDN {
 	 * @return void
 	 */
 	public function start_buffering() {
-		ob_start( [ $this->cdn, 'end_buffering' ] );
+		if ( ! $this->should_rewrite() ) {
+			return;
+		}
+
+		ob_start( [ $this, 'end_buffering' ] );
 	}
 
 	/**
@@ -47,11 +51,40 @@ class CDN {
 	 *
 	 * @return string
 	 */
-	public function end_buffering( $html ) {
+	public function end_buffering( $html ): string {
 		$html = $this->rewrite( $html );
 		$html = $this->rewrite_srcset( $html );
 
 		return $html;
+	}
+
+	/**
+	 * Checks if we should rewrite the content
+	 *
+	 * @since 1.0
+	 *
+	 * @return bool
+	 */
+	private function should_rewrite(): bool {
+		if (
+			! isset( $_SERVER['REQUEST_METHOD'] )
+			||
+			'GET' !== $_SERVER['REQUEST_METHOD']
+		) {
+			return false;
+		}
+
+		if (
+			is_admin()
+			||
+			is_customize_preview()
+			||
+			is_embed()
+		) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -62,7 +95,7 @@ class CDN {
 	 * @param string $html HTML content.
 	 * @return string
 	 */
-	private function rewrite( $html ) {
+	private function rewrite( string $html ): string {
 		$pattern = '#[("\']\s*(?<url>(?:(?:https?:|)' . preg_quote( $this->get_base_url(), '#' ) . ')\/(?:(?:(?:' . $this->get_allowed_paths() . ')[^"\',)]+))|\/[^/](?:[^"\')\s>]+\.[[:alnum:]]+))\s*["\')]#i';
 		return preg_replace_callback(
 			$pattern,
@@ -81,7 +114,7 @@ class CDN {
 	 * @param string $html HTML content.
 	 * @return string
 	 */
-	private function rewrite_srcset( $html ) {
+	private function rewrite_srcset( string $html ): string {
 		$pattern = '#\s+(?:' . $this->get_srcset_attributes() . ')?srcset\s*=\s*["\']\s*(?<sources>[^"\',\s]+\.[^"\',\s]+(?:\s+\d+[wx])?(?:\s*,\s*[^"\',\s]+\.[^"\',\s]+(?:\s+\d+[wx])?)*)\s*["\']#i';
 
 		if ( ! preg_match_all( $pattern, $html, $srcsets, PREG_SET_ORDER ) ) {
@@ -112,7 +145,7 @@ class CDN {
 	 * @param string $url Original URL.
 	 * @return string
 	 */
-	public function rewrite_url( $url ) {
+	public function rewrite_url( string $url ): string {
 		$cdn_url = $this->options->get( 'cdn_url' );
 
 		if ( ! $cdn_url ) {
@@ -148,7 +181,7 @@ class CDN {
 	 *
 	 * @return string
 	 */
-	private function get_base_url() {
+	private function get_base_url(): string {
 		return '//' . $this->get_home_host();
 	}
 
@@ -159,7 +192,7 @@ class CDN {
 	 *
 	 * @return string
 	 */
-	private function get_allowed_paths() {
+	private function get_allowed_paths(): string {
 		$wp_content_dirname  = ltrim( trailingslashit( wp_parse_url( content_url(), PHP_URL_PATH ) ), '/' );
 		$wp_includes_dirname = ltrim( trailingslashit( wp_parse_url( includes_url(), PHP_URL_PATH ) ), '/' );
 
@@ -180,7 +213,7 @@ class CDN {
 	 *
 	 * @return string
 	 */
-	private function get_home_host() {
+	private function get_home_host(): string {
 		if ( empty( $this->home_host ) ) {
 			$this->home_host = wp_parse_url( home_url(), PHP_URL_HOST );
 		}
@@ -193,9 +226,9 @@ class CDN {
 	 *
 	 * @since 1.0
 	 *
-	 * @return string A pipe-separated list of srcset attributes.
+	 * @return string
 	 */
-	private function get_srcset_attributes() {
+	private function get_srcset_attributes(): string {
 		/**
 		 * Filter the srcset attributes.
 		 *
@@ -211,5 +244,47 @@ class CDN {
 			]
 		);
 		return implode( '|', $srcset_attributes );
+	}
+
+	/**
+	 * Adds a preconnect tag for the CDN.
+	 *
+	 * @since 1.0
+	 *
+	 * @param array  $urls          The initial array of wp_resource_hint urls.
+	 * @param string $relation_type The relation type for the hint: eg., 'preconnect', 'prerender', etc.
+	 *
+	 * @return array
+	 */
+	public function add_preconnect_cdn( array $urls, string $relation_type ): array {
+		if (
+			'preconnect' !== $relation_type
+			||
+			! $this->should_rewrite()
+		) {
+			return $urls;
+		}
+
+		$cdn_url = $this->options->get( 'cdn_url' );
+
+		if ( empty( $cdn_url ) ) {
+			return $urls;
+		}
+
+		// Note: As of 22 Feb, 2021 we cannot add more than one instance of a domain url
+		// on the wp_resource_hint() hook -- wp_resource_hint() will
+		// only actually print the first one.
+		// Ideally, we want both because CSS resources will use the crossorigin version,
+		// But JS resources will not.
+		// Jonathan has submitted a ticket to change this behavior:
+		// @see https://core.trac.wordpress.org/ticket/52465
+		// Until then, we order these to prefer/print the non-crossorigin version.
+		$urls[] = [ 'href' => $cdn_url ];
+		$urls[] = [
+			'href'        => $cdn_url,
+			'crossorigin' => 'anonymous',
+		];
+
+		return $urls;
 	}
 }
