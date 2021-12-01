@@ -97,6 +97,8 @@ class Plugin {
 	private function get_service_providers() {
 		return [
 			'RocketCDN\Admin\Settings\ServiceProvider',
+			'RocketCDN\Admin\Notices\ServiceProvider',
+			'RocketCDN\Admin\AdminBar\ServiceProvider',
 			'RocketCDN\Front\ServiceProvider',
 		];
 	}
