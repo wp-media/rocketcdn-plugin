@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
 		</section>
 		<section>
 			<h2><?php esc_html_e( 'Create an account', 'rocketcdn' ); ?></h2>
-			<p><?php esc_html_e( 'Don\'t have an API key yet?', 'rocketcdn' ); ?></p>
+			<p><?php esc_html_e( "Don't have an API key yet?", 'rocketcdn' ); ?></p>
 			<p><?php esc_html_e( 'Get a RocketCDN subscription to make your website faster and your visitors happier!', 'rocketcdn' ); ?></p>
 			<a href="https://rocketcdn.me/pricing/" target="_blank" rel="noopener"><?php esc_html_e( 'Get started', 'rocketcdn' ); ?></a>
 		</section>

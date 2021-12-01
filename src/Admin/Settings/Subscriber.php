@@ -29,7 +29,7 @@ class Subscriber implements SubscriberInterface {
 	 */
 	public static function get_subscribed_events() {
 		return [
-			'admin_init' => 'configure',
+			'admin_init' => 'configure_settings',
 			'admin_menu' => 'add_options_page',
 		];
 	}
@@ -39,8 +39,8 @@ class Subscriber implements SubscriberInterface {
 	 *
 	 * @return void
 	 */
-	public function configure() {
-		$this->page->configure();
+	public function configure_settings() {
+		$this->page->configure_settings();
 	}
 
 	/**
