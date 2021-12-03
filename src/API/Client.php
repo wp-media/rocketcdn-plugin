@@ -46,22 +46,52 @@ class Client {
 	public function is_website_sync(): bool {
 		$customer_data = $this->get_customer_data();
 
-		if ( empty( $customer_data['subscription'] ) ) {
+		if ( empty( $customer_data['websites'] ) ) {
 			return false;
 		}
 
 		$home_url = home_url();
 
-		foreach ( $customer_data['subscription'] as $subscription ) {
-			if ( ! isset( $subscription['website_url'] ) ) {
+		foreach ( $customer_data['websites'] as $website ) {
+			if ( ! isset( $website['url'] ) ) {
 				continue;
 			}
 
-			if ( $home_url === $subscription['website_url'] ) {
+			if ( $home_url === $website['url'] ) {
 				return true;
 			}
 		}
 
 		return false;
 	}
+
+	public function get_website_cdn_url(): string {
+		$customer_data = $this->get_customer_data();
+
+		if ( empty( $customer_data['websites'] ) ) {
+			return '';
+		}
+
+		$home_url = home_url();
+
+		foreach ( $customer_data['websites'] as $website ) {
+			if ( ! isset( $website['url'] ) ) {
+				continue;
+			}
+
+			if ( $home_url !== $website['url'] ) {
+				continue;
+			}
+
+			if ( ! isset( $website['cdn_url'] ) ) {
+				return '';
+			}
+
+			return $website['cdn_url'];
+		}
+
+		return '';
+	}
+
+	public function purge_cache() {}
 }
