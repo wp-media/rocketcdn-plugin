@@ -32,8 +32,6 @@ class CDN {
 	/**
 	 * Setup output buffering
 	 *
-	 * @since 1.0
-	 *
 	 * @return void
 	 */
 	public function start_buffering() {
@@ -45,7 +43,7 @@ class CDN {
 	}
 
 	/**
-	 * Processes the buffer content and return it
+	 * Stop buffering and return the buffer contents
 	 *
 	 * @param string $html HTML content.
 	 *
@@ -60,8 +58,6 @@ class CDN {
 
 	/**
 	 * Checks if we should rewrite the content
-	 *
-	 * @since 1.0
 	 *
 	 * @return bool
 	 */
@@ -90,8 +86,6 @@ class CDN {
 	/**
 	 * Search & Replace URLs with the CDN URLs in the provided content
 	 *
-	 * @since 1.0
-	 *
 	 * @param string $html HTML content.
 	 * @return string
 	 */
@@ -108,8 +102,6 @@ class CDN {
 
 	/**
 	 * Rewrites URLs in a srcset attribute using the CDN URL
-	 *
-	 * @since 1.0
 	 *
 	 * @param string $html HTML content.
 	 * @return string
@@ -139,8 +131,6 @@ class CDN {
 
 	/**
 	 * Rewrites an URL with the CDN URL
-	 *
-	 * @since 1.0
 	 *
 	 * @param string $url Original URL.
 	 * @return string
@@ -177,8 +167,6 @@ class CDN {
 	/**
 	 * Gets the base URL for the website
 	 *
-	 * @since 1.0
-	 *
 	 * @return string
 	 */
 	private function get_base_url(): string {
@@ -187,8 +175,6 @@ class CDN {
 
 	/**
 	 * Gets the allowed paths as a regex pattern for the CDN rewrite
-	 *
-	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -209,8 +195,6 @@ class CDN {
 	/**
 	 * Gets the home URL host
 	 *
-	 * @since 1.0
-	 *
 	 * @return string
 	 */
 	private function get_home_host(): string {
@@ -224,15 +208,11 @@ class CDN {
 	/**
 	 * Get srcset attributes to rewrite to the CDN.
 	 *
-	 * @since 1.0
-	 *
 	 * @return string
 	 */
 	private function get_srcset_attributes(): string {
 		/**
 		 * Filter the srcset attributes.
-		 *
-		 * @since 3.8.7
 		 *
 		 * @param array $srcset_attributes List of srcset attributes.
 		 */
@@ -248,8 +228,6 @@ class CDN {
 
 	/**
 	 * Adds a preconnect tag for the CDN.
-	 *
-	 * @since 1.0
 	 *
 	 * @param array  $urls          The initial array of wp_resource_hint urls.
 	 * @param string $relation_type The relation type for the hint: eg., 'preconnect', 'prerender', etc.
