@@ -101,6 +101,7 @@ class Plugin {
 			'RocketCDN\Admin\Settings\ServiceProvider',
 			'RocketCDN\Admin\Notices\ServiceProvider',
 			'RocketCDN\Admin\AdminBar\ServiceProvider',
+			'RocketCDN\Front\ServiceProvider',
 		];
 	}
 
