@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace RocketCDN\Admin\Notices;
 
+use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 
 class Notices {
@@ -13,13 +14,16 @@ class Notices {
 	 */
 	private $options;
 
+	private $api_client;
+
 	/**
-	 * Instantiates the class
+	 * Instantiate the class
 	 *
 	 * @param Options $options Options instance.
 	 */
-	public function __construct( Options $options ) {
-		$this->options = $options;
+	public function __construct( Options $options, Client $api_client ) {
+		$this->options    = $options;
+		$this->api_client = $api_client;
 	}
 
 	/**
@@ -58,7 +62,11 @@ class Notices {
 			return;
 		}
 
-		if ( ! $this->options->get( 'api_key' ) ) {
+		if (
+			empty( $this->options->get( 'api_key' ) )
+			||
+			! empty( $this->api_client->get_customer_data() )
+		) {
 			return;
 		}
 
