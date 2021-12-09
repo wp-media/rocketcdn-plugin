@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace RocketCDN\Admin\AdminBar;
 
+use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 
 class AdminBar {
@@ -13,13 +14,16 @@ class AdminBar {
 	 */
 	private $options;
 
+	private $api_client;
+
 	/**
 	 * Instantiate the class
 	 *
 	 * @param Options $options Options instance.
 	 */
-	public function __construct( Options $options ) {
-		$this->options = $options;
+	public function __construct( Options $options, Client $api_client ) {
+		$this->options    = $options;
+		$this->api_client = $api_client;
 	}
 
 	/**
@@ -34,7 +38,11 @@ class AdminBar {
 			return;
 		}
 
-		if ( ! $this->options->get( 'api_key' ) ) {
+		if (
+			empty( $this->options->get( 'api_key' ) )
+			||
+			empty( $this->api_client->get_customer_data() )
+		) {
 			$wp_admin_bar->add_node(
 				[
 					'id'    => 'rocketcdn',
@@ -112,5 +120,20 @@ class AdminBar {
 				],
 			]
 		);
+	}
+
+	public function purge_cache() {
+		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'rocketcdn_purge_cache' ) ) {
+			wp_nonce_ays( '' );
+		}
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$this->api_client->purge_cache();
+
+		wp_safe_redirect( esc_url_raw( wp_get_referer() ) );
+		exit;
 	}
 }
