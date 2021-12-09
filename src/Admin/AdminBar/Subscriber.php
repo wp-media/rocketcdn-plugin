@@ -29,7 +29,8 @@ class Subscriber implements SubscriberInterface {
 	 */
 	public static function get_subscribed_events() {
 		return [
-			'admin_bar_menu' => [ 'add_admin_bar_menu', PHP_INT_MAX ],
+			'admin_bar_menu'                   => [ 'add_admin_bar_menu', PHP_INT_MAX ],
+			'admin_post_rocketcdn-purge-cache' => 'purge_cache',
 		];
 	}
 
@@ -42,5 +43,9 @@ class Subscriber implements SubscriberInterface {
 	 */
 	public function add_admin_bar_menu( $wp_admin_bar ) {
 		$this->admin_bar->add_admin_bar_menu( $wp_admin_bar );
+	}
+
+	public function purge_cache() {
+		$this->admin_bar->purge_cache();
 	}
 }
