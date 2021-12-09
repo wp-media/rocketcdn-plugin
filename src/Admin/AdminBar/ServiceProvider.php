@@ -32,7 +32,8 @@ class ServiceProvider extends AbstractServiceProvider {
 	 */
 	public function register() {
 		$this->getContainer()->add( 'admin_bar', 'RocketCDN\Admin\AdminBar\AdminBar' )
-			->addArgument( $this->getContainer()->get( 'options' ) );
+			->addArgument( $this->getContainer()->get( 'options' ) )
+			->addArgument( $this->getContainer()->get( 'api_client' ) );
 		$this->getContainer()->add( 'admin_bar_subscriber', 'RocketCDN\Admin\AdminBar\Subscriber' )
 			->addArgument( $this->getContainer()->get( 'admin_bar' ) );
 	}

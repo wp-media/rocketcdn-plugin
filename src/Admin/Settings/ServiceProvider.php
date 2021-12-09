@@ -33,7 +33,9 @@ class ServiceProvider extends AbstractServiceProvider {
 	public function register() {
 		$this->getContainer()->add( 'admin_page', 'RocketCDN\Admin\Settings\Page' )
 			->addArgument( $this->getContainer()->get( 'options' ) )
-			->addArgument( $this->getContainer()->get( 'template_basepath' ) );
+			->addArgument( $this->getContainer()->get( 'api_client' ) )
+			->addArgument( $this->getContainer()->get( 'template_basepath' ) )
+			->addArgument( $this->getContainer()->get( 'assets_baseurl' ) );
 		$this->getContainer()->add( 'admin_subscriber', 'RocketCDN\Admin\Settings\Subscriber' )
 			->addArgument( $this->getContainer()->get( 'admin_page' ) );
 	}
