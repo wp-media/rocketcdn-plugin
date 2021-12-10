@@ -6,7 +6,7 @@ namespace RocketCDN\API;
 use RocketCDN\Options\Options;
 
 class Client {
-	const ROCKETCDN_API = 'https://staging-rocketcdn.wp-rocket.me/api/';
+	const ROCKETCDN_API = 'https://rocketcdn.me/api/';
 
 	/**
 	 * Options instance
@@ -26,6 +26,8 @@ class Client {
 
 	/**
 	 * Gets the customer data associated with the API key
+	 *
+	 * @param string $api_key the API key to authenticate the request.
 	 *
 	 * @return array
 	 */
@@ -47,50 +49,14 @@ class Client {
 		return $result;
 	}
 
+	/**
+	 * Gets the customer data from the API
+	 *
+	 * @param string $api_key the API key to authenticate the request.
+	 *
+	 * @return array
+	 */
 	private function get_raw_customer_data( $api_key = '' ): array {
-		return [
-			'id' => 1,
-			'email' => 'jeanbaptiste@wp-media.me',
-			'plan' => 'Basic',
-			'subscription' => [
-			  0 => [
-				'id' => 10,
-				'has_website_attached' => true,
-				'cancel_date' => NULL,
-				'creation_date' => '2021-11-29T09:13:35.657148Z',
-				'next_date_update' => '2021-12-29T09:13:29Z',
-				'customer' => 1,
-				'stripe_subscription_id' => 'sub_1K15vREvnUEbK1G25Srvr8ZN',
-				'plan' => 1,
-				'status' => 'running',
-				'is_monthly' => true,
-				'website_url' => NULL,
-			  ],
-			],
-			'websites' => [
-			  0 => [
-				'id' => 8,
-				'is_active' => true,
-				'cdn_url' => 'https://cname.rocketcdn.me',
-				'cdn_id' => '123',
-				'url' => 'https://tests.local',
-				'subscription_id' => 10,
-				'subscription_next_date_update' => '2021-12-29T09:13:29Z',
-				'subscription_status' => 'running',
-				'creation_date' => '2021-01-01T00:00:00Z',
-				'consumption_next_date_update' => '2021-01-01',
-				'consumption_last_date_saved' => '2021-01-01T00:00:00Z',
-				'callback_url' => 'https://rocketcdn.',
-				'status' => 'created',
-				'task_id' => '1',
-				'hostname' => 'tests.local',
-			  ],
-			],
-			'token' => '8ee561890b3aaf0eb909cdbbd7e1becae81d81a0',
-			'wp_rocket_user_id' => 1,
-			'stripe_id' => '',
-			'subscriptions_left' => 0,
-		];
 
 		if ( empty( $api_key ) ) {
 			return [];
@@ -120,6 +86,8 @@ class Client {
 
 	/**
 	 * Checks if the website is synchronized with a RocketCDN subscription
+	 *
+	 * @param string $api_key the API key to authenticate the request.
 	 *
 	 * @return bool
 	 */
