@@ -1,9 +1,147 @@
+.rocketcdn-wrapper {
+    max-width: 1280px;
+}
+
 .rocketcdn-settings-header {
     background: #1F1147;
     border-radius: 8px;
     color: #fff;
-    padding: 24px 32px;
+    padding: 16px;
 }
+    .rocketcdn-settings-header p {
+        margin: 10px 0 0;
+    }
+
+.rocketcdn-notice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    margin: 8px 0;
+    padding: 16px 32px;
+}
+
+    .rocketcdn-notice p {
+        margin: 0;
+    }
+
+    .rocketcdn-notice.rocketcdn-notice-error {
+        background: #FFDBDD;
+        color: #FF444F;
+    }
+
+    .rocketcdn-notice.rocketcdn-notice-success {
+        background: #DCF4E1;
+        color: #41C45E;
+    }
+
+.rocketcdn-notice-dismiss {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.rocketcdn-notice-dismiss::after {
+    content: "\2715";
+    font-weight: 700;
+}
+
+    .rocketcdn-notice-error .rocketcdn-notice-dismiss::after {
+        color: #FF444F;
+    }
+    .rocketcdn-notice-success .rocketcdn-notice-dismiss::after {
+        color: #41C45E;
+    }
+
+.rocketcdn-settings {
+    background: #fff;
+    border-radius: 8px;
+    color: #423E4C;
+    margin-top: 8px;
+    padding: 16px;
+}
+
+    .rocketcdn-settings p {
+        line-height: 22px;
+        margin: 0;
+    }
+
+.rocketcdn-settings-activate a {
+    color: #703DE8;
+    text-decoration: none;
+}
+
+.rocketcdn-settings-activate input[type="text"] {
+    border: 1px solid #8679A9;
+    border-radius: 4px;
+    margin: 16px 0;
+}
+
+.rocketcdn-section-title {
+    color: #292631;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.rocketcdn-section-subtitle {
+    font-weight: 500;
+}
+
+.rocketcdn-submit,
+.rocketcdn-get-started {
+    background: #703DE8;
+    border: 0;
+    border-radius: 36px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    padding: 16px 24px;
+}
+
+.rocketcdn-get-started {
+    display: inline-block;
+    margin-top: 24px;
+    text-decoration: none;
+}
+    .rocketcdn-get-started:hover {
+        color: #fff;
+    }
+
+.rocketcdn-submit-content::after,
+.rocketcdn-get-started::after {
+    content: "\2192";
+    margin-left: 16px;
+}
+
+.rocketcdn-settings-separator {
+    display: flex;
+    color: #292631;
+    flex-direction: row;
+    padding: 24px 0;
+    text-transform: uppercase;
+}
+    .rocketcdn-settings-separator::before,
+    .rocketcdn-settings-separator::after {
+        content: "";
+        flex: 1 1;
+        border-bottom: 1px solid #292631;
+        opacity: 0.1;
+        margin: auto;
+    }
+
+    .rocketcdn-settings-separator::before {
+        margin-right: 8px;
+    }
+
+    .rocketcdn-settings-separator::after {
+        margin-left: 8px;
+    }
 
 .rocketcdn-settings-block {
     background: #fff;
