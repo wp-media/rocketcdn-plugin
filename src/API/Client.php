@@ -204,9 +204,10 @@ class Client {
 
 		$cdn_url = preg_replace( '#^(https?:)?\/\/#im', '', $cdn_url );
 
-		$response = wp_remote_get(
+		$response = wp_remote_request(
 			self::ROCKETCDN_API . "website/{$cdn_url}/purge",
 			[
+				'method'  => 'DELETE',
 				'headers' => [
 					'Authorization' => 'token ' . $api_key,
 				],
