@@ -1,0 +1,29 @@
+.rocketcdn-settings-header {
+    background: #1F1147;
+    border-radius: 8px;
+    color: #fff;
+    padding: 24px 32px;
+}
+
+.rocketcdn-settings-block {
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding: 32px;
+}
+
+.rocketcdn-url-block {
+    background: #F7F6F9;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.rocketcdn-url-block a {
+    border: 1px solid #292631;
+    border-radius: 36px;
+    color: #292631;
+    display: inline-block;
+    font-weight: bold;
+    padding: 13px 24px;
+    text-decoration: none;
+}
