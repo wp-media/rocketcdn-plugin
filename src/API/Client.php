@@ -44,7 +44,7 @@ class Client {
 			return [];
 		}
 
-		set_transient( 'rocketcdn_customer_data', $result, HOUR_IN_SECONDS );
+		set_transient( 'rocketcdn_customer_data', $result, 2 * DAY_IN_SECONDS );
 
 		return $result;
 	}
