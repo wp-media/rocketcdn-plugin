@@ -31,6 +31,7 @@ class Subscriber implements SubscriberInterface {
 		return [
 			'admin_bar_menu'                   => [ 'add_admin_bar_menu', PHP_INT_MAX ],
 			'admin_post_rocketcdn-purge-cache' => 'purge_cache',
+			'admin_enqueue_scripts'            => 'enqueue_style',
 		];
 	}
 
@@ -47,5 +48,9 @@ class Subscriber implements SubscriberInterface {
 
 	public function purge_cache() {
 		$this->admin_bar->purge_cache();
+	}
+
+	public function enqueue_style() {
+		$this->admin_bar->enqueue_style();
 	}
 }

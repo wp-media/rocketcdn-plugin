@@ -1,0 +1,11 @@
+.rocketcdn-admin-bar-subscription {
+    background: #000;
+    padding: 24px !important;
+    width: 271px !important;
+}
+
+.rocketcdn-admin-bar-subscription-link {
+    border: 1px solid #fff !important;
+    border-radius: 36px !important;
+    padding: 8px 16px !important;
+}
