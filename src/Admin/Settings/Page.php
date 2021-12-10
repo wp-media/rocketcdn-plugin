@@ -206,6 +206,7 @@ class Page {
 			return;
 		}
 
+		wp_enqueue_style( 'rocketcdn-settings', $this->assets_baseurl . 'css/settings.css', [], '1.0' );
 		wp_enqueue_script( 'rocketcdn_ajax', $this->assets_baseurl . 'js/ajax.js', [], '1.0', true );
 		wp_localize_script(
 			'rocketcdn_ajax',
