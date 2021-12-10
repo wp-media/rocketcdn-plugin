@@ -45,6 +45,11 @@ class Subscriber implements SubscriberInterface {
 		$this->admin_bar->add_admin_bar_menu( $wp_admin_bar );
 	}
 
+	/**
+	 * Purges the cache from the admin bar
+	 *
+	 * @return void
+	 */
 	public function purge_cache() {
 		$this->admin_bar->purge_cache();
 	}

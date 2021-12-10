@@ -94,6 +94,11 @@ class Page {
 		include $template_path;
 	}
 
+	/**
+	 * Validates the API key & website synchronization
+	 *
+	 * @return void
+	 */
 	public function validate_api_key() {
 		check_ajax_referer( 'rocketcdn_ajax', 'nonce' );
 
@@ -129,6 +134,11 @@ class Page {
 		wp_send_json_success();
 	}
 
+	/**
+	 * Updates the API key if valid and website is sync
+	 *
+	 * @return void
+	 */
 	public function update_api_key() {
 		check_ajax_referer( 'rocketcdn_ajax', 'nonce' );
 
@@ -145,6 +155,8 @@ class Page {
 		if ( empty( $api_key ) ) {
 			wp_send_json_error( __( 'The API key field is empty', 'rocketcdn' ) );
 		}
+
+		delete_transient( 'rocketcdn_customer_data' );
 
 		$valid_key = $this->api_client->get_customer_data( $api_key );
 
@@ -170,6 +182,11 @@ class Page {
 		wp_send_json_success( __( 'Your API key is valid.', 'rocketcdn' ) );
 	}
 
+	/**
+	 * Saves the CDN URL into the database
+	 *
+	 * @return void
+	 */
 	public function save_cdn_url() {
 		$cdn_url = $this->api_client->get_website_cdn_url();
 
@@ -180,6 +197,11 @@ class Page {
 		$this->options->set( 'cdn_url', $cdn_url );
 	}
 
+	/**
+	 * Purges the CDN cache
+	 *
+	 * @return void
+	 */
 	public function purge_cache() {
 		check_ajax_referer( 'rocketcdn_ajax', 'nonce' );
 

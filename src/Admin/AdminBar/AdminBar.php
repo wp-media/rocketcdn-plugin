@@ -14,12 +14,18 @@ class AdminBar {
 	 */
 	private $options;
 
+	/**
+	 * API client instance
+	 *
+	 * @var Client
+	 */
 	private $api_client;
 
 	/**
 	 * Instantiate the class
 	 *
 	 * @param Options $options Options instance.
+	 * @param Client  $api_client API client instance.
 	 */
 	public function __construct( Options $options, Client $api_client ) {
 		$this->options    = $options;
@@ -122,6 +128,11 @@ class AdminBar {
 		);
 	}
 
+	/**
+	 * Purges the cache from the admin bar
+	 *
+	 * @return void
+	 */
 	public function purge_cache() {
 		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'rocketcdn_purge_cache' ) ) {
 			wp_nonce_ays( '' );
