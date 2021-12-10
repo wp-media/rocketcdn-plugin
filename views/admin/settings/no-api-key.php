@@ -4,11 +4,11 @@ defined( 'ABSPATH' ) || exit;
 
 ?>
 <div class="wrap">
-	<div>
+	<div class="rocketcdn-settings-header">
 		<h1 class="screen-reader-text"><?php echo esc_html( get_admin_page_title() ); ?></h1>
 		<?php esc_html_e( 'Welcome to RocketCDN, the best way to deliver your content at the speed of light!', 'rocketcdn' ); ?>
 	</div>
-	<div>
+	<div class="rocket-cdn-settings">
 		<div id="rocketcdn-error-notice"></div>
 		<section>
 			<h2><?php esc_html_e( 'Activate RocketCDN', 'rocketcdn' ); ?></h2>
