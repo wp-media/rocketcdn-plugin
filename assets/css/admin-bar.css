@@ -1,11 +1,20 @@
 .rocketcdn-admin-bar-subscription {
     background: #000;
+    margin-top: 12px !important;
     padding: 24px !important;
-    width: 271px !important;
+    text-align: center;
+    width: 210px !important;
 }
 
 .rocketcdn-admin-bar-subscription-link {
     border: 1px solid #fff !important;
     border-radius: 36px !important;
+    color: #fff !important;
+    font-weight: 500 !important;
     padding: 8px 16px !important;
+}
+
+.rocketcdn-admin-bar-subscription-link::after {
+    content: "\2192";
+    margin-left: 16px;
 }
