@@ -54,7 +54,7 @@ class AdminBar {
 			$wp_admin_bar->add_node(
 				[
 					'id'    => 'rocketcdn',
-					'title' => __( 'RocketCDN is disconnected', 'rocketcdn' ),
+					'title' => '<span class="rocketcdn-admin-bar-status rocketcdn-admin-bar-status-disconnected">' . __( 'RocketCDN is disconnected', 'rocketcdn' ) . '</span>',
 				]
 			);
 
@@ -73,7 +73,7 @@ class AdminBar {
 		$wp_admin_bar->add_node(
 			[
 				'id'    => 'rocketcdn',
-				'title' => __( 'RocketCDN', 'rocketcdn' ),
+				'title' => '<span class="rocketcdn-admin-bar-status rocketcdn-admin-bar-status-connected">' . __( 'RocketCDN', 'rocketcdn' ) . '</span>',
 			]
 		);
 
