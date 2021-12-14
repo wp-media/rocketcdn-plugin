@@ -55,6 +55,11 @@ class Subscriber implements SubscriberInterface {
 		$this->admin_bar->purge_cache();
 	}
 
+	/**
+	 * Enqueue style for the custom part of the admin bar
+	 *
+	 * @return void
+	 */
 	public function enqueue_style() {
 		$this->admin_bar->enqueue_style();
 	}

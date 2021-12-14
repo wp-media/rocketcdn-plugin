@@ -160,6 +160,11 @@ class AdminBar {
 		exit;
 	}
 
+	/**
+	 * Enqueue style for the custom part of the admin bar
+	 *
+	 * @return void
+	 */
 	public function enqueue_style() {
 		wp_enqueue_style( 'rocketcdn-admin-bar', $this->assets_baseurl . 'css/admin-bar.css', [], '1.0' );
 	}
