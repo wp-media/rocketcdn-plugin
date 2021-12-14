@@ -12,10 +12,13 @@
         margin: 10px 0 0;
     }
 
-    .rocketcdn-settings-header a,
-    .rocketcdn-settings-header a:hover {
+    .rocketcdn-settings-header a {
         color: #fff;
     }
+
+        .rocketcdn-settings-header a:hover {
+            color: #FFD147;
+        }
 
 h1.rocketcdn-logo {
     background: url(../img/rocketcdn.svg);
