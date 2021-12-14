@@ -6,12 +6,14 @@
 		let formNoKey = document.querySelector( '#rocketcdn-no-key' ),
             formHasKey = document.querySelector( '#rocketcdn-has-key #rocketcdn_api_key' ),
             apiKey = document.getElementById( 'rocketcdn_api_key' ),
-            clearCache = document.getElementById( 'rocketcdn-purge-cache' ),
-            postData = '';
+            clearCache = document.getElementById( 'rocketcdn-purge-cache' );
 
 		if ( null !== formNoKey ) {
 			formNoKey.addEventListener( 'submit', ( e ) => {
 				e.preventDefault();
+
+                let postData = '';
+                let errorNotice = document.getElementById( 'rocketcdn-error-notice' );
 
                 postData += 'action=rocketcdn_validate_key';
                 postData += '&api_key=' + apiKey.value;
@@ -24,7 +26,8 @@
                         let responseTxt = JSON.parse(request.responseText);
                         
                         if ( ! responseTxt.success ) {
-                            document.getElementById( 'rocketcdn-error-notice' ).innerHTML = responseTxt.data;
+                            errorNotice.querySelector( 'p' ).innerHTML = responseTxt.data;
+                            errorNotice.classList.add( 'rocketcdn-notice-show','rocketcdn-notice-error' );
                             return false;
                         }
 
@@ -36,6 +39,9 @@
 
         if ( null !== formHasKey ) {
 			formHasKey.addEventListener( 'focusout', ( e ) => {
+                let postData = '';
+                let errorNotice = document.getElementById( 'rocketcdn-error-notice' );
+
                 postData += 'action=rocketcdn_update_key';
                 postData += '&api_key=' + apiKey.value;
 			    postData += '&nonce=' + rocketcdn_ajax_data.nonce;
@@ -46,12 +52,16 @@
                     if ( request.readyState === XMLHttpRequest.DONE && 200 === request.status ) {
                         let responseTxt = JSON.parse(request.responseText);
                         
+                        errorNotice.querySelector( 'p' ).innerHTML = responseTxt.data;
+
                         if ( ! responseTxt.success ) {
-                            document.getElementById( 'rocketcdn-error-notice' ).innerHTML = responseTxt.data;
+                            errorNotice.classList.add( 'rocketcdn-notice-show','rocketcdn-notice-error' );
+                            errorNotice.classList.remove( 'rocketcdn-notice-success' );
                             return;
                         }
 
-                        document.getElementById( 'rocketcdn-error-notice' ).innerHTML = responseTxt.data;
+                        errorNotice.classList.add( 'rocketcdn-notice-show','rocketcdn-notice-success' );
+                        errorNotice.classList.remove( 'rocketcdn-notice-error' );
                     }
                 };
 			} );
@@ -61,6 +71,9 @@
 			clearCache.addEventListener( 'click', ( e ) => {
                 e.preventDefault();
 
+                let postData = '';
+                let purgeResult = document.getElementById( 'rocketcdn-purge-cache-result' );
+
                 postData += 'action=rocketcdn_purge_cache';
 			    postData += '&nonce=' + rocketcdn_ajax_data.nonce;
 
@@ -69,17 +82,27 @@
                 request.onreadystatechange = () => {
                     if ( request.readyState === XMLHttpRequest.DONE && 200 === request.status ) {
                         let responseTxt = JSON.parse(request.responseText);
-                        
+
+                        purgeResult.innerHTML = responseTxt.data;
+
                         if ( ! responseTxt.success ) {
-                            document.getElementById( 'rocketcdn-purge-cache-result' ).innerHTML = responseTxt.data;
+                            purgeResult.classList.add( 'rocketcdn-purge-cache-error', 'rocketcdn-notice-show' );
+                            purgeResult.classList.remove( 'rocketcdn-purge-cache-success' );
                             return;
                         }
 
-                        document.getElementById( 'rocketcdn-purge-cache-result' ).innerHTML = responseTxt.data;
+                        purgeResult.classList.add( 'rocketcdn-purge-cache-success', 'rocketcdn-notice-show' );
+                        purgeResult.classList.remove( 'rocketcdn-purge-cache-error' );
                     }
                 };
 			} );
 		}
+
+        document.querySelector( '.rocketcdn-notice-dismiss' ).addEventListener( 'click', ( e ) => {
+            e.preventDefault();
+
+            document.getElementById( 'rocketcdn-error-notice' ).classList.remove( 'rocketcdn-notice-show', 'rocketcdn-notice-error', 'rocketcdn-notice-success' );
+        } );
 	} );
 
     function sendHTTPRequest( postData ) {
