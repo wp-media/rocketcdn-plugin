@@ -14,12 +14,18 @@ class Notices {
 	 */
 	private $options;
 
+	/**
+	 * API client instance
+	 *
+	 * @var Client
+	 */
 	private $api_client;
 
 	/**
 	 * Instantiate the class
 	 *
 	 * @param Options $options Options instance.
+	 * @param Client  $api_client API client instance.
 	 */
 	public function __construct( Options $options, Client $api_client ) {
 		$this->options    = $options;

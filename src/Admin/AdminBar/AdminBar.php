@@ -14,6 +14,11 @@ class AdminBar {
 	 */
 	private $options;
 
+	/**
+	 * API client instance
+	 *
+	 * @var Client
+	 */
 	private $api_client;
 
 	/**
@@ -27,6 +32,7 @@ class AdminBar {
 	 * Instantiate the class
 	 *
 	 * @param Options $options Options instance.
+	 * @param Client  $api_client API client instance.
 	 */
 	public function __construct( Options $options, Client $api_client, $assets_baseurl ) {
 		$this->options        = $options;
@@ -42,6 +48,10 @@ class AdminBar {
 	 * @return void
 	 */
 	public function add_admin_bar_menu( $wp_admin_bar ) {
+		if ( ! is_admin() ) {
+			return;
+		}
+
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
@@ -130,6 +140,11 @@ class AdminBar {
 		);
 	}
 
+	/**
+	 * Purges the cache from the admin bar
+	 *
+	 * @return void
+	 */
 	public function purge_cache() {
 		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'rocketcdn_purge_cache' ) ) {
 			wp_nonce_ays( '' );

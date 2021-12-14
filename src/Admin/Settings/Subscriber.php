@@ -67,18 +67,38 @@ class Subscriber implements SubscriberInterface {
 		$this->page->enqueue_assets( $hook_suffix );
 	}
 
+	/**
+	 * Validates the API key & website synchronization
+	 *
+	 * @return void
+	 */
 	public function validate_api_key() {
 		$this->page->validate_api_key();
 	}
 
+	/**
+	 * Updates the API key if valid and website is sync
+	 *
+	 * @return void
+	 */
 	public function update_api_key() {
 		$this->page->update_api_key();
 	}
 
+	/**
+	 * Purges the CDN cache
+	 *
+	 * @return void
+	 */
 	public function purge_cache() {
 		$this->page->purge_cache();
 	}
 
+	/**
+	 * Saves the CDN URL into the database
+	 *
+	 * @return void
+	 */
 	public function save_cdn_url() {
 		$this->page->save_cdn_url();
 	}
