@@ -32,7 +32,7 @@ class Client {
 	 * @return array
 	 */
 	public function get_customer_data( $api_key = '' ): array {
-		$cache = get_transient( 'rochetcdn_customer_data' );
+		$cache = get_transient( 'rocketcdn_customer_data' );
 
 		if ( false !== $cache ) {
 			return $cache;
