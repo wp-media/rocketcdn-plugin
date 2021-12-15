@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 						<?php
 						printf(
 							// translators: %1$s = opening link tag, %2$s = closing link tag.
-							esc_html__( 'You can find your API key in your %1$sRocketCDN account%2$s', 'rocketcdn' ),
+							esc_html__( 'You can find your API key in your %1$sRocketCDN account%2$s.', 'rocketcdn' ),
 							'<a href="https://rocketcdn.me/account/" target="_blank" rel="noopener">',
 							'</a>'
 						);
