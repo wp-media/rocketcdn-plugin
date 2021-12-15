@@ -71,7 +71,13 @@ class Page {
 	 * @return void
 	 */
 	public function render_page() {
-		if ( empty( $this->options->get( 'api_key' ) ) ) {
+		$api_key = $this->options->get( 'api_key' );
+
+		if (
+			empty( $api_key )
+			||
+			! $this->api_client->is_website_sync( $api_key )
+		) {
 			$this->render_template( 'admin/settings/no-api-key' );
 			return;
 		}
