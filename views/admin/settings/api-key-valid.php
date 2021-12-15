@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 				printf(
 					// translators: %1$s = opening link tag, %2$s = closing link tag, %3$s = star icon.
 					esc_html__( 'Please rate %1$sRocketCDN on wordpress.org%2$s %3$s %3$s %3$s %3$s %3$s to help us spread the word. Thank you!', 'rocketcdn' ),
-					'<a href="https://wordpress.org/plugins/rocketcdn/" target="_blank" rel="noopener">',
+					'<a href="https://wordpress.org/support/view/plugin-reviews/rocketcdn?rate=5#postform" target="_blank" rel="noopener">',
 					'</a>',
 					'<span class="rocketcdn-rating-star">&#9733;</span>'
 				);
