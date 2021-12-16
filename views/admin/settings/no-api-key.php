@@ -9,6 +9,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php esc_html_e( 'Welcome to RocketCDN, the best way to deliver your content at the speed of light!', 'rocketcdn' ); ?>
 	</div>
 	<div>
+		<div id="rocketcdn-error-notice"></div>
 		<section>
 			<h2><?php esc_html_e( 'Activate RocketCDN', 'rocketcdn' ); ?></h2>
 			<p><?php esc_html_e( 'Enter your API key to connect your website with RocketCDN.', 'rocketcdn' ); ?></p>
@@ -22,8 +23,8 @@ defined( 'ABSPATH' ) || exit;
 				);
 				?>
 			</p>
-			<form action="options.php" method="post">
-				<input type="text" name="rocketcdn_api_key" value="<?php echo esc_attr( $this->options->get( 'api_key' ) ); ?>" />
+			<form action="options.php" method="post" id="rocketcdn-no-key">
+				<input type="text" name="rocketcdn_api_key" id="rocketcdn_api_key" value="<?php echo esc_attr( $this->options->get( 'api_key' ) ); ?>" />
 				<?php settings_fields( 'rocketcdn' ); ?>
 				<input type="submit" value="<?php esc_attr_e( 'Save', 'rocketcdn' ); ?>" />
 			</form>

@@ -71,6 +71,7 @@ class Plugin {
 		);
 
 		$this->container->add( 'template_basepath', realpath( plugin_dir_path( __DIR__ ) ) . '/views/' );
+		$this->container->add( 'assets_baseurl', plugin_dir_url( __DIR__ ) . 'assets/' );
 		$this->container->add(
 			'options',
 			function () {
@@ -96,6 +97,7 @@ class Plugin {
 	 */
 	private function get_service_providers() {
 		return [
+			'RocketCDN\API\ServiceProvider',
 			'RocketCDN\Admin\Settings\ServiceProvider',
 			'RocketCDN\Admin\Notices\ServiceProvider',
 			'RocketCDN\Admin\AdminBar\ServiceProvider',
