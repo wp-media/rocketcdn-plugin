@@ -166,6 +166,6 @@ class AdminBar {
 	 * @return void
 	 */
 	public function enqueue_style() {
-		wp_enqueue_style( 'rocketcdn-admin-bar', $this->assets_baseurl . 'css/admin-bar.css', [], '1.0' );
+		wp_enqueue_style( 'rocketcdn-admin-bar', $this->assets_baseurl . 'css/admin-bar.css', [], ROCKETCDN_VERSION );
 	}
 }

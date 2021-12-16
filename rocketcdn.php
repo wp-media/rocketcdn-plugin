@@ -15,12 +15,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
+define( 'ROCKETCDN_VERSION', '1.0' );
+
 require realpath( plugin_dir_path( __FILE__ ) ) . '/includes/RocketCDNRequirementsCheck.php';
 
 $rocketcdn_rq_check = new RocketCDNRequirementsCheck(
 	[
 		'plugin_name'    => 'RocketCDN',
-		'plugin_version' => '1.0',
+		'plugin_version' => ROCKETCDN_VERSION,
 		'wp_version'     => '5.4',
 		'php_version'    => '7.0',
 	]
