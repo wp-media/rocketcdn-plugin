@@ -33,6 +33,7 @@ class AdminBar {
 	 *
 	 * @param Options $options Options instance.
 	 * @param Client  $api_client API client instance.
+	 * @param string  $assets_baseurl Assets base URL.
 	 */
 	public function __construct( Options $options, Client $api_client, $assets_baseurl ) {
 		$this->options        = $options;
