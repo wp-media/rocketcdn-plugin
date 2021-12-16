@@ -63,7 +63,7 @@ class Client {
 		}
 
 		$response = wp_remote_get(
-			self::ROCKETCDN_API . 'customer/me',
+			$this->get_base_api_url() . 'customer/me',
 			[
 				'headers' => [
 					'Authorization' => 'token ' . $api_key,
@@ -173,7 +173,7 @@ class Client {
 		$cdn_url = preg_replace( '#^(https?:)?\/\/#im', '', $cdn_url );
 
 		$response = wp_remote_request(
-			self::ROCKETCDN_API . "website/{$cdn_url}/purge",
+			$this->get_base_api_url() . "website/{$cdn_url}/purge",
 			[
 				'method'  => 'DELETE',
 				'headers' => [
@@ -199,5 +199,19 @@ class Client {
 		}
 
 		return json_decode( $body, true );
+	}
+
+	/**
+	 * Returns the base API URL
+	 *
+	 * @return string
+	 */
+	private function get_base_api_url(): string {
+		/**
+		 * Filters the base API URL
+		 *
+		 * @param string $api_url API URL.
+		 */
+		return apply_filters( 'rocketcdn_base_api_url', self::ROCKETCDN_API );
 	}
 }
