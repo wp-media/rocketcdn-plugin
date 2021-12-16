@@ -22,14 +22,23 @@ class AdminBar {
 	private $api_client;
 
 	/**
+	 * Assets base URL
+	 *
+	 * @var string
+	 */
+	private $assets_baseurl;
+
+	/**
 	 * Instantiate the class
 	 *
 	 * @param Options $options Options instance.
 	 * @param Client  $api_client API client instance.
+	 * @param string  $assets_baseurl Assets base URL.
 	 */
-	public function __construct( Options $options, Client $api_client ) {
-		$this->options    = $options;
-		$this->api_client = $api_client;
+	public function __construct( Options $options, Client $api_client, $assets_baseurl ) {
+		$this->options        = $options;
+		$this->api_client     = $api_client;
+		$this->assets_baseurl = $assets_baseurl;
 	}
 
 	/**
@@ -56,7 +65,7 @@ class AdminBar {
 			$wp_admin_bar->add_node(
 				[
 					'id'    => 'rocketcdn',
-					'title' => __( 'RocketCDN is disconnected', 'rocketcdn' ),
+					'title' => '<span class="rocketcdn-admin-bar-status rocketcdn-admin-bar-status-disconnected">' . __( 'RocketCDN is disconnected', 'rocketcdn' ) . '</span>',
 				]
 			);
 
@@ -75,7 +84,7 @@ class AdminBar {
 		$wp_admin_bar->add_node(
 			[
 				'id'    => 'rocketcdn',
-				'title' => __( 'RocketCDN', 'rocketcdn' ),
+				'title' => '<span class="rocketcdn-admin-bar-status rocketcdn-admin-bar-status-connected">' . __( 'RocketCDN', 'rocketcdn' ) . '</span>',
 			]
 		);
 
@@ -126,7 +135,7 @@ class AdminBar {
 				'meta'   => [
 					'rel'    => 'noopener',
 					'target' => '_blank',
-					'html'   => '<a href="https://rocketcdn.me/account/billing/" rel="noopener" target="_blank">' . __( 'View my subscription', 'rocketcdn' ) . '</a>',
+					'html'   => '<div class="rocketcdn-admin-bar-subscription"><a href="https://rocketcdn.me/account/billing/" rel="noopener" target="_blank" class="rocketcdn-admin-bar-subscription-link">' . __( 'View my subscription', 'rocketcdn' ) . '</a></div>',
 				],
 			]
 		);
@@ -150,5 +159,14 @@ class AdminBar {
 
 		wp_safe_redirect( esc_url_raw( wp_get_referer() ) );
 		exit;
+	}
+
+	/**
+	 * Enqueue style for the custom part of the admin bar
+	 *
+	 * @return void
+	 */
+	public function enqueue_style() {
+		wp_enqueue_style( 'rocketcdn-admin-bar', $this->assets_baseurl . 'css/admin-bar.css', [], ROCKETCDN_VERSION );
 	}
 }

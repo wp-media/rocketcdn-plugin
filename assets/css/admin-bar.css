@@ -1,0 +1,37 @@
+.rocketcdn-admin-bar-status::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    margin-right: 8px;
+}
+
+.rocketcdn-admin-bar-status-connected::before {
+    background: #41C45E;
+}
+
+.rocketcdn-admin-bar-status-disconnected::before {
+    background: #FF444F;
+}
+
+.rocketcdn-admin-bar-subscription {
+    background: #000;
+    margin-top: 12px !important;
+    padding: 24px !important;
+    text-align: center;
+    width: 210px !important;
+}
+
+.rocketcdn-admin-bar-subscription-link {
+    border: 1px solid #fff !important;
+    border-radius: 36px !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+    padding: 8px 16px !important;
+}
+
+.rocketcdn-admin-bar-subscription-link::after {
+    content: "\2192";
+    margin-left: 16px;
+}

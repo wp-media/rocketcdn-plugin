@@ -71,7 +71,13 @@ class Page {
 	 * @return void
 	 */
 	public function render_page() {
-		if ( empty( $this->options->get( 'api_key' ) ) ) {
+		$api_key = $this->options->get( 'api_key' );
+
+		if (
+			empty( $api_key )
+			||
+			! $this->api_client->is_website_sync( $api_key )
+		) {
 			$this->render_template( 'admin/settings/no-api-key' );
 			return;
 		}
@@ -228,7 +234,8 @@ class Page {
 			return;
 		}
 
-		wp_enqueue_script( 'rocketcdn_ajax', $this->assets_baseurl . 'js/ajax.js', [], '1.0', true );
+		wp_enqueue_style( 'rocketcdn-settings', $this->assets_baseurl . 'css/settings.css', [], ROCKETCDN_VERSION );
+		wp_enqueue_script( 'rocketcdn_ajax', $this->assets_baseurl . 'js/ajax.js', [], ROCKETCDN_VERSION, true );
 		wp_localize_script(
 			'rocketcdn_ajax',
 			'rocketcdn_ajax_data',

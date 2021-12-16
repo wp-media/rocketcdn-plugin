@@ -1,0 +1,413 @@
+.rocketcdn-wrapper {
+    max-width: 1280px;
+}
+
+.rocketcdn-settings-header {
+    background: #1F1147;
+    border-radius: 8px;
+    color: #fff;
+    padding: 16px;
+}
+    .rocketcdn-settings-header p {
+        margin: 10px 0 0;
+    }
+
+    .rocketcdn-settings-header a {
+        color: #fff;
+    }
+
+        .rocketcdn-settings-header a:hover {
+            color: #FFD147;
+        }
+
+h1.rocketcdn-logo {
+    background: url(../img/rocketcdn.svg);
+    background-size: 130px 24px;
+    background-repeat: no-repeat;
+    height: 24px;
+    padding: 0;
+}
+
+.rocketcdn-rating-star {
+    color: #FFD147;
+}
+
+.rocketcdn-notice {
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 8px 0;
+    padding: 16px 32px;
+}
+
+    .rocketcdn-notice p {
+        margin: 0;
+    }
+
+    .rocketcdn-notice.rocketcdn-notice-error,
+    .rocketcdn-purge-cache-result.rocketcdn-purge-cache-error {
+        background: #FFDBDD;
+        color: #FF444F;
+    }
+
+    .rocketcdn-notice.rocketcdn-notice-success,
+    .rocketcdn-purge-cache-result.rocketcdn-purge-cache-success {
+        background: #DCF4E1;
+        color: #41C45E;
+    }
+
+.rocketcdn-purge-cache-result {
+    display: none;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: 500;
+    margin: 16px 0;
+    padding: 8px 16px;
+}
+
+    .rocketcdn-purge-cache-result::before {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        margin-right: 16px;
+        text-align: center;
+    }
+
+    .rocketcdn-purge-cache-success::before {
+        content: "\2714";
+        background: #41C45E;
+        color: #DCF4E1;
+    }
+
+    .rocketcdn-purge-cache-error::before {
+        content: "\00D7";
+        background: #FF444F;
+        color: #FFDBDD;
+    }
+
+.rocketcdn-notice-show {
+    display: flex;
+}
+
+.rocketcdn-notice-dismiss {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.rocketcdn-notice-dismiss::after {
+    content: "\2715";
+    font-weight: 700;
+}
+
+    .rocketcdn-notice-error .rocketcdn-notice-dismiss::after {
+        color: #FF444F;
+    }
+    .rocketcdn-notice-success .rocketcdn-notice-dismiss::after {
+        color: #41C45E;
+    }
+
+.rocketcdn-settings {
+    background: #fff;
+    border-radius: 8px;
+    color: #423E4C;
+    margin-top: 8px;
+    padding: 16px;
+}
+
+    .rocketcdn-settings p {
+        line-height: 22px;
+        margin: 0;
+    }
+
+.rocketcdn-settings-activate::before {
+    content:"";
+    display: block;
+    width: 63px;
+    height: 48px;
+    background: url(../img/easy.svg);
+    background-size: 63px 48px;
+    background-repeat: no-repeat;
+    margin-bottom: 16px;
+}
+
+.rocketcdn-settings-activate a {
+    color: #703DE8;
+    text-decoration: none;
+}
+
+.rocketcdn-settings-activate input[type="text"],
+.rocketcdn-settings-block input[type="text"] {
+    border: 1px solid #8679A9;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.rocketcdn-settings-activate input[type="text"] {
+    margin: 16px 0;
+}
+
+.rocketcdn-settings-create::before {
+    content:"";
+    display: block;
+    width: 63px;
+    height: 48px;
+    background: url(../img/user.svg);
+    background-size: 63px 48px;
+    background-repeat: no-repeat;
+    margin-bottom: 16px;
+}
+
+.rocketcdn-section-title {
+    color: #292631;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0 0 8px;
+}
+
+.rocketcdn-section-subtitle {
+    font-weight: 500;
+}
+
+.rocketcdn-submit,
+.rocketcdn-get-started {
+    background: #703DE8;
+    border: 0;
+    border-radius: 36px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    padding: 16px 24px;
+}
+
+.rocketcdn-get-started {
+    display: inline-block;
+    margin-top: 24px;
+    text-decoration: none;
+}
+    .rocketcdn-get-started:hover {
+        color: #fff;
+    }
+
+.rocketcdn-submit-content::after,
+.rocketcdn-get-started::after,
+.rocketcdn-view-subscription::after {
+    content: "\2192";
+    margin-left: 16px;
+}
+
+.rocketcdn-settings-separator {
+    display: flex;
+    color: #292631;
+    flex-direction: row;
+    padding: 24px 0;
+    text-transform: uppercase;
+}
+    .rocketcdn-settings-separator::before,
+    .rocketcdn-settings-separator::after {
+        content: "";
+        flex: 1 1;
+        border-bottom: 1px solid #292631;
+        opacity: 0.1;
+        margin: auto;
+    }
+
+    .rocketcdn-settings-separator::before {
+        margin-right: 8px;
+    }
+
+    .rocketcdn-settings-separator::after {
+        margin-left: 8px;
+    }
+
+.rocketcdn-settings-block {
+    background: #fff;
+    color: #423E4C;
+    border-radius: 8px;
+    margin-top: 8px;
+    padding: 16px;
+}
+
+.rocketcdn-settings-block .rocketcdn-section-title {
+    font-size: 20px;
+}
+
+.rocketcdn-settings-title {
+    color:#292631;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.rocketcdn-url-block {
+    background: #F7F6F9;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.rocketcdn-view-subscription,
+.rocketcdn-purge-cache {
+    background: transparent;
+    border: 1px solid #292631;
+    border-radius: 36px;
+    color: #292631;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 500;
+    padding: 12px 24px;
+    text-decoration: none;
+}
+
+    .rocketcdn-view-subscription:hover {
+        color: #292631;
+    }
+
+    .rocketcdn-purge-cache::after {
+        content:"\21BB";
+        font-size: 16px;
+        margin-left: 16px;
+    }
+
+@media (min-width:992px) {
+    .rocketcdn-settings-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 24px 32px;
+    }
+        .rocketcdn-settings-header p {
+            font-size:18px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+    h1.rocketcdn-logo {
+        background-size: 173px 32px;
+        width: 173px;
+        height: 32px;
+    }
+
+    .rocketcdn-notice {
+        margin: 16px 0 0;
+    }
+        .rocketcdn-notice p {
+            font-size: 18px;
+        }
+
+    .rocketcdn-settings {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+        padding: 24px;
+    }
+
+    .rocketcdn-settings .rocketcdn-section-title {
+        font-size: 18px;
+    }
+
+    .rocketcdn-settings-activate,
+    .rocketcdn-settings-create {
+        display: flex;
+        width: 45%;
+    }
+
+    .rocketcdn-settings-activate::before,
+    .rocketcdn-settings-create::before {
+        margin-right: 24px;
+    }
+
+    .rocketcdn-settings-activate input[type="text"] {
+        font-size: 18px;
+        line-height: 1;
+        padding: 16px;
+        width: 100%;
+    }
+
+    .rocketcdn-settings-separator {
+        flex-direction: column;
+        padding: 0;
+    }
+        .rocketcdn-settings-separator::before,
+        .rocketcdn-settings-separator::after {
+            border-left: 1px solid #292631;
+        }
+    
+        .rocketcdn-settings-separator::before {
+            margin-bottom: 8px;
+        }
+    
+        .rocketcdn-settings-separator::after {
+            margin-top: 8px;
+        }
+
+    .rocketcdn-settings-create-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    p.rocketcdn-get-started-container {
+        margin-top: auto;
+    }
+
+    .rocketcdn-settings-container {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .rocketcdn-settings-subscription {
+        flex-grow: 1;
+    }
+
+    .rocketcdn-settings-config {
+        flex-grow: 3;
+        margin-right: 16px;
+    }
+
+    .rocketcdn-settings-block {
+        margin-top: 16px;
+        padding: 32px;
+    }
+
+    .rocketcdn-section-title {
+        font-size: 24px;
+        line-height: 1.333;
+        margin: 0 0 16px;
+    }
+
+    .rocketcdn-settings-title {
+        margin: 0;
+        width: 140px;
+    }
+
+    .rocketcdn-form-key,
+    .rocketcdn-section-purge-cache {
+        display: flex;
+        flex-direction: row;
+        margin-top: 32px;
+    }
+
+    .rocketcdn-purge-cache-action {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: start;
+    }
+
+    .rocketcdn-settings-block input[type="text"] {
+        font-size: 18px;
+        line-height: 1;
+        margin: 0;
+        padding: 16px;
+        width: 50%;
+    }
+
+    .rocketcdn-purge-cache-result {
+        margin: 0 0 0 24px;
+    }
+}

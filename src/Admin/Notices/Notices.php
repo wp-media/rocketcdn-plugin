@@ -78,7 +78,7 @@ class Notices {
 
 		$message = sprintf(
 			// translators: %1$s = strong opening tag, %2$s = strong closing tag, %3$s = link opening tag, %4$s = link closing tag.
-			__( '%1$sRocketCDN:%2$s Your API key is wrong. You can find your API key in your %3$sRocketCDN account%4$s', 'rocketcdn' ),
+			__( '%1$sRocketCDN:%2$s Your API key is wrong. You can find your API key in your %3$sRocketCDN account%4$s.', 'rocketcdn' ),
 			'<strong>',
 			'</strong>',
 			'<a href="https://rocketcdn.me/account/sites/">',
