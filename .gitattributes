@@ -1,9 +1,9 @@
 // directories
+.github export-ignore
 .wordpress-org export-ignore
 
 // files
 .gitattributes export-ignore
-.github export-ignore
 .gitignore export-ignore
 
 composer.lock export-ignore
