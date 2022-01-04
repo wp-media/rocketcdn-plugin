@@ -139,7 +139,7 @@ There is no free trial period, but you may request a refund within 24 hours afte
 We offer a single pricing for every need. For only $8.99/month, you will provide better user experience to your visitors, no matter where they are in the world.
 
 = Does RocketCDN offer dedicated support? =
-Yes. Our team is always ready to assist if you have any questions or issues with our CDN. You can contact them through [this page](https://dev.rocketcdn.me/contact/).
+Yes. Our team is always ready to assist if you have any questions or issues with our CDN. You can contact them through [this page](https://rocketcdn.me/contact/).
 
 = Do you offer CNAME customization, aka a “vanity URL”? =
 No. We decided to not offer the CNAME customization because:
