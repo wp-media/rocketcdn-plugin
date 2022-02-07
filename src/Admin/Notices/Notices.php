@@ -68,10 +68,12 @@ class Notices {
 			return;
 		}
 
+		$api_key = $this->options->get( 'api_key', '' );
+
 		if (
-			empty( $this->options->get( 'api_key' ) )
+			empty( $api_key )
 			||
-			! empty( $this->api_client->get_customer_data() )
+			! empty( $this->api_client->get_customer_data( $api_key ) )
 		) {
 			return;
 		}
