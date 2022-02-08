@@ -1,7 +1,7 @@
 === RocketCDN - WordPress CDN Plugin ===
 
 Contributors: wp_media
-Tested up to: 5.8
+Tested up to: 5.9
 Stable tag: 1.0.1
 Requires at least: 5.4
 Requires PHP: 7.0
