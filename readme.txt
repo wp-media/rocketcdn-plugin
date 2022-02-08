@@ -2,7 +2,7 @@
 
 Contributors: wp_media
 Tested up to: 5.8
-Stable tag: 1.0
+Stable tag: 1.0.1
 Requires at least: 5.4
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -191,4 +191,5 @@ Amazon S3 can't be used with another CDN provider like RocketCDN. You can't mix 
 3. Clear RocketCDN cache
 
 == Changelog ==
+- 1.0.1: Bugfix: Prevent display of wrong API key notice even though the API key is correct
 - 1.0: Initial release
