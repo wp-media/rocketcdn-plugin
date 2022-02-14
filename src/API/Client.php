@@ -216,32 +216,19 @@ class Client {
 	}
 
 	/**
-	 * Extracts the hostname (host + path if set) from the URL
+	 * Extracts the hostname from the URL
 	 *
 	 * @param string $url URL to parse.
 	 *
 	 * @return string
 	 */
 	private function extract_hostname( string $url ): string {
-		$parsed_url = wp_parse_url( $url );
-		$path       = '';
+		$host = wp_parse_url( $url, PHP_URL_HOST );
 
-		if ( ! $parsed_url ) {
+		if ( empty( $host ) ) {
 			return '';
 		}
 
-		if ( empty( $parsed_url['host'] ) ) {
-			return '';
-		}
-
-		if (
-			! empty( $parsed_url['path'] )
-			&&
-			'/' !== $parsed_url['path']
-		) {
-			$path = $parsed_url['path'];
-		}
-
-		return $parsed_url['host'] . $path;
+		return $host;
 	}
 }
