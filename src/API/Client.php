@@ -98,14 +98,14 @@ class Client {
 			return false;
 		}
 
-		$home_url = home_url();
+		$hostname = $this->extract_hostname( home_url() );
 
 		foreach ( $customer_data['websites'] as $website ) {
-			if ( ! isset( $website['url'] ) ) {
+			if ( ! isset( $website['hostname'] ) ) {
 				continue;
 			}
 
-			if ( $home_url === $website['url'] ) {
+			if ( $hostname === $website['hostname'] ) {
 				return true;
 			}
 		}
@@ -125,14 +125,14 @@ class Client {
 			return '';
 		}
 
-		$home_url = home_url();
+		$hostname = $this->extract_hostname( home_url() );
 
 		foreach ( $customer_data['websites'] as $website ) {
-			if ( ! isset( $website['url'] ) ) {
+			if ( ! isset( $website['hostname'] ) ) {
 				continue;
 			}
 
-			if ( $home_url !== $website['url'] ) {
+			if ( $hostname !== $website['hostname'] ) {
 				continue;
 			}
 
@@ -213,5 +213,22 @@ class Client {
 		 * @param string $api_url API URL.
 		 */
 		return apply_filters( 'rocketcdn_base_api_url', self::ROCKETCDN_API );
+	}
+
+	/**
+	 * Extracts the hostname from the URL
+	 *
+	 * @param string $url URL to parse.
+	 *
+	 * @return string
+	 */
+	private function extract_hostname( string $url ): string {
+		$host = wp_parse_url( $url, PHP_URL_HOST );
+
+		if ( empty( $host ) ) {
+			return '';
+		}
+
+		return $host;
 	}
 }
