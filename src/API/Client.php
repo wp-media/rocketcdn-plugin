@@ -105,7 +105,7 @@ class Client {
 				continue;
 			}
 
-			if ( $hostname === $website['hostname'] ) {
+			if ( false !== strpos( $hostname, $website['hostname'] ) ) {
 				return true;
 			}
 		}
@@ -132,7 +132,7 @@ class Client {
 				continue;
 			}
 
-			if ( $hostname !== $website['hostname'] ) {
+			if ( false === strpos( $hostname, $website['hostname'] ) ) {
 				continue;
 			}
 
