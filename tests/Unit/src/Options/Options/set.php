@@ -6,6 +6,11 @@ use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
+/**
+ * @covers \RocketCDN\Options\Options::delete
+ *
+ * @group Options
+ */
 class Test_Set extends TestCase
 {
     /**

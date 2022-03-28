@@ -9,6 +9,11 @@ use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
+/**
+ * @covers \RocketCDN\Admin\AdminBar\AdminBar::purge_cache
+ *
+ * @group Admin
+ */
 class Test_PurgeCache  extends TestCase
 {
     protected $options;

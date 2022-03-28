@@ -7,8 +7,12 @@ use RocketCDN\Front\CDN;
 use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
-use function _PHPStan_76800bfb5\RingCentral\Psr7\str;
 
+/**
+ * @covers \RocketCDN\Front\CDN::end_buffering
+ *
+ * @group Front
+ */
 class Test_EndBuffering extends TestCase
 {
     protected $options;

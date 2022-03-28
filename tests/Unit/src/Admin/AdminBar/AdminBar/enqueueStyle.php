@@ -9,6 +9,11 @@ use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
+/**
+ * @covers \RocketCDN\Admin\AdminBar\AdminBar::enqueue_style
+ *
+ * @group Admin
+ */
 class Test_EnqueueStyle extends TestCase
 {
     /**

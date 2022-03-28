@@ -1,11 +1,17 @@
 <?php
 
-namespace RocketCDN\Tests\Unit\src\Notices\Notices;
+namespace RocketCDN\Tests\Unit\src\Admin\Notices\Notices;
+
 use Mockery;
 use RocketCDN\Admin\Notices\Notices;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
+/**
+ * @covers \RocketCDN\Admin\Notices\Notices::wrong_api_key_notice
+ *
+ * @group Admin
+ */
 class Test_WrongApiKeyNotice extends TestCase
 {
     protected $options;

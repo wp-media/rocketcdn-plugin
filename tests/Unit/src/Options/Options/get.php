@@ -10,7 +10,7 @@ use Brain\Monkey\Functions;
 /**
  * @covers \RocketCDN\Options\Options::get
  *
- * @group API
+ * @group Options
  */
 class Test_Get extends TestCase
 {

@@ -6,6 +6,7 @@ use Mockery;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 use Brain\Monkey\Functions;
+
 /**
  * @covers \RocketCDN\API\Client::purge_cache
  *

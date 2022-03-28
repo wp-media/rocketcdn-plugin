@@ -7,6 +7,11 @@ use RocketCDN\Front\CDN;
 use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 
+/**
+ * @covers \RocketCDN\Front\CDN::add_preconnect_cdn
+ *
+ * @group Front
+ */
 class Test_AddPreconnectCdn extends TestCase
 {
     protected $options;

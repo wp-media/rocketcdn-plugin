@@ -8,7 +8,7 @@ use RocketCDN\Tests\Unit\TestCase;
 /**
  * @covers \RocketCDN\Options\Options::get_option_name
  *
- * @group API
+ * @group Options
  */
 class Test_GetOptionName extends TestCase
 {

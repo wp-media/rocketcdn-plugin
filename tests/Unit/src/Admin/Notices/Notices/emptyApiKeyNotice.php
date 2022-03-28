@@ -1,9 +1,16 @@
 <?php
 
+namespace RocketCDN\Tests\Unit\src\Admin\Notices\Notices;
+
 use RocketCDN\Admin\Notices\Notices;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
+/**
+ * @covers \RocketCDN\Admin\Notices\Notices::empty_api_key_notice
+ *
+ * @group Admin
+ */
 class Test_EmptyApiKeyNotice extends TestCase {
 
     protected $options;

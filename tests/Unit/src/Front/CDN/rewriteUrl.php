@@ -1,10 +1,18 @@
 <?php
 
+namespace RocketCDN\Tests\Unit\src\Front\CDN;
+
+use Mockery;
 use RocketCDN\Front\CDN;
 use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
+/**
+ * @covers \RocketCDN\Front\CDN::rewrite_url
+ *
+ * @group Front
+ */
 class Test_RewriteUrl extends TestCase
 {
     protected $options;

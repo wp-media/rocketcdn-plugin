@@ -1,12 +1,20 @@
 <?php
 
+namespace RocketCDN\Tests\Unit\src\Admin\AdminBar\AdminBar;
+
+use Mockery;
 use RocketCDN\Admin\AdminBar\AdminBar;
-use RocketCDN\Admin\Notices\Notices;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
+use WP_Admin_Bar;
 
+/**
+ * @covers \RocketCDN\Admin\AdminBar\AdminBar::add_admin_bar_menu
+ *
+ * @group Admin
+ */
 class Test_AddAdminBarMenu extends TestCase {
     protected $options;
     protected $client;
