@@ -61,7 +61,7 @@ class CDN {
 	 *
 	 * @return bool
 	 */
-	private function should_rewrite(): bool {
+	protected function should_rewrite(): bool {
 		if (
 			! isset( $_SERVER['REQUEST_METHOD'] )
 			||
@@ -91,7 +91,8 @@ class CDN {
 	 */
 	private function rewrite( string $html ): string {
 		$pattern = '#[("\']\s*(?<url>(?:(?:https?:|)' . preg_quote( $this->get_base_url(), '#' ) . ')\/(?:(?:(?:' . $this->get_allowed_paths() . ')[^"\',)]+))|\/[^/](?:[^"\')\s>]+\.[[:alnum:]]+))\s*["\')]#i';
-		return preg_replace_callback(
+
+        return preg_replace_callback(
 			$pattern,
 			function( $matches ) {
 				return str_replace( $matches['url'], $this->rewrite_url( $matches['url'] ), $matches[0] );
@@ -114,7 +115,7 @@ class CDN {
 		}
 		foreach ( $srcsets as $srcset ) {
 			$sources    = explode( ',', $srcset['sources'] );
-			$sources    = array_unique( array_map( 'trim', $sources ) );
+            $sources    = array_unique( array_map( 'trim', $sources ) );
 			$cdn_srcset = $srcset['sources'];
 			foreach ( $sources as $source ) {
 				$url        = preg_split( '#\s+#', trim( $source ) );
