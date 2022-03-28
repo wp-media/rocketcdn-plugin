@@ -1,1 +1,1 @@
-{"redefinable-internals": ["ob_start"]}
+{"redefinable-internals": ["ob_start", "exit"]}

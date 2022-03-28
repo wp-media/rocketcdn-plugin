@@ -52,7 +52,6 @@ class AdminBar {
 		if ( ! is_admin() ) {
 			return;
 		}
-
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
@@ -151,6 +150,7 @@ class AdminBar {
 	public function purge_cache() {
 		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'rocketcdn_purge_cache' ) ) {
 			wp_nonce_ays( '' );
+            return;
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -160,8 +160,16 @@ class AdminBar {
 		$this->api_client->purge_cache();
 
 		wp_safe_redirect( esc_url_raw( wp_get_referer() ) );
-		exit;
+		$this->exit();
 	}
+
+    /**
+     * Wrapped exit function to test
+     * @return void
+     */
+    protected function exit() {
+        exit;
+    }
 
 	/**
 	 * Enqueue style for the custom part of the admin bar
