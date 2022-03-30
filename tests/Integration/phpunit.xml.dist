@@ -15,7 +15,7 @@
 
     <testsuites>
         <testsuite name="integration">
-            <directory suffix=".php">inc</directory>
+            <directory suffix=".php">src</directory>
         </testsuite>
     </testsuites>
 

@@ -49,10 +49,11 @@ class AdminBar {
 	 * @return void
 	 */
 	public function add_admin_bar_menu( $wp_admin_bar ) {
-		if ( ! is_admin() ) {
+        if ( ! is_admin() ) {
 			return;
 		}
-		if ( ! current_user_can( 'manage_options' ) ) {
+
+        if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 

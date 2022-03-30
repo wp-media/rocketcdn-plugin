@@ -6,7 +6,7 @@ namespace RocketCDN\API;
 use RocketCDN\Options\Options;
 
 class Client {
-	const ROCKETCDN_API = 'https://rocketcdn.me/api/';
+	const ROCKETCDN_API = 'http://staging-rocketcdn.wp-rocket.me/api/';
 
 	/**
 	 * Options instance
