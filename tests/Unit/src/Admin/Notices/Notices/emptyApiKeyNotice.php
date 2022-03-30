@@ -2,6 +2,7 @@
 
 namespace RocketCDN\Tests\Unit\src\Admin\Notices\Notices;
 
+use Mockery;
 use RocketCDN\Admin\Notices\Notices;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;

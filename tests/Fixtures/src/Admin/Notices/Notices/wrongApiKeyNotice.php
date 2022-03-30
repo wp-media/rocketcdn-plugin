@@ -37,6 +37,6 @@ return [
             'data' => [
             ]
         ],
-        'expected' => file_get_contents( WP_ROCKET_CDN_TESTS_FIXTURES_DIR . '/src/Notices/Notices/HTML/testAPIKeyUserdataHasRightsShouldPrintWarning.html' ),
+        'expected' => file_get_contents( WP_ROCKET_CDN_TESTS_FIXTURES_DIR . '/src/Admin/Notices/Notices/HTML/testAPIKeyUserdataHasRightsShouldPrintWarning.html' ),
     ],
 ];
