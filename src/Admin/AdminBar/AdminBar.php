@@ -155,7 +155,8 @@ class AdminBar {
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
+            wp_die();
+            return;
 		}
 
 		$this->api_client->purge_cache();
@@ -170,7 +171,7 @@ class AdminBar {
 	 * @return void
 	 */
 	protected function exit() {
-		exit;
+		WP_ROCKET_CDN_IS_TESTING ? wp_die() : exit;
 	}
 
 	/**

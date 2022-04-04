@@ -44,6 +44,7 @@ class Test_AddAdminBarMenu extends TestCase {
 		Functions\expect( 'is_admin' )
 			->with()
 			->andReturn( $config['is_admin'] );
+
 		if ( $config['is_admin'] ) {
 			Functions\expect( 'current_user_can' )
 				->with( 'manage_options' )

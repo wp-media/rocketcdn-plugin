@@ -62,7 +62,14 @@ class Test_PurgeCache  extends TestCase {
 			Functions\expect( 'wp_get_referer' )->andReturn( $config['referer'] );
 			Functions\expect( 'wp_safe_redirect' )->with( $config['referer'] );
 			$this->admin_bar_menu->expects()->exit();
-		}
+            Functions\expect( 'wp_die')->never();
+        } else {
+            if($config['nonce'] && $config['is_nonce_valid'] ) {
+                Functions\expect( 'wp_die')->with();
+            } else {
+                Functions\expect( 'wp_die')->never();
+            }
+        }
 
 		$this->admin_bar_menu->purge_cache();
 	}
