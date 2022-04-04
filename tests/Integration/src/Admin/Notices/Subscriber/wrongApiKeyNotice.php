@@ -2,7 +2,11 @@
 
 namespace RocketCDN\Tests\Integration\src\Admin\Notices\Subscriber;
 
+use RocketCDN\API\Client;
 use RocketCDN\Tests\Integration\AdminTestCase;
+use Brain\Monkey\Functions;
+use WP_Error;
+
 /**
  * @covers \RocketCDN\Admin\Notices\Subscriber::wrong_api_key_notice
  * @uses \RocketCDN\Admin\Notices\Notices::wrong_api_key_notice
@@ -34,6 +38,8 @@ class Test_WrongApiKeyNotice extends AdminTestCase {
 
 		$this->setCurrentUser( 'administrator' );
 
+        $this->expectProcessGenerate($config, $expected);
+
 		ob_start();
 
 		do_action( 'admin_notices' );
@@ -45,6 +51,29 @@ class Test_WrongApiKeyNotice extends AdminTestCase {
 		}
 		ob_end_clean();
 	}
+
+    private function expectProcessGenerate( $config, $expected ) {
+        if ( ! isset( $config['process_generate'] ) ) {
+            return;
+        }
+
+        $headers = [
+            'Authorization' => "token {$config['option']['api_key']}",
+        ];
+
+        if ( ! empty( $config['process_generate']['is_wp_error'] ) ) {
+            Functions\expect( 'wp_remote_get' )
+                ->once()
+                ->with( Client::ROCKETCDN_API . 'customer/me', [ 'headers' => $headers ] )
+                ->andReturn( new WP_Error( 'error', 'error_data' ) );
+        } else {
+            $response = $config['process_generate']['response'];
+            Functions\expect( 'wp_remote_get' )
+                ->once()
+                ->with( Client::ROCKETCDN_API . 'customer/me', [ 'headers' => $headers ] )
+                ->andReturn( $response );
+        }
+    }
 
 	public function api_key() {
 		return $this->option['api_key'];

@@ -2,7 +2,6 @@
 namespace RocketCDN\Tests\Integration\src\Admin\AdminBar\Subscriber;
 
 use RocketCDN\Tests\Integration\AdminTestCase;
-use RocketCDN\Tests\Integration\TestCase;
 /**
  * @covers \RocketCDN\Admin\AdminBar\Subscriber::enqueue_style
  * @uses \RocketCDN\Admin\AdminBar\AdminBar::enqueue_style

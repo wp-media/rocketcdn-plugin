@@ -2,8 +2,10 @@
 
 namespace RocketCDN\Tests\Integration\src\Admin\AdminBar\Subscriber;
 
+use RocketCDN\API\Client;
 use RocketCDN\Tests\Integration\AdminTestCase;
 use Brain\Monkey\Functions;
+use WP_Error;
 
 /**
  * @covers \RocketCDN\Admin\AdminBar\Subscriber::add_admin_bar_menu
@@ -54,6 +56,8 @@ class Test_AddAdminBarMenu extends AdminTestCase {
 
 		Functions\when( 'wp_create_nonce' )->justReturn( 'wp_rocket_nonce' );
 
+        $this->expectProcessGenerate($config, $expected);
+
 		// Fire the hook.
 		do_action_ref_array( 'admin_bar_menu', [ $wp_admin_bar ] );
 
@@ -80,6 +84,29 @@ class Test_AddAdminBarMenu extends AdminTestCase {
 			$this->assertNull( $support );
 		}
 	}
+
+    private function expectProcessGenerate( $config, $expected ) {
+        if ( ! isset( $config['process_generate'] ) ) {
+            return;
+        }
+
+        $headers = [
+            'Authorization' => "token {$config['option']['api_key']}",
+        ];
+
+        if ( ! empty( $config['process_generate']['is_wp_error'] ) ) {
+            Functions\expect( 'wp_remote_get' )
+                ->once()
+                ->with( Client::ROCKETCDN_API . 'customer/me', [ 'headers' => $headers ] )
+                ->andReturn( new WP_Error( 'error', 'error_data' ) );
+        } else {
+            $response = $config['process_generate']['response'];
+            Functions\expect( 'wp_remote_get' )
+                ->once()
+                ->with( Client::ROCKETCDN_API . 'customer/me', [ 'headers' => $headers ] )
+                ->andReturn( $response );
+        }
+    }
 
 	protected function initAdminBar() {
 		global $wp_admin_bar;

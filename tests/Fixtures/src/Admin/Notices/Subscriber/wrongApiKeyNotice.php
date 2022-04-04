@@ -25,8 +25,17 @@ return [
 	'testAPIKeyUserdataHasRightsShouldNotPrintWarning' => [
 		'config'   => [
 			'option' => [
-				'api_key' => '4f48814ffa6d1493c735ff109bb3i1eeafee6f4c',
+				'api_key' => 'api_key_right',
 			],
+            'process_generate'   => [
+                    'response' => [
+                        'body' => '{"websites":["test"]}',
+                        'response' => [
+                            'code' => 200,
+                            'message' => "Success",
+                        ],
+                    ],
+                ],
 		],
 		'expected' => [
 			'contains' => false,
