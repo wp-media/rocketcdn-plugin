@@ -1,5 +1,10 @@
 <?php
-
+namespace RocketCDN\Tests\Integration\src\Front\CDN\Subscriber;
+/**
+ * @covers \RocketCDN\Front\CDN::add_preconnect_cdn
+ *
+ * @group Admin
+ */
 class Test_AddPreconnectCdn extends \RocketCDN\Tests\Integration\TestCase {
 
     protected $cdn_url;
