@@ -3,7 +3,11 @@
 namespace RocketCDN\Tests\Integration\src\Admin\Notices\Subscriber;
 
 use RocketCDN\Tests\Integration\AdminTestCase;
-
+/**
+ * @covers \RocketCDN\Admin\Notices\Notices::wrong_api_key_notice
+ *
+ * @group Admin
+ */
 class Test_WrongApiKeyNotice extends AdminTestCase
 {
     protected static $provider_class = 'Admin';
