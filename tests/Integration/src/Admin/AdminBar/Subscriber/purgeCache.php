@@ -6,7 +6,12 @@ use RocketCDN\Tests\Integration\CapTrait;
 use RocketCDN\Tests\Integration\TestCase;
 use Brain\Monkey\Functions;
 use WPDieException;
-
+/**
+ * @covers \RocketCDN\Admin\AdminBar\Subscriber::purge_cache
+ * @uses \RocketCDN\Admin\AdminBar\AdminBar::purge_cache
+ *
+ * @group Admin
+ */
 class Test_PurgeCache extends TestCase
 {
     use CapTrait;

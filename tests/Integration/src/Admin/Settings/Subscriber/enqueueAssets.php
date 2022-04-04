@@ -3,7 +3,8 @@ namespace RocketCDN\Tests\Integration\src\Admin\Settings\Subscriber;
 
 use RocketCDN\Tests\Integration\AdminTestCase;
 /**
- * @covers \RocketCDN\Admin\Settings\Page::enqueue_assets
+ * @covers \RocketCDN\Admin\Settings\Subscriber::enqueue_assets
+ * @uses \RocketCDN\Admin\Settings\Page::enqueue_assets
  *
  * @group Admin
  */

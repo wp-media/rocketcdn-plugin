@@ -4,7 +4,8 @@ namespace RocketCDN\Tests\Integration\src\Admin\Notices\Subscriber;
 
 use RocketCDN\Tests\Integration\AdminTestCase;
 /**
- * @covers \RocketCDN\Admin\Notices\Notices::wrong_api_key_notice
+ * @covers \RocketCDN\Admin\Notices\Subscriber::wrong_api_key_notice
+ * @uses \RocketCDN\Admin\Notices\Notices::wrong_api_key_notice
  *
  * @group Admin
  */

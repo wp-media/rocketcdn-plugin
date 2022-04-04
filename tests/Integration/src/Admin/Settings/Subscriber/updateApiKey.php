@@ -8,7 +8,8 @@ use Brain\Monkey\Functions;
 use WP_Error;
 
 /**
- * @covers \RocketCDN\Admin\Settings\Page::enqueue_assets
+ * @covers \RocketCDN\Admin\Settings\Subscriber::update_api_key
+ * @uses \RocketCDN\Admin\Settings\Page::update_api_key
  *
  * @group Admin
  */

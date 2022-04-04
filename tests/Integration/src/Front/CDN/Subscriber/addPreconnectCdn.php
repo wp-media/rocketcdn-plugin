@@ -2,7 +2,8 @@
 namespace RocketCDN\Tests\Integration\src\Front\CDN\Subscriber;
 
 /**
- * @covers \RocketCDN\Front\CDN::add_preconnect_cdn
+ * @covers \RocketCDN\Front\Subscriber::add_preconnect_cdn
+ * @uses \RocketCDN\Front\CDN::add_preconnect_cdn
  *
  * @group Admin
  */

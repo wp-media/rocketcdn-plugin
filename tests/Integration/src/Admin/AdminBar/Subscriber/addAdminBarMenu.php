@@ -6,7 +6,8 @@ use RocketCDN\Tests\Integration\AdminTestCase;
 use Brain\Monkey\Functions;
 
 /**
- * @covers \RocketCDN\Admin\AdminBar\AdminBar::add_admin_bar_menu
+ * @covers \RocketCDN\Admin\AdminBar\Subscriber::add_admin_bar_menu
+ * @uses \RocketCDN\Admin\AdminBar\AdminBar::add_admin_bar_menu
  *
  * @group Admin
  */

@@ -8,7 +8,8 @@ use RocketCDN\Tests\Integration\CapTrait;
 use WP_Error;
 
 /**
- * @covers \RocketCDN\Admin\Settings\Page::enqueue_assets
+ * @covers \RocketCDN\Admin\Settings\Subscriber::purge_cache
+ * @uses \RocketCDN\Admin\Settings\Page::purge_cache
  *
  * @group Admin
  */
