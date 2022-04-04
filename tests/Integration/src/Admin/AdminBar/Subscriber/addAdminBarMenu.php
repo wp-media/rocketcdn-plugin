@@ -5,6 +5,11 @@ namespace RocketCDN\Tests\Integration\src\Admin\AdminBar\Subscriber;
 use RocketCDN\Tests\Integration\AdminTestCase;
 use Brain\Monkey\Functions;
 
+/**
+ * @covers \RocketCDN\Admin\AdminBar\AdminBar::add_admin_bar_menu
+ *
+ * @group Admin
+ */
 class Test_AddAdminBarMenu extends AdminTestCase
 {
     protected static $provider_class = 'Admin';
