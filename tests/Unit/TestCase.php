@@ -5,32 +5,32 @@ namespace RocketCDN\Tests\Unit;
 use ReflectionObject;
 use WPMedia\PHPUnit\Unit\TestCase as BaseTestCase;
 
-abstract class TestCase extends BaseTestCase
-{
-    protected $config;
+abstract class TestCase extends BaseTestCase {
 
-    protected function setUp() : void {
-        if ( empty( $this->config ) ) {
-            $this->loadTestDataConfig();
-        }
+	protected $config;
 
-        parent::setUp();
-    }
+	protected function setUp() : void {
+		if ( empty( $this->config ) ) {
+			$this->loadTestDataConfig();
+		}
 
-    public function configTestData() {
-        if ( empty( $this->config ) ) {
-            $this->loadTestDataConfig();
-        }
+		parent::setUp();
+	}
 
-        return isset( $this->config['test_data'] )
-            ? $this->config['test_data']
-            : $this->config;
-    }
+	public function configTestData() {
+		if ( empty( $this->config ) ) {
+			$this->loadTestDataConfig();
+		}
 
-    protected function loadTestDataConfig() {
-        $obj      = new ReflectionObject( $this );
-        $filename = $obj->getFileName();
+		return isset( $this->config['test_data'] )
+			? $this->config['test_data']
+			: $this->config;
+	}
 
-        $this->config = $this->getTestData( dirname( $filename ), basename( $filename, '.php' ) );
-    }
+	protected function loadTestDataConfig() {
+		$obj      = new ReflectionObject( $this );
+		$filename = $obj->getFileName();
+
+		$this->config = $this->getTestData( dirname( $filename ), basename( $filename, '.php' ) );
+	}
 }

@@ -12,28 +12,27 @@ use Brain\Monkey\Functions;
  *
  * @group API
  */
-class Test_GetWebsiteCdnUrl extends TestCase
-{
-    protected $client;
+class Test_GetWebsiteCdnUrl extends TestCase {
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $options_api = Mockery::mock( Options::class);
-        $this->client = Mockery::mock(Client::class .  '[get_customer_data]', [$options_api]);
-    }
+	protected $client;
 
-    /**
-     * @dataProvider configTestData
-     */
-    public function testShouldReturnAsExpected($config, $expected) {
-        Functions\expect( 'home_url' )
-            ->with()
-            ->andReturn( $config['homeurl'] );
-        Functions\expect( 'wp_parse_url' )
-            ->with($config['homeurl'], PHP_URL_HOST)
-            ->andReturn( $config['hostname'] );
-        $this->client->expects()->get_customer_data()->andReturn($config['customerdata']);
-        $this->assertEquals($expected, $this->client->get_website_cdn_url());
-    }
+	protected function setUp(): void {
+		parent::setUp();
+		$options_api  = Mockery::mock( Options::class );
+		$this->client = Mockery::mock( Client::class . '[get_customer_data]', [ $options_api ] );
+	}
+
+	/**
+	 * @dataProvider configTestData
+	 */
+	public function testShouldReturnAsExpected( $config, $expected ) {
+		Functions\expect( 'home_url' )
+			->with()
+			->andReturn( $config['homeurl'] );
+		Functions\expect( 'wp_parse_url' )
+			->with( $config['homeurl'], PHP_URL_HOST )
+			->andReturn( $config['hostname'] );
+		$this->client->expects()->get_customer_data()->andReturn( $config['customerdata'] );
+		$this->assertEquals( $expected, $this->client->get_website_cdn_url() );
+	}
 }

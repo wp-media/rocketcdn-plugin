@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'testCdnShouldSave' => [
-        'config' => [
-            'cdn' => 'cdn'
-        ],
-    ],
-    'testNoCdnShouldNoSave' => [
-        'config' => [
-            'cdn' => '',
-        ],
-    ],
+	'testCdnShouldSave'     => [
+		'config' => [
+			'cdn' => 'cdn',
+		],
+	],
+	'testNoCdnShouldNoSave' => [
+		'config' => [
+			'cdn' => '',
+		],
+	],
 ];

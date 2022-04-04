@@ -106,16 +106,16 @@ class Page {
 	 * @return void
 	 */
 	public function validate_api_key() {
-        check_ajax_referer( 'rocketcdn_ajax', 'nonce' );
+		check_ajax_referer( 'rocketcdn_ajax', 'nonce' );
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( __( 'You do not have permissions to perform this action.', 'rocketcdn' ) );
-            return;
+			return;
 		}
 
 		if ( ! isset( $_POST['api_key'] ) ) {
 			wp_send_json_error( __( 'They API key field is not set', 'rocketcdn' ) );
-            return;
+			return;
 		}
 
 		$api_key = sanitize_key( $_POST['api_key'] );
@@ -124,7 +124,7 @@ class Page {
 
 		if ( empty( $valid_key ) ) {
 			wp_send_json_error( __( 'Invalid API key', 'rocketcdn' ) );
-            return;
+			return;
 		}
 
 		$is_sync = $this->api_client->is_website_sync( $api_key );
@@ -138,7 +138,7 @@ class Page {
 			);
 
 			wp_send_json_error( $message );
-            return;
+			return;
 		}
 
 		wp_send_json_success();
@@ -154,19 +154,19 @@ class Page {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( __( 'You do not have permissions to perform this action.', 'rocketcdn' ) );
-            return;
+			return;
 		}
 
 		if ( ! isset( $_POST['api_key'] ) ) {
 			wp_send_json_error( __( 'They API key field is not set', 'rocketcdn' ) );
-            return;
+			return;
 		}
 
 		$api_key = sanitize_key( $_POST['api_key'] );
 
 		if ( empty( $api_key ) ) {
 			wp_send_json_error( __( 'The API key field is empty', 'rocketcdn' ) );
-            return;
+			return;
 		}
 
 		delete_transient( 'rocketcdn_customer_data' );
@@ -175,7 +175,7 @@ class Page {
 
 		if ( empty( $valid_key ) ) {
 			wp_send_json_error( __( 'Invalid API key', 'rocketcdn' ) );
-            return;
+			return;
 		}
 
 		$is_sync = $this->api_client->is_website_sync( $api_key );
@@ -189,7 +189,7 @@ class Page {
 			);
 
 			wp_send_json_error( $message );
-            return;
+			return;
 		}
 
 		$this->options->set( 'api_key', $api_key );
@@ -222,14 +222,14 @@ class Page {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( __( 'You do not have permissions to perform this action.', 'rocketcdn' ) );
-            return;
+			return;
 		}
 
 		$result = $this->api_client->purge_cache();
 
 		if ( ! $result['success'] ) {
 			wp_send_json_error( $result['message'] );
-            return;
+			return;
 		}
 
 		wp_send_json_success( __( 'Done! Your cache has been cleared', 'rocketcdn' ) );

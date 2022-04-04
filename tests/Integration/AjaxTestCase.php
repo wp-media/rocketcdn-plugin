@@ -95,13 +95,13 @@ abstract class AjaxTestCase extends WPMediaAjaxTestCase {
 		$this->config = $this->getTestData( dirname( $filename ), basename( $filename, '.php' ) );
 	}
 
-    protected function setRoleCap( $role_type, $cap ) {
-        $role = get_role( $role_type );
-        $role->add_cap( $cap );
-    }
+	protected function setRoleCap( $role_type, $cap ) {
+		$role = get_role( $role_type );
+		$role->add_cap( $cap );
+	}
 
-    protected function removeRoleCap( $role_type, $cap ) {
-        $role = get_role( $role_type );
-        $role->remove_cap( $cap );
-    }
+	protected function removeRoleCap( $role_type, $cap ) {
+		$role = get_role( $role_type );
+		$role->remove_cap( $cap );
+	}
 }

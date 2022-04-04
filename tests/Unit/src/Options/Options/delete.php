@@ -11,15 +11,15 @@ use Brain\Monkey\Functions;
  *
  * @group Options
  */
-class Test_Delete extends TestCase
-{
-    /**
-     * @dataProvider configTestData
-     */
-    public function testShouldReturnExpected($config, $expected) {
-        $option = new Options($config['prefix']);
-        Functions\expect( 'delete_option' )
-            ->with($expected);
-        $option->delete($config['name']);
-    }
+class Test_Delete extends TestCase {
+
+	/**
+	 * @dataProvider configTestData
+	 */
+	public function testShouldReturnExpected( $config, $expected ) {
+		$option = new Options( $config['prefix'] );
+		Functions\expect( 'delete_option' )
+			->with( $expected );
+		$option->delete( $config['name'] );
+	}
 }

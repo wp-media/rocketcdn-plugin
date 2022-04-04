@@ -13,37 +13,37 @@ use Brain\Monkey\Functions;
  *
  * @group Front
  */
-class Test_RewriteUrl extends TestCase
-{
-    protected $options;
-    protected $cdn;
+class Test_RewriteUrl extends TestCase {
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->options = Mockery::mock( Options::class);
-        $this->cdn = new CDN($this->options);
-    }
+	protected $options;
+	protected $cdn;
 
-    /**
-     * @dataProvider configTestData
-     */
-    public function testShouldReturnExpected($config, $expected)
-    {
-        $this->options->expects()->get('cdn_url')->andReturn($config['cdn']);
+	protected function setUp(): void {
+		parent::setUp();
+		$this->options = Mockery::mock( Options::class );
+		$this->cdn     = new CDN( $this->options );
+	}
 
-        Functions\expect( 'home_url' )
-            ->with()
-            ->andReturn( $config['homeurl'] );
+	/**
+	 * @dataProvider configTestData
+	 */
+	public function testShouldReturnExpected( $config, $expected ) {
+		$this->options->expects()->get( 'cdn_url' )->andReturn( $config['cdn'] );
 
-        Functions\expect( 'wp_parse_url' )
-            ->with($config['url'])->andReturnUsing(function($arg1, $arg2 = null) use ($config) {
-                if($arg2) {
-                    return $config['host'];
-                }
-                return $config['parsed_url'];
-            });
+		Functions\expect( 'home_url' )
+			->with()
+			->andReturn( $config['homeurl'] );
 
-        $this->assertEquals($expected, $this->cdn->rewrite_url($config['url']));
-    }
+		Functions\expect( 'wp_parse_url' )
+			->with( $config['url'] )->andReturnUsing(
+				function( $arg1, $arg2 = null ) use ( $config ) {
+					if ( $arg2 ) {
+						return $config['host'];
+					}
+					return $config['parsed_url'];
+				}
+				);
+
+		$this->assertEquals( $expected, $this->cdn->rewrite_url( $config['url'] ) );
+	}
 }

@@ -4,77 +4,77 @@ namespace RocketCDN\Tests\Integration;
 
 use WPMedia\PHPUnit\Integration\TestCase as BaseTestCase;
 
-abstract class AdminTestCase extends BaseTestCase
-{
-    use DBTrait;
-    public static function setUpBeforeClass() : void {
-        parent::setUpBeforeClass();
-        remove_action( 'admin_init', '_maybe_update_core' );
-        remove_action( 'admin_init', '_maybe_update_plugins' );
-        remove_action( 'admin_init', '_maybe_update_themes' );
-        remove_action( 'admin_init', array( 'WP_Privacy_Policy_Content', 'add_suggested_content' ), 1 );
-    }
+abstract class AdminTestCase extends BaseTestCase {
 
-    public function setUp() : void {
-        parent::setUp();
+	use DBTrait;
+	public static function setUpBeforeClass() : void {
+		parent::setUpBeforeClass();
+		remove_action( 'admin_init', '_maybe_update_core' );
+		remove_action( 'admin_init', '_maybe_update_plugins' );
+		remove_action( 'admin_init', '_maybe_update_themes' );
+		remove_action( 'admin_init', [ 'WP_Privacy_Policy_Content', 'add_suggested_content' ], 1 );
+	}
 
-        DBTrait::removeDBHooks();
+	public function setUp() : void {
+		parent::setUp();
 
-        // Suppress warnings from "Cannot modify header information - headers already sent by".
-        $this->error_level = error_reporting();
-        error_reporting( $this->error_level & ~E_WARNING );
-    }
+		DBTrait::removeDBHooks();
 
-    public function tearDown() {
-        $_POST = [];
-        $_GET  = [];
-        unset( $GLOBALS['post'], $GLOBALS['comment'] );
+		// Suppress warnings from "Cannot modify header information - headers already sent by".
+		$this->error_level = error_reporting();
+		error_reporting( $this->error_level & ~E_WARNING );
+	}
 
-        parent::tearDown();
+	public function tearDown() {
+		$_POST = [];
+		$_GET  = [];
+		unset( $GLOBALS['post'], $GLOBALS['comment'] );
 
-        error_reporting( $this->error_level );
-        set_current_screen( 'front' );
-        if ( $this->user_id > 0 ) {
-            wp_delete_user( $this->user_id );
-        }
-    }
+		parent::tearDown();
 
-    protected function setRoleCap( $role_type, $cap ) {
-        $role = get_role( $role_type );
-        $role->add_cap( $cap );
-    }
+		error_reporting( $this->error_level );
+		set_current_screen( 'front' );
+		if ( $this->user_id > 0 ) {
+			wp_delete_user( $this->user_id );
+		}
+	}
 
-    protected function removeRoleCap( $role_type, $cap ) {
-        $role = get_role( $role_type );
-        $role->remove_cap( $cap );
-    }
+	protected function setRoleCap( $role_type, $cap ) {
+		$role = get_role( $role_type );
+		$role->add_cap( $cap );
+	}
 
-    protected function setCurrentUser( $role ) {
-        $this->user_id = $this->factory->user->create( [ 'role' => $role ] );
-        wp_set_current_user( $this->user_id );
-    }
+	protected function removeRoleCap( $role_type, $cap ) {
+		$role = get_role( $role_type );
+		$role->remove_cap( $cap );
+	}
 
-    protected function fireAdminInit() {
-        do_action( 'admin_init' );
-    }
+	protected function setCurrentUser( $role ) {
+		$this->user_id = $this->factory->user->create( [ 'role' => $role ] );
+		wp_set_current_user( $this->user_id );
+	}
 
-    protected function hasCallbackRegistered( $event, $class, $method, $priority = 10 ) {
-        global $wp_filter;
+	protected function fireAdminInit() {
+		do_action( 'admin_init' );
+	}
 
-        $this->assertArrayHasKey( $event, $wp_filter );
-        $this->assertArrayHasKey( $priority, $wp_filter[ $event ]->callbacks );
+	protected function hasCallbackRegistered( $event, $class, $method, $priority = 10 ) {
+		global $wp_filter;
 
-        $object = null;
-        foreach ( $wp_filter['post_tag_row_actions']->callbacks[ $priority ] as $key => $callback ) {
-            if ( isset( $callback['function'][1] ) && $method === $callback['function'][1] ) {
-                $object = $callback['function'][0];
-                break;
-            }
-        }
-        $this->assertInstanceOf( $class, $object );
-    }
+		$this->assertArrayHasKey( $event, $wp_filter );
+		$this->assertArrayHasKey( $priority, $wp_filter[ $event ]->callbacks );
 
-    protected function setEditTagsAsCurrentScreen( $tax = 'category' ) {
-        set_current_screen( "edit-tags.php?taxonomy={$tax}" );
-    }
+		$object = null;
+		foreach ( $wp_filter['post_tag_row_actions']->callbacks[ $priority ] as $key => $callback ) {
+			if ( isset( $callback['function'][1] ) && $method === $callback['function'][1] ) {
+				$object = $callback['function'][0];
+				break;
+			}
+		}
+		$this->assertInstanceOf( $class, $object );
+	}
+
+	protected function setEditTagsAsCurrentScreen( $tax = 'category' ) {
+		set_current_screen( "edit-tags.php?taxonomy={$tax}" );
+	}
 }

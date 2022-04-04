@@ -1,8 +1,8 @@
 <?php
 return [
-    'testShouldEnqueueStyles' => [
-        'config' => [
-            'hook' => 'edit.php'
-        ]
-    ]
+	'testShouldEnqueueStyles' => [
+		'config' => [
+			'hook' => 'edit.php',
+		],
+	],
 ];

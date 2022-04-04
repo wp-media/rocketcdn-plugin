@@ -11,15 +11,15 @@ use Brain\Monkey\Functions;
  *
  * @group Options
  */
-class Test_Set extends TestCase
-{
-    /**
-     * @dataProvider configTestData
-     */
-    public function testShouldReturnExpected($config, $expected) {
-        $option = new Options($config['prefix']);
-        Functions\expect( 'update_option' )
-            ->with($expected['option_name'], $expected['value']);
-        $option->set($config['name'], $config['value']);
-    }
+class Test_Set extends TestCase {
+
+	/**
+	 * @dataProvider configTestData
+	 */
+	public function testShouldReturnExpected( $config, $expected ) {
+		$option = new Options( $config['prefix'] );
+		Functions\expect( 'update_option' )
+			->with( $expected['option_name'], $expected['value'] );
+		$option->set( $config['name'], $config['value'] );
+	}
 }

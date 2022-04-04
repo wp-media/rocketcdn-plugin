@@ -10,13 +10,13 @@ use RocketCDN\Tests\Unit\TestCase;
  *
  * @group Options
  */
-class Test_GetOptionName extends TestCase
-{
-    /**
-     * @dataProvider configTestData
-     */
-    public function testShouldReturnExpected($config, $expected) {
-        $option = new Options($config['prefix']);
-        $this->assertEquals($expected, $option->get_option_name($config['name']));
-    }
+class Test_GetOptionName extends TestCase {
+
+	/**
+	 * @dataProvider configTestData
+	 */
+	public function testShouldReturnExpected( $config, $expected ) {
+		$option = new Options( $config['prefix'] );
+		$this->assertEquals( $expected, $option->get_option_name( $config['name'] ) );
+	}
 }

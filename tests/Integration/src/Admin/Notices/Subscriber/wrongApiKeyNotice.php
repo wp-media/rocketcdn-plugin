@@ -8,49 +8,49 @@ use RocketCDN\Tests\Integration\AdminTestCase;
  *
  * @group Admin
  */
-class Test_WrongApiKeyNotice extends AdminTestCase
-{
-    protected static $provider_class = 'Admin';
+class Test_WrongApiKeyNotice extends AdminTestCase {
 
-    protected $user_id = 0;
-    private   $option;
+	protected static $provider_class = 'Admin';
 
-    public function setUp() : void {
-        parent::setUp();
-        add_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
-    }
+	protected $user_id = 0;
+	private $option;
 
-    public function tearDown() {
-        parent::tearDown();
-        remove_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
-    }
-    /**
-     * @dataProvider providerTestData
-     */
-    public function testShouldMaybeDisplayNotice( $config, $expected ) {
+	public function setUp() : void {
+		parent::setUp();
+		add_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
+	}
 
-        $this->option = $config['option'];
+	public function tearDown() {
+		parent::tearDown();
+		remove_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
+	}
+	/**
+	 * @dataProvider providerTestData
+	 */
+	public function testShouldMaybeDisplayNotice( $config, $expected ) {
 
-        $this->setCurrentUser( 'administrator' );
+		$this->option = $config['option'];
 
-        ob_start();
+		$this->setCurrentUser( 'administrator' );
 
-        do_action( 'admin_notices' );
+		ob_start();
 
-        if($expected['contains']) {
-            $this->assertContains($expected['html'], ob_get_contents());
-        } else {
-            $this->assertNotContains($expected['html'], ob_get_contents());
-        }
-        ob_end_clean();
-    }
+		do_action( 'admin_notices' );
 
-    public function api_key() {
-        return $this->option['api_key'];
-    }
+		if ( $expected['contains'] ) {
+			$this->assertContains( $expected['html'], ob_get_contents() );
+		} else {
+			$this->assertNotContains( $expected['html'], ob_get_contents() );
+		}
+		ob_end_clean();
+	}
 
-    public function providerTestData() {
-        $dir = dirname( __FILE__ );
-        return $this->getTestData( $dir, 'wrongApiKeyNotice' );
-    }
+	public function api_key() {
+		return $this->option['api_key'];
+	}
+
+	public function providerTestData() {
+		$dir = dirname( __FILE__ );
+		return $this->getTestData( $dir, 'wrongApiKeyNotice' );
+	}
 }

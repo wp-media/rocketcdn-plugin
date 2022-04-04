@@ -7,7 +7,7 @@ use WP_Rocket\Tests\SettingsTrait;
 use WP_Rocket\Tests\StubTrait;
 use WPMedia\PHPUnit\Integration\TestCase as BaseTestCase;
 
-Trait FilterTrait {
+trait FilterTrait {
 
 	protected $original_wp_filter;
 
