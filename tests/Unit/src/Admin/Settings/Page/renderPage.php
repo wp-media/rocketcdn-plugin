@@ -9,6 +9,7 @@ use Brain\Monkey\Functions;
 
 /**
  * @covers \RocketCDN\Admin\Settings\Page::render_page
+ * @covers \RocketCDN\Admin\Settings\Page::render_template
  *
  * @group Settings
  */

@@ -10,6 +10,7 @@ use Brain\Monkey\Functions;
 
 /**
  * @covers \RocketCDN\Front\CDN::start_buffering
+ * @covers \RocketCDN\Front\CDN::should_rewrite
  *
  * @group Front
  */

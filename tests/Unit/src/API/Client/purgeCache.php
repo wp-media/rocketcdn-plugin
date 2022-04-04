@@ -9,6 +9,7 @@ use Brain\Monkey\Functions;
 
 /**
  * @covers \RocketCDN\API\Client::purge_cache
+ * @covers \RocketCDN\API\Client::get_base_api_url
  *
  * @group API
  */

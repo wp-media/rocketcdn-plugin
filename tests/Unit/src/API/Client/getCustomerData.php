@@ -10,6 +10,8 @@ use Brain\Monkey\Functions;
 
 /**
  * @covers \RocketCDN\API\Client::get_customer_data
+ * @covers \RocketCDN\API\Client::get_raw_customer_data
+ * @covers \RocketCDN\API\Client::get_base_api_url
  *
  * @group API
  */

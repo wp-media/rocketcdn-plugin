@@ -9,6 +9,7 @@ use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 /**
  * @covers \RocketCDN\API\Client::get_website_cdn_url
+ * @covers \RocketCDN\API\Client::extract_hostname
  *
  * @group API
  */

@@ -10,6 +10,12 @@ use Brain\Monkey\Functions;
 
 /**
  * @covers \RocketCDN\Front\CDN::end_buffering
+ * @covers \RocketCDN\Front\CDN::rewrite
+ * @covers \RocketCDN\Front\CDN::get_allowed_paths
+ * @covers \RocketCDN\Front\CDN::rewrite_srcset
+ * @covers \RocketCDN\Front\CDN::get_srcset_attributes
+ * @covers \RocketCDN\Front\CDN::get_base_url
+ * @covers \RocketCDN\Front\CDN::get_home_host
  *
  * @group Front
  */

@@ -10,6 +10,7 @@ use Brain\Monkey\Functions;
 
 /**
  * @covers \RocketCDN\Front\CDN::rewrite_url
+ * @covers \RocketCDN\Front\CDN::get_home_host
  *
  * @group Front
  */

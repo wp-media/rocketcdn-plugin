@@ -7,7 +7,7 @@ use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
 /**
- * @covers \RocketCDN\Options\Options::delete
+ * @covers \RocketCDN\Options\Options::set
  *
  * @group Options
  */
