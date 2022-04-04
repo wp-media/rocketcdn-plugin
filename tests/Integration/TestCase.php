@@ -7,6 +7,6 @@ use WPMedia\PHPUnit\Integration\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    use SettingsTrait;
+    use SettingsTrait, FilterTrait;
 
 }

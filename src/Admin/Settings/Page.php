@@ -106,7 +106,7 @@ class Page {
 	 * @return void
 	 */
 	public function validate_api_key() {
-		check_ajax_referer( 'rocketcdn_ajax', 'nonce' );
+        check_ajax_referer( 'rocketcdn_ajax', 'nonce' );
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( __( 'You do not have permissions to perform this action.', 'rocketcdn' ) );
