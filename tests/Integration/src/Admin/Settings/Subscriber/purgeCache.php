@@ -1,10 +1,17 @@
 <?php
+namespace RocketCDN\Tests\Integration\src\Admin\Settings\Subscriber;
 
 use RocketCDN\API\Client;
 use RocketCDN\Tests\Integration\AjaxTestCase;
 use Brain\Monkey\Functions;
 use RocketCDN\Tests\Integration\CapTrait;
+use WP_Error;
 
+/**
+ * @covers \RocketCDN\Admin\Settings\Page::enqueue_assets
+ *
+ * @group Admin
+ */
 class Test_PurgeCache extends AjaxTestCase {
     private static   $admin_user_id      = 0;
     protected $api;

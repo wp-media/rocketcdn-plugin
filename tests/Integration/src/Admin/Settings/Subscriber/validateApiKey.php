@@ -1,10 +1,17 @@
 <?php
+namespace RocketCDN\Tests\Integration\src\Admin\Settings\Subscriber;
 
 use RocketCDN\API\Client;
 use RocketCDN\Tests\Integration\AjaxTestCase;
 use RocketCDN\Tests\Integration\CapTrait;
 use Brain\Monkey\Functions;
+use WP_Error;
 
+/**
+ * @covers \RocketCDN\Admin\Settings\Page::enqueue_assets
+ *
+ * @group Admin
+ */
 class Test_ValidateApiKey extends AjaxTestCase {
     protected $api_key;
     private static   $admin_user_id      = 0;

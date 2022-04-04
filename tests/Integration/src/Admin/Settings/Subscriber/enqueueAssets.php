@@ -1,7 +1,12 @@
 <?php
+namespace RocketCDN\Tests\Integration\src\Admin\Settings\Subscriber;
 
 use RocketCDN\Tests\Integration\AdminTestCase;
-
+/**
+ * @covers \RocketCDN\Admin\Settings\Page::enqueue_assets
+ *
+ * @group Admin
+ */
 class Test_EnqueueAssets extends AdminTestCase {
 
     public function setUp() : void {
