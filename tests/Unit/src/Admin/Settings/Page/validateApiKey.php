@@ -1,9 +1,17 @@
 <?php
+namespace RocketCDN\Tests\Unit\src\Admin\Settings\Page;
+
 use Brain\Monkey\Functions;
+use Mockery;
 use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 
+/**
+ * @covers \RocketCDN\Admin\Settings\Page::validate_api_key
+ *
+ * @group Settings
+ */
 class Test_ValidateApiKey extends \RocketCDN\Tests\Unit\TestCase {
 
     protected $options;

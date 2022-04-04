@@ -1,11 +1,18 @@
 <?php
+namespace RocketCDN\Tests\Unit\src\Admin\Settings\Page;
 
+use Mockery;
 use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
+/**
+ * @covers \RocketCDN\Admin\Settings\Page::enqueue_assets
+ *
+ * @group Settings
+ */
 class Test_EnqueueAssets extends TestCase {
     protected $options;
     protected $client;

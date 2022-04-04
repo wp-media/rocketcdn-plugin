@@ -1,10 +1,17 @@
 <?php
+namespace RocketCDN\Tests\Unit\src\Admin\Settings\Page;
 
+use Mockery;
 use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 
+/**
+ * @covers \RocketCDN\Admin\Settings\Page::save_cdn_url
+ *
+ * @group Settings
+ */
 class Test_SaveCdnUrl extends TestCase {
     protected $options;
     protected $client;

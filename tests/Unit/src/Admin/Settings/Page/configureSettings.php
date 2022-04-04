@@ -1,11 +1,18 @@
 <?php
+namespace RocketCDN\Tests\Unit\src\Admin\Settings\Page;
 
+use Mockery;
 use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 use WPMedia\PHPUnit\Unit\TestCase;
 use Brain\Monkey\Functions;
 
+/**
+ * @covers \RocketCDN\Admin\Settings\Page::configure_settings
+ *
+ * @group Settings
+ */
 class Test_ConfigureSettings extends TestCase {
 
     protected $client;
