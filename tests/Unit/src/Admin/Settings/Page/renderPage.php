@@ -6,6 +6,7 @@ use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 use Brain\Monkey\Functions;
+use RocketCDN\Tests\Unit\TestCase;
 
 /**
  * @covers \RocketCDN\Admin\Settings\Page::render_page
@@ -13,7 +14,7 @@ use Brain\Monkey\Functions;
  *
  * @group Settings
  */
-class Test_RenderPage extends \RocketCDN\Tests\Unit\TestCase {
+class Test_RenderPage extends TestCase {
 	protected $options;
 	protected $client;
 	protected $page;

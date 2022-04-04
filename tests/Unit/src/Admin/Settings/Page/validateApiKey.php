@@ -6,13 +6,14 @@ use Mockery;
 use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
+use RocketCDN\Tests\Unit\TestCase;
 
 /**
  * @covers \RocketCDN\Admin\Settings\Page::validate_api_key
  *
  * @group Settings
  */
-class Test_ValidateApiKey extends \RocketCDN\Tests\Unit\TestCase {
+class Test_ValidateApiKey extends TestCase {
 
 	protected $options;
 	protected $client;

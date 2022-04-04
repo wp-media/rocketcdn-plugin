@@ -6,6 +6,7 @@ use Mockery;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 use Brain\Monkey\Functions;
+use RocketCDN\Tests\Unit\TestCase;
 
 /**
  * @covers \RocketCDN\API\Client::purge_cache
@@ -13,7 +14,7 @@ use Brain\Monkey\Functions;
  *
  * @group API
  */
-class Test_PurgeCache extends \RocketCDN\Tests\Unit\TestCase {
+class Test_PurgeCache extends TestCase {
 
 	/**
 	 * @dataProvider configTestData

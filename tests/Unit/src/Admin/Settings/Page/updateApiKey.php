@@ -6,13 +6,14 @@ use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
 use RocketCDN\Options\Options;
 use Brain\Monkey\Functions;
+use RocketCDN\Tests\Unit\TestCase;
 
 /**
  * @covers \RocketCDN\Admin\Settings\Page::update_api_key
  *
  * @group Settings
  */
-class Test_UpdateApiKey extends \RocketCDN\Tests\Unit\TestCase {
+class Test_UpdateApiKey extends TestCase {
 
 	protected $options;
 	protected $client;
