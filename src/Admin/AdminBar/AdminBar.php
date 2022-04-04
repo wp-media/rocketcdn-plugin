@@ -155,8 +155,8 @@ class AdminBar {
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-            wp_die();
-            return;
+			wp_die();
+			return;
 		}
 
 		$this->api_client->purge_cache();

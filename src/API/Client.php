@@ -6,7 +6,7 @@ namespace RocketCDN\API;
 use RocketCDN\Options\Options;
 
 class Client {
-	const ROCKETCDN_API = 'http://staging-rocketcdn.wp-rocket.me/api/';
+	const ROCKETCDN_API = 'https://rocketcdn.me/api/';
 
 	/**
 	 * Options instance
@@ -99,7 +99,6 @@ class Client {
 		}
 
 		$hostname = $this->extract_hostname( home_url() );
-
 		foreach ( $customer_data['websites'] as $website ) {
 			if ( ! isset( $website['hostname'] ) ) {
 				continue;
