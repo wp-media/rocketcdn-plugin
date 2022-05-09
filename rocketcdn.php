@@ -3,7 +3,7 @@
  * Plugin Name: RocketCDN
  * Plugin URI: https://rocketcdn.me
  * Description: RocketCDN automatically rewrites all URLs to be served by our content delivery network (CDN). Easy CDN deployment to WordPress.
- * Version: 1.0.4
+ * Version: 1.0.3
  * Requires at least: 5.4
  * Requires PHP: 7.0
  * Author: WP Media
@@ -15,7 +15,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ROCKETCDN_VERSION', '1.0.4' );
+define( 'ROCKETCDN_VERSION', '1.0.3' );
 
 require realpath( plugin_dir_path( __FILE__ ) ) . '/includes/RocketCDNRequirementsCheck.php';
 
