@@ -113,6 +113,10 @@ class CDN {
 			return $html;
 		}
 		foreach ( $srcsets as $srcset ) {
+			if ( stristr( $srcset[0], admin_url() ) ) {
+				continue;
+			}
+
 			$sources    = explode( ',', $srcset['sources'] );
 			$sources    = array_unique( array_map( 'trim', $sources ) );
 			$cdn_srcset = $srcset['sources'];
