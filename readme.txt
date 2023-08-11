@@ -196,6 +196,10 @@ Amazon S3 can't be used with another CDN provider like RocketCDN. You can't mix 
 2. The following IP has to be allowlisted by your server, firewall, or security plugin to be able to subscribe : 146.59.251.59
 3. All StackPath previous CDN subscriptions for your domain must be deleted.
 
+= Where do I report security bugs found in this plugin? =  
+  
+You can report any security bugs found in the source code of the site-reviews plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/rocketcdn-plugin). The Patchstack team will assist you with verification, CVE assignment and take care of notifying the developers of this plugin.
+
 == Screenshots ==
 
 1. Connect RocketCDN
