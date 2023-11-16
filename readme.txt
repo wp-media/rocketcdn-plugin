@@ -53,7 +53,7 @@ Lastly, a CDN will deliver HTTP requests faster – another way to [improve the 
 
 Our plugin allows you to easily enable RocketCDN on your WordPress website. You can simply install the plugin, activate it, and add the RocketCDN API key provided in your account.
 
-Then all of your static assets on your website will be served through our content delivery network. Wherever your audience is, our +50 edge locations powered by StackPath can easily handle large volume traffic and unexpected peaks to deliver your content at the speed of light. StackPath edge locations are strategically deployed where users are most densely concentrated in 35 (and counting) markets.
+Then all of your static assets on your website will be served through our content delivery network. Wherever your audience is, our +120 edge locations powered by Bunny CDN can easily handle large volume traffic and unexpected peaks to deliver your content at the speed of light. Bunny CDN edge locations are strategically deployed in 6 continents and 77 countries to ensure a carefully optimized global network.
 
 Created by the WP Rocket team, RocketCDN also automatically applies the best CDN settings.
 
@@ -182,8 +182,8 @@ RocketCDN also provides these benefits:
 
 If you’re trying to choose only one service to use, we cannot say which is better, they are simply different, so you would have to perform tests to check the results for your specific site.
 
-= What's the difference between RocketCDN and Stackpath? =
-RocketCDN provides a convenient and fast, one-click setup. We take care of the ideal setup automatically so you don't have to spend any time on it. If you go through Stackpath directly, it requires manual configuration. If you have only one site it will be cheaper to use RocketCDN. For multiple sites, Stackpath is cheaper, although you'll invest more time in setup.
+= What’s the difference between RocketCDN and Bunny CDN? =
+RocketCDN provides a convenient and fast, one-click setup. We take care of the ideal setup automatically so you don’t have to spend any time on it. If you go through Bunny CDN directly, it requires manual configuration. If you have only one site it will be cheaper to use RocketCDN. For multiple sites, Bunny CDN is cheaper, although you’ll invest more time in setup.
 
 = Can I use RocketCDN and Jetpack Site Accelerator? =
 No. You should disable Jetpack site accelerator when using RocketCDN.
