@@ -136,6 +136,10 @@ class CDN {
 	 * @return string
 	 */
 	public function rewrite_url( string $url ): string {
+		if ( false !== stripos( $url, admin_url() ) ) {
+			return $url;
+		}
+
 		$cdn_url = $this->options->get( 'cdn_url' );
 
 		if ( ! $cdn_url ) {
