@@ -2,7 +2,7 @@
 
 Contributors: wp_media
 Tested up to: 6.4
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 Requires at least: 5.4
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -207,6 +207,9 @@ You can report any security bugs found in the source code of the site-reviews pl
 3. Clear RocketCDN cache
 
 == Changelog ==
+
+= 1.0.4 =
+- Dev initiatives
 
 = 1.0.4 =
 - Switching to Bunny CDN - Readme text updates
