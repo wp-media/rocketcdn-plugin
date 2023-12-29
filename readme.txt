@@ -1,8 +1,8 @@
 === RocketCDN - WordPress CDN Plugin ===
 
 Contributors: wp_media
-Tested up to: 6.3
-Stable tag: 1.0.3
+Tested up to: 6.4
+Stable tag: 1.0.4
 Requires at least: 5.4
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -203,6 +203,9 @@ Amazon S3 can't be used with another CDN provider like RocketCDN. You can't mix 
 3. Clear RocketCDN cache
 
 == Changelog ==
+
+= 1.0.4 =
+- Update Readme file
 
 = 1.0.3 =
 - Bugfix: fix website synchronization on domains using `www.` in hostname
