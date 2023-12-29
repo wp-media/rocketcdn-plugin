@@ -205,7 +205,7 @@ Amazon S3 can't be used with another CDN provider like RocketCDN. You can't mix 
 == Changelog ==
 
 = 1.0.4 =
-- Update Readme file
+- Switching to Bunny CDN - Readme text updates
 
 = 1.0.3 =
 - Bugfix: fix website synchronization on domains using `www.` in hostname
