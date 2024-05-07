@@ -7,7 +7,6 @@ return [
 		],
 		'expected' => [
 			'html' => <<<HTML
-<link rel='dns-prefetch' href='//s.w.org' />
 <link href='http://123456.rocketcdn.me' rel='preconnect' />
 HTML,
 		],
