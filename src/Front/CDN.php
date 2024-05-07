@@ -143,6 +143,10 @@ class CDN {
 			return $url;
 		}
 
+        if ( false !== stripos( $url, admin_url() ) ) {
+            return $url;
+        }
+
 		$parsed_url = wp_parse_url( $url );
 
 		if ( ! isset( $parsed_url['host'] ) ) {
