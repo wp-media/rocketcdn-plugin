@@ -13,16 +13,16 @@ class Test_AddPreconnectCdn extends TestCase {
 
 	protected $cdn_url;
 
-	public function setUp() : void {
+	public function set_up() {
 		$this->unregisterAllCallbacksExcept( 'wp_resource_hints', 'add_preconnect_cdn', 10 );
 
-		parent::setUp();
+		parent::set_up();
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 		$this->restoreWpFilter( 'wp_resource_hints' );
 
-		parent::tearDown();
+		parent::tear_down();
 	}
 
 	/**

@@ -23,8 +23,8 @@ class Test_PurgeCache extends AjaxTestCase {
 		self::$admin_user_id = static::factory()->user->create( [ 'role' => 'administrator' ] );
 	}
 
-	public function setUp() : void {
-		parent::setUp();
+	public function set_up() {
+		parent::set_up();
 		add_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
 		add_filter( 'pre_option_rocketcdn_cdn_url', [ $this, 'cdn_url' ] );
 		$this->action = 'rocketcdn_purge_cache';

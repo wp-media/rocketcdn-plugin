@@ -15,8 +15,8 @@ abstract class AdminTestCase extends BaseTestCase {
 		remove_action( 'admin_init', [ 'WP_Privacy_Policy_Content', 'add_suggested_content' ], 1 );
 	}
 
-	public function setUp() : void {
-		parent::setUp();
+	public function set_up() {
+		parent::set_up();
 
 		DBTrait::removeDBHooks();
 
@@ -25,12 +25,12 @@ abstract class AdminTestCase extends BaseTestCase {
 		error_reporting( $this->error_level & ~E_WARNING );
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 		$_POST = [];
 		$_GET  = [];
 		unset( $GLOBALS['post'], $GLOBALS['comment'] );
 
-		parent::tearDown();
+		parent::tear_down();
 
 		error_reporting( $this->error_level );
 		set_current_screen( 'front' );

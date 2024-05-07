@@ -15,13 +15,13 @@ class Test_EmptyApiKeyNotice extends AdminTestCase {
 	protected $user_id = 0;
 	private $option;
 
-	public function setUp() : void {
-		parent::setUp();
+	public function set_up() {
+		parent::set_up();
 		add_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
 	}
 
-	public function tearDown() {
-		parent::tearDown();
+	public function tear_down() {
+		parent::tear_down();
 		remove_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
 	}
 	/**

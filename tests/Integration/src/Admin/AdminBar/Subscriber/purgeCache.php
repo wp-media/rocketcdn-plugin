@@ -23,22 +23,22 @@ class Test_PurgeCache extends TestCase
         CapTrait::setAdminCap();
     }
 
-    public static function tearDownAfterClass() {
+    public static function tearDownAfterClass(): void {
         parent::tearDownAfterClass();
 
         CapTrait::resetAdminCap();
     }
 
-    public function setUp() : void {
-        parent::setUp();
+    public function set_up() {
+        parent::set_up();
 
         unset( $_GET['_wpnonce'] );
     }
 
-    public function tearDown() {
+    public function tear_down() {
         unset( $_GET['_wpnonce'] );
 
-        parent::tearDown();
+        parent::tear_down();
 
         // Clean up.
         remove_filter( 'wp_redirect', [ $this, 'return_empty_string' ] );

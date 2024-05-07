@@ -23,8 +23,8 @@ class Test_UpdateApiKey extends AjaxTestCase {
 		self::$admin_user_id = static::factory()->user->create( [ 'role' => 'administrator' ] );
 	}
 
-	public function setUp() : void {
-		parent::setUp();
+	public function set_up() {
+		parent::set_up();
 		add_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
 		$this->action = 'rocketcdn_update_key';
 		delete_transient( 'rocketcdn_customer_data' );
@@ -34,9 +34,9 @@ class Test_UpdateApiKey extends AjaxTestCase {
 		$this->assertCallbackRegistered( 'wp_ajax_rocketcdn_validate_key', 'validate_api_key' );
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 		delete_transient( 'rocketcdn_customer_data' );
 		remove_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
 	}

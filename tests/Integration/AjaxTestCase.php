@@ -34,7 +34,7 @@ abstract class AjaxTestCase extends WPMediaAjaxTestCase {
 		}
 	}
 
-	public static function tearDownAfterClass() {
+	public static function tearDownAfterClass(): void {
 		parent::setUpBeforeClass();
 
 		CapTrait::resetAdminCap();
@@ -52,26 +52,26 @@ abstract class AjaxTestCase extends WPMediaAjaxTestCase {
 		}
 	}
 
-	public function setUp() : void {
+	public function set_up() {
 		if ( empty( $this->config ) ) {
 			$this->loadTestDataConfig();
 		}
 
 		DBTrait::removeDBHooks();
 
-		parent::setUp();
+		parent::set_up();
 
 		if ( static::$use_settings_trait ) {
 			$this->setUpSettings();
 		}
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 		unset( $_POST['action'], $_POST['nonce'] );
 		$this->action = null;
 		CapTrait::resetAdminCap();
 
-		parent::tearDown();
+		parent::tear_down();
 
 		if ( static::$use_settings_trait ) {
 			$this->tearDownSettings();
