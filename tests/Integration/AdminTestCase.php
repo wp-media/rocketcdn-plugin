@@ -6,7 +6,10 @@ use WPMedia\PHPUnit\Integration\TestCase as BaseTestCase;
 
 abstract class AdminTestCase extends BaseTestCase {
 
-	use DBTrait;
+    protected $user_id;
+
+    protected $error_level;
+
 	public static function setUpBeforeClass() : void {
 		parent::setUpBeforeClass();
 		remove_action( 'admin_init', '_maybe_update_core' );
@@ -17,8 +20,6 @@ abstract class AdminTestCase extends BaseTestCase {
 
 	public function set_up() {
 		parent::set_up();
-
-		DBTrait::removeDBHooks();
 
 		// Suppress warnings from "Cannot modify header information - headers already sent by".
 		$this->error_level = error_reporting();
