@@ -3,16 +3,14 @@ declare(strict_types=1);
 
 namespace RocketCDN\Admin\Settings;
 
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Interfaces\OptionsAwareInterface;
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
 use RocketCDN\Options\Options;
 use RocketCDN\API\Client;
 
-class Page {
-	/**
-	 * Options instance
-	 *
-	 * @var Options
-	 */
-	private $options;
+class Page implements OptionsAwareInterface {
+
+    use OptionsAwareTrait;
 
 	/**
 	 * API Client instance
@@ -38,13 +36,11 @@ class Page {
 	/**
 	 * Instantiates the class
 	 *
-	 * @param Options $options Options instance.
 	 * @param Client  $api_client API Client instance.
 	 * @param string  $template_basepath Base filepath for the template.
 	 * @param string  $assets_baseurl Base URL for the assets.
 	 */
-	public function __construct( Options $options, Client $api_client, $template_basepath, $assets_baseurl ) {
-		$this->options           = $options;
+	public function __construct( Client $api_client, $template_basepath, $assets_baseurl ) {
 		$this->api_client        = $api_client;
 		$this->template_basepath = $template_basepath;
 		$this->assets_baseurl    = $assets_baseurl;

@@ -14,12 +14,14 @@ use WP_Error;
  * @group Admin
  */
 class Test_ValidateApiKey extends AjaxTestCase {
+    use CapTrait;
+
 	protected $api_key;
 	private static $admin_user_id = 0;
 
 	public static function setUpBeforeClass() : void {
 		parent::setUpBeforeClass();
-		CapTrait::setAdminCap();
+        self::setAdminCap();
 		self::$admin_user_id = static::factory()->user->create( [ 'role' => 'administrator' ] );
 	}
 

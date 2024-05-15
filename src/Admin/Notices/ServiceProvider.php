@@ -3,38 +3,27 @@ declare(strict_types=1);
 
 namespace RocketCDN\Admin\Notices;
 
-use RocketCDN\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
+use RocketCDN\API\Client;
+use RocketCDN\Dependencies\LaunchpadCore\Container\AbstractServiceProvider;
+use RocketCDN\Dependencies\LaunchpadOptions\Interfaces\OptionsInterface;
+use RocketCDN\Dependencies\League\Container\Definition\DefinitionInterface;
 
 class ServiceProvider extends AbstractServiceProvider {
-	/**
-	 * Services provided by this provider
-	 *
-	 * @var array
-	 */
-	protected $provides = [
-		'admin_notices',
-		'admin_notices_subscriber',
-	];
 
-	/**
-	 * Subscribers provided by this provider
-	 *
-	 * @var array
-	 */
-	public $subscribers = [
-		'admin_notices_subscriber',
-	];
+    public function get_common_subscribers(): array
+    {
+        return [
+            \RocketCDN\Admin\Notices\Subscriber::class
+        ];
+    }
 
-	/**
-	 * Registers the provided classes
-	 *
-	 * @return void
-	 */
-	public function register() {
-		$this->getContainer()->add( 'admin_notices', 'RocketCDN\Admin\Notices\Notices' )
-			->addArgument( $this->getContainer()->get( 'options' ) )
-			->addArgument( $this->getContainer()->get( 'api_client' ) );
-		$this->getContainer()->add( 'admin_notices_subscriber', 'RocketCDN\Admin\Notices\Subscriber' )
-			->addArgument( $this->getContainer()->get( 'admin_notices' ) );
-	}
+    public function define() {
+        $this->register_service(Notices::class)->set_definition(function (DefinitionInterface $definition) {
+            $definition->addArgument(Client::class);
+        });
+
+        $this->register_service(\RocketCDN\Admin\Notices\Subscriber::class)->share()->set_definition(function (DefinitionInterface $definition) {
+           $definition->addArgument(Notices::class);
+        });
+    }
 }
