@@ -3,13 +3,15 @@ declare(strict_types=1);
 
 namespace RocketCDN\EventManagement;
 
+use RocketCDN\Dependencies\LaunchpadCore\EventManagement\OptimizedSubscriberInterface;
+
 /**
  * A Subscriber knows what specific WordPress events it wants to listen to.
  *
  * When an EventManager adds a Subscriber, it gets all the WordPress events that
  * it wants to listen to. It then adds the subscriber as a listener for each of them.
  */
-interface SubscriberInterface {
+interface SubscriberInterface extends OptimizedSubscriberInterface {
 	/**
 	 * Returns an array of events that this subscriber wants to listen to.
 	 *

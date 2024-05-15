@@ -21,10 +21,10 @@ abstract class AjaxTestCase extends WPMediaAjaxTestCase {
 	public static function setUpBeforeClass() : void {
 		parent::setUpBeforeClass();
 
-		CapTrait::hasAdminCapBeforeClass();
+        self::hasAdminCapBeforeClass();
 
-		if ( static::$use_settings_trait ) {
-			SettingsTrait::getOriginalSettings();
+		if ( self::$use_settings_trait ) {
+            self::getOriginalSettings();
 		}
 
 		if ( ! empty( self::$transients ) ) {
@@ -34,13 +34,13 @@ abstract class AjaxTestCase extends WPMediaAjaxTestCase {
 		}
 	}
 
-	public static function tearDownAfterClass() {
-		parent::setUpBeforeClass();
+	public static function tearDownAfterClass(): void {
+		parent::tearDownAfterClass();
 
-		CapTrait::resetAdminCap();
+		self::resetAdminCap();
 
-		if ( static::$use_settings_trait ) {
-			SettingsTrait::resetOriginalSettings();
+		if ( self::$use_settings_trait ) {
+            self::resetOriginalSettings();
 		}
 
 		foreach ( self::$transients as $transient => $value ) {
@@ -57,7 +57,7 @@ abstract class AjaxTestCase extends WPMediaAjaxTestCase {
 			$this->loadTestDataConfig();
 		}
 
-		DBTrait::removeDBHooks();
+		self::removeDBHooks();
 
 		parent::setUp();
 
@@ -66,12 +66,12 @@ abstract class AjaxTestCase extends WPMediaAjaxTestCase {
 		}
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 		unset( $_POST['action'], $_POST['nonce'] );
 		$this->action = null;
-		CapTrait::resetAdminCap();
+        self::resetAdminCap();
 
-		parent::tearDown();
+		parent::tear_down();
 
 		if ( static::$use_settings_trait ) {
 			$this->tearDownSettings();

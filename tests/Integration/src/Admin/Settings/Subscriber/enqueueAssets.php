@@ -16,8 +16,8 @@ class Test_EnqueueAssets extends AdminTestCase {
 		$this->setRoleCap( 'administrator', 'rocket_manage_options' );
 	}
 
-	public function tearDown() {
-		parent::tearDown();
+	public function tear_down() {
+		parent::tear_down();
 
 		set_current_screen( 'front' );
 

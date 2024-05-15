@@ -34,9 +34,9 @@ class Test_UpdateApiKey extends AjaxTestCase {
 		$this->assertCallbackRegistered( 'wp_ajax_rocketcdn_validate_key', 'validate_api_key' );
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 		delete_transient( 'rocketcdn_customer_data' );
 		remove_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
 	}

@@ -19,7 +19,7 @@ class Test_PurgeCache extends AjaxTestCase {
 	protected $cdn;
 	public static function setUpBeforeClass() : void {
 		parent::setUpBeforeClass();
-		CapTrait::setAdminCap();
+		self::setAdminCap();
 		self::$admin_user_id = static::factory()->user->create( [ 'role' => 'administrator' ] );
 	}
 

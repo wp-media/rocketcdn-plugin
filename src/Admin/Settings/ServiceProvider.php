@@ -3,40 +3,30 @@ declare(strict_types=1);
 
 namespace RocketCDN\Admin\Settings;
 
-use RocketCDN\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
+use RocketCDN\API\Client;
+use RocketCDN\Dependencies\LaunchpadCore\Container\AbstractServiceProvider;
+use RocketCDN\Dependencies\LaunchpadOptions\Interfaces\OptionsInterface;
+use RocketCDN\Dependencies\League\Container\Definition\DefinitionInterface;
 
 class ServiceProvider extends AbstractServiceProvider {
-	/**
-	 * Services provided by this provider
-	 *
-	 * @var array
-	 */
-	protected $provides = [
-		'admin_page',
-		'admin_subscriber',
-	];
+    public function get_common_subscribers(): array
+    {
+        return [
+            \RocketCDN\Admin\Settings\Subscriber::class
+        ];
+    }
 
-	/**
-	 * Subscribers provided by this provider
-	 *
-	 * @var array
-	 */
-	public $subscribers = [
-		'admin_subscriber',
-	];
+    public function define() {
+        $this->register_service(Page::class)->set_definition(function (DefinitionInterface $definition) {
+           $definition->addArguments([
+                Client::class,
+               'template_basepath',
+               'assets_baseurl',
+           ]);
+        });
 
-	/**
-	 * Registers the provided classes
-	 *
-	 * @return void
-	 */
-	public function register() {
-		$this->getContainer()->add( 'admin_page', 'RocketCDN\Admin\Settings\Page' )
-			->addArgument( $this->getContainer()->get( 'options' ) )
-			->addArgument( $this->getContainer()->get( 'api_client' ) )
-			->addArgument( $this->getContainer()->get( 'template_basepath' ) )
-			->addArgument( $this->getContainer()->get( 'assets_baseurl' ) );
-		$this->getContainer()->add( 'admin_subscriber', 'RocketCDN\Admin\Settings\Subscriber' )
-			->addArgument( $this->getContainer()->get( 'admin_page' ) );
-	}
+        $this->register_service(\RocketCDN\Admin\Settings\Subscriber::class)->share()->set_definition(function (DefinitionInterface $definition) {
+            $definition->addArgument(Page::class);
+        });
+    }
 }

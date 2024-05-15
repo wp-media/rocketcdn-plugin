@@ -17,6 +17,8 @@ defined( 'ABSPATH' ) || exit;
 
 define( 'ROCKETCDN_VERSION', '1.0.5' );
 
+use function RocketCDN\Dependencies\LaunchpadCore\boot;
+
 require realpath( plugin_dir_path( __FILE__ ) ) . '/includes/RocketCDNRequirementsCheck.php';
 
 $rocketcdn_rq_check = new RocketCDNRequirementsCheck(
@@ -29,7 +31,9 @@ $rocketcdn_rq_check = new RocketCDNRequirementsCheck(
 );
 
 if ( $rocketcdn_rq_check->check() ) {
-	require realpath( plugin_dir_path( __FILE__ ) ) . '/includes/main.php';
+    require __DIR__ . '/src/Dependencies/LaunchpadCore/boot.php';
+
+    boot( __FILE__ );
 }
 
 unset( $rocketcdn_rq_check );

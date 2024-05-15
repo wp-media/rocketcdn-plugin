@@ -3,26 +3,13 @@ declare(strict_types=1);
 
 namespace RocketCDN\API;
 
-use RocketCDN\Options\Options;
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Interfaces\OptionsAwareInterface;
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
 
-class Client {
+class Client implements OptionsAwareInterface {
+    use OptionsAwareTrait;
+
 	const ROCKETCDN_API = 'https://rocketcdn.me/api/';
-
-	/**
-	 * Options instance
-	 *
-	 * @var Options
-	 */
-	private $options;
-
-	/**
-	 * Instantiate the class
-	 *
-	 * @param Options $options Options instance.
-	 */
-	public function __construct( Options $options ) {
-		$this->options = $options;
-	}
 
 	/**
 	 * Gets the customer data associated with the API key

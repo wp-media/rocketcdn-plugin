@@ -3,39 +3,29 @@ declare(strict_types=1);
 
 namespace RocketCDN\Admin\AdminBar;
 
-use RocketCDN\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
+use RocketCDN\API\Client;
+use RocketCDN\Dependencies\LaunchpadCore\Container\AbstractServiceProvider;
+use RocketCDN\Dependencies\LaunchpadOptions\Interfaces\OptionsInterface;
+use RocketCDN\Dependencies\League\Container\Definition\DefinitionInterface;
 
 class ServiceProvider extends AbstractServiceProvider {
-	/**
-	 * Services provided by this provider
-	 *
-	 * @var array
-	 */
-	protected $provides = [
-		'admin_bar',
-		'admin_bar_subscriber',
-	];
+    public function get_common_subscribers(): array
+    {
+        return [
+            \RocketCDN\Admin\AdminBar\Subscriber::class
+        ];
+    }
 
-	/**
-	 * Subscribers provided by this provider
-	 *
-	 * @var array
-	 */
-	public $subscribers = [
-		'admin_bar_subscriber',
-	];
+    public function define() {
+        $this->register_service(AdminBar::class)->set_definition(function (DefinitionInterface $definition) {
+            $definition->addArguments([
+                Client::class,
+                'assets_baseurl'
+            ]);
+        });
 
-	/**
-	 * Registers the provided classes
-	 *
-	 * @return void
-	 */
-	public function register() {
-		$this->getContainer()->add( 'admin_bar', 'RocketCDN\Admin\AdminBar\AdminBar' )
-			->addArgument( $this->getContainer()->get( 'options' ) )
-			->addArgument( $this->getContainer()->get( 'api_client' ) )
-			->addArgument( $this->getContainer()->get( 'assets_baseurl' ) );
-		$this->getContainer()->add( 'admin_bar_subscriber', 'RocketCDN\Admin\AdminBar\Subscriber' )
-			->addArgument( $this->getContainer()->get( 'admin_bar' ) );
-	}
+        $this->register_service(\RocketCDN\Admin\AdminBar\Subscriber::class)->share()->set_definition(function (DefinitionInterface $definition) {
+            $definition->addArgument(AdminBar::class);
+        });
+    }
 }
