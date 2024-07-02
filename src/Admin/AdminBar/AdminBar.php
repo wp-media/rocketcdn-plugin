@@ -9,7 +9,7 @@ use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
 use RocketCDN\Options\Options;
 
 class AdminBar implements OptionsAwareInterface {
-    use OptionsAwareTrait;
+	use OptionsAwareTrait;
 
 	/**
 	 * API client instance
@@ -28,8 +28,8 @@ class AdminBar implements OptionsAwareInterface {
 	/**
 	 * Instantiate the class
 	 *
-	 * @param Client  $api_client API client instance.
-	 * @param string  $assets_baseurl Assets base URL.
+	 * @param Client $api_client API client instance.
+	 * @param string $assets_baseurl Assets base URL.
 	 */
 	public function __construct( Client $api_client, $assets_baseurl ) {
 		$this->api_client     = $api_client;

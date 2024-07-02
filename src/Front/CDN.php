@@ -3,13 +3,12 @@ declare(strict_types=1);
 
 namespace RocketCDN\Front;
 
-
 use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Interfaces\OptionsAwareInterface;
 use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
 use RocketCDN\Dependencies\LaunchpadOptions\Interfaces\OptionsInterface;
 
 class CDN implements OptionsAwareInterface {
-    use OptionsAwareTrait;
+	use OptionsAwareTrait;
 	/**
 	 * Home URL host
 	 *

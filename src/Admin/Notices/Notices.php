@@ -21,7 +21,7 @@ class Notices implements OptionsAwareInterface {
 	/**
 	 * Instantiate the class
 	 *
-	 * @param Client  $api_client API client instance.
+	 * @param Client $api_client API client instance.
 	 */
 	public function __construct( Client $api_client ) {
 		$this->api_client = $api_client;

@@ -10,7 +10,7 @@ use RocketCDN\API\Client;
 
 class Page implements OptionsAwareInterface {
 
-    use OptionsAwareTrait;
+	use OptionsAwareTrait;
 
 	/**
 	 * API Client instance
@@ -36,9 +36,9 @@ class Page implements OptionsAwareInterface {
 	/**
 	 * Instantiates the class
 	 *
-	 * @param Client  $api_client API Client instance.
-	 * @param string  $template_basepath Base filepath for the template.
-	 * @param string  $assets_baseurl Base URL for the assets.
+	 * @param Client $api_client API Client instance.
+	 * @param string $template_basepath Base filepath for the template.
+	 * @param string $assets_baseurl Base URL for the assets.
 	 */
 	public function __construct( Client $api_client, $template_basepath, $assets_baseurl ) {
 		$this->api_client        = $api_client;
