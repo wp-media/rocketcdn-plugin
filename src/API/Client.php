@@ -7,7 +7,7 @@ use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Interfaces\OptionsAwareInte
 use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
 
 class Client implements OptionsAwareInterface {
-    use OptionsAwareTrait;
+	use OptionsAwareTrait;
 
 	const ROCKETCDN_API = 'https://rocketcdn.me/api/';
 
