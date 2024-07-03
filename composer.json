@@ -16,7 +16,11 @@
     ],
     "type": "wordpress-plugin",
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
+
     },
     "support": {
         "issues": "https://github.com/wp-media/rocketcdn-plugin/issues",
