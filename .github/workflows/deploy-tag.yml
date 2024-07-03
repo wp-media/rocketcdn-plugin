@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: build
+    - name: normal build
+      run: composer install
+    - name: optimized build
       run: composer install -o --no-dev --no-scripts
     - name: WordPress Plugin Deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
