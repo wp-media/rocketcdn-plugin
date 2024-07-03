@@ -11,6 +11,8 @@ jobs:
     - uses: actions/checkout@master
     - name: normal build
       run: composer install
+    - name: remove installers
+      run: composer remove composer/installers
     - name: optimized build
       run: composer install -o --no-dev --no-scripts
     - name: WordPress Plugin Deploy
