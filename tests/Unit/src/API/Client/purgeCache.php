@@ -4,8 +4,8 @@ namespace RocketCDN\Tests\Unit\src\API\Client;
 
 use Mockery;
 use RocketCDN\API\Client;
-use RocketCDN\Options\Options;
 use Brain\Monkey\Functions;
+use RocketCDN\Dependencies\LaunchpadOptions\Options;
 use RocketCDN\Tests\Unit\TestCase;
 
 /**
@@ -27,7 +27,8 @@ class Test_PurgeCache extends TestCase {
 		} else {
 			$options_api->expects()->get( 'cdn_url' )->never();
 		}
-		$client = new Client( $options_api );
+		$client = new Client();
+        $client->set_options($options_api);
 		Functions\expect( '__' )->zeroOrMoreTimes()
 			->andReturnFirstArg();
 		if ( $config['api'] && $config['cdn'] ) {

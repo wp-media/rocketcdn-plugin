@@ -4,7 +4,6 @@ namespace RocketCDN\Tests\Unit\src\API\Client;
 
 use Mockery;
 use RocketCDN\API\Client;
-use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
@@ -21,8 +20,7 @@ class Test_GetCustomerData extends TestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$options_api  = Mockery::mock( Options::class );
-		$this->client = new Client( $options_api );
+		$this->client = new Client();
 	}
 
 	/**
