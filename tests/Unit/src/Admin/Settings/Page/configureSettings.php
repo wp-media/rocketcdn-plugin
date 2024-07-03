@@ -4,7 +4,6 @@ namespace RocketCDN\Tests\Unit\src\Admin\Settings\Page;
 use Mockery;
 use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
-use RocketCDN\Options\Options;
 use WPMedia\PHPUnit\Unit\TestCase;
 use Brain\Monkey\Functions;
 
@@ -20,9 +19,8 @@ class Test_ConfigureSettings extends TestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$options_api  = Mockery::mock( Options::class );
 		$this->client = Mockery::mock( Client::class );
-		$this->page   = new Page( $options_api, $this->client, '/', '/' );
+		$this->page   = new Page( $this->client, '/', '/' );
 	}
 
 	public function testShouldRegister() {

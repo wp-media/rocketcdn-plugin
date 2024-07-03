@@ -5,7 +5,7 @@ namespace RocketCDN\Tests\Unit\src\Admin\Notices\Notices;
 use Mockery;
 use RocketCDN\Admin\Notices\Notices;
 use RocketCDN\API\Client;
-use RocketCDN\Options\Options;
+use RocketCDN\Dependencies\LaunchpadOptions\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
@@ -23,7 +23,8 @@ class Test_EmptyApiKeyNotice extends TestCase {
 	protected function setUp(): void {
 		$this->options = Mockery::mock( Options::class );
 		$this->client  = Mockery::mock( Client::class );
-		$this->notices = new Notices( $this->options, $this->client );
+		$this->notices = new Notices( $this->client );
+        $this->notices->set_options($this->options);
 		parent::setUp();
 	}
 

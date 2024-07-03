@@ -4,7 +4,6 @@ namespace RocketCDN\Tests\Unit\src\Admin\Settings\Page;
 use Mockery;
 use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
-use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
@@ -14,15 +13,13 @@ use Brain\Monkey\Functions;
  * @group Settings
  */
 class Test_EnqueueAssets extends TestCase {
-	protected $options;
 	protected $client;
 	protected $page;
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->options = Mockery::mock( Options::class );
 		$this->client  = Mockery::mock( Client::class );
-		$this->page    = new Page( $this->options, $this->client,  WP_ROCKET_CDN_PLUGIN_ROOT . '/views/', '/' );
+		$this->page    = new Page( $this->client,  WP_ROCKET_CDN_PLUGIN_ROOT . '/views/', '/' );
 	}
 	/**
 	 * @dataProvider configTestData

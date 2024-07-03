@@ -5,7 +5,7 @@ namespace RocketCDN\Tests\Unit\src\Admin\AdminBar\AdminBar;
 use Mockery;
 use RocketCDN\Admin\AdminBar\AdminBar;
 use RocketCDN\API\Client;
-use RocketCDN\Options\Options;
+use RocketCDN\Dependencies\LaunchpadOptions\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 use WP_Admin_Bar;
@@ -25,7 +25,8 @@ class Test_AddAdminBarMenu extends TestCase {
 		$this->options        = Mockery::mock( Options::class );
 		$this->client         = Mockery::mock( Client::class );
 		$this->admin_bar      = Mockery::mock( WP_Admin_Bar::class );
-		$this->admin_bar_menu = new AdminBar( $this->options, $this->client, '/' );
+		$this->admin_bar_menu = new AdminBar( $this->client, '/' );
+        $this->admin_bar_menu->set_options($this->options);
 		parent::setUp();
 	}
 
