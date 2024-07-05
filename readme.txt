@@ -208,7 +208,7 @@ You can report any security bugs found in the source code of the site-reviews pl
 
 == Changelog ==
 
-= 1.0.5 =
+= 1.0.6 =
 - Launchpad framework integration
 
 = 1.0.5 =
