@@ -165,7 +165,7 @@ class AdminBar implements OptionsAwareInterface {
 	 * @return void
 	 */
 	protected function exit() {
-		defined('WP_ROCKET_CDN_IS_TESTING') && constant('WP_ROCKET_CDN_IS_TESTING') ? wp_die() : exit;
+		defined( 'WP_ROCKET_CDN_IS_TESTING' ) && constant( 'WP_ROCKET_CDN_IS_TESTING' ) ? wp_die() : exit;
 	}
 
 	/**
