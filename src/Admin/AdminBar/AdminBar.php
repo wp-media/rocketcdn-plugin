@@ -6,7 +6,6 @@ namespace RocketCDN\Admin\AdminBar;
 use RocketCDN\API\Client;
 use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Interfaces\OptionsAwareInterface;
 use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
-use RocketCDN\Options\Options;
 
 class AdminBar implements OptionsAwareInterface {
 	use OptionsAwareTrait;
@@ -166,7 +165,7 @@ class AdminBar implements OptionsAwareInterface {
 	 * @return void
 	 */
 	protected function exit() {
-		WP_ROCKET_CDN_IS_TESTING ? wp_die() : exit;
+		defined('WP_ROCKET_CDN_IS_TESTING') && constant('WP_ROCKET_CDN_IS_TESTING') ? wp_die() : exit;
 	}
 
 	/**
