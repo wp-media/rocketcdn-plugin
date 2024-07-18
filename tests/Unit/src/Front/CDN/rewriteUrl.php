@@ -3,8 +3,8 @@
 namespace RocketCDN\Tests\Unit\src\Front\CDN;
 
 use Mockery;
+use RocketCDN\Dependencies\LaunchpadOptions\Options;
 use RocketCDN\Front\CDN;
-use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
@@ -22,7 +22,8 @@ class Test_RewriteUrl extends TestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->options = Mockery::mock( Options::class );
-		$this->cdn     = new CDN( $this->options );
+		$this->cdn     = new CDN();
+        $this->cdn->set_options($this->options);
 	}
 
 	/**

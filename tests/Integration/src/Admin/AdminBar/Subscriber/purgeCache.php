@@ -19,14 +19,14 @@ class Test_PurgeCache extends TestCase
     public static function setUpBeforeClass() : void {
         parent::setUpBeforeClass();
 
-        CapTrait::hasAdminCapBeforeClass();
-        CapTrait::setAdminCap();
+        self::hasAdminCapBeforeClass();
+        self::setAdminCap();
     }
 
-    public static function tearDownAfterClass() {
+    public static function tearDownAfterClass(): void {
         parent::tearDownAfterClass();
 
-        CapTrait::resetAdminCap();
+        self::resetAdminCap();
     }
 
     public function setUp() : void {
@@ -35,10 +35,10 @@ class Test_PurgeCache extends TestCase
         unset( $_GET['_wpnonce'] );
     }
 
-    public function tearDown() {
+    public function tear_down() {
         unset( $_GET['_wpnonce'] );
 
-        parent::tearDown();
+        parent::tear_down();
 
         // Clean up.
         remove_filter( 'wp_redirect', [ $this, 'return_empty_string' ] );

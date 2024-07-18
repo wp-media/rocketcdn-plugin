@@ -3,37 +3,33 @@ declare(strict_types=1);
 
 namespace RocketCDN\Front;
 
-use RocketCDN\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
+use RocketCDN\Dependencies\LaunchpadCore\Container\AbstractServiceProvider;
+use RocketCDN\Dependencies\League\Container\Definition\DefinitionInterface;
 
 class ServiceProvider extends AbstractServiceProvider {
 	/**
-	 * Services provided by this provider
-	 *
-	 * @var array
-	 */
-	protected $provides = [
-		'cdn',
-		'cdn_subscriber',
-	];
-
-	/**
-	 * Subscribers provided by this provider
-	 *
-	 * @var array
-	 */
-	public $subscribers = [
-		'cdn_subscriber',
-	];
-
-	/**
-	 * Registers the provided classes
+	 * Register the services.
 	 *
 	 * @return void
 	 */
-	public function register() {
-		$this->getContainer()->add( 'cdn', 'RocketCDN\Front\CDN' )
-			->addArgument( $this->getContainer()->get( 'options' ) );
-		$this->getContainer()->add( 'cdn_subscriber', 'RocketCDN\Front\Subscriber' )
-			->addArgument( $this->getContainer()->get( 'cdn' ) );
+	public function define() {
+		$this->register_service( CDN::class );
+		$this->register_service( \RocketCDN\Front\Subscriber::class )->share()
+			->set_definition(
+				function ( DefinitionInterface $definition ) {
+					$definition->addArgument( CDN::class );
+				}
+				);
+	}
+
+	/**
+	 * Returns common subscribers.
+	 *
+	 * @return string[]
+	 */
+	public function get_common_subscribers(): array {
+		return [
+			\RocketCDN\Front\Subscriber::class,
+		];
 	}
 }

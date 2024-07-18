@@ -4,15 +4,12 @@ declare(strict_types=1);
 namespace RocketCDN\Admin\Notices;
 
 use RocketCDN\API\Client;
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Interfaces\OptionsAwareInterface;
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
 use RocketCDN\Options\Options;
 
-class Notices {
-	/**
-	 * Options instance
-	 *
-	 * @var Options
-	 */
-	private $options;
+class Notices implements OptionsAwareInterface {
+	use OptionsAwareTrait;
 
 	/**
 	 * API client instance
@@ -24,11 +21,9 @@ class Notices {
 	/**
 	 * Instantiate the class
 	 *
-	 * @param Options $options Options instance.
-	 * @param Client  $api_client API client instance.
+	 * @param Client $api_client API client instance.
 	 */
-	public function __construct( Options $options, Client $api_client ) {
-		$this->options    = $options;
+	public function __construct( Client $api_client ) {
 		$this->api_client = $api_client;
 	}
 

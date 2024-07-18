@@ -5,7 +5,6 @@ namespace RocketCDN\Tests\Unit\src\Admin\AdminBar\AdminBar;
 use Mockery;
 use RocketCDN\Admin\AdminBar\AdminBar;
 use RocketCDN\API\Client;
-use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
@@ -16,14 +15,12 @@ use Brain\Monkey\Functions;
  */
 class Test_PurgeCache  extends TestCase {
 
-	protected $options;
 	protected $client;
 	protected $admin_bar_menu;
 
 	protected function setUp(): void {
-		$this->options        = Mockery::mock( Options::class );
 		$this->client         = Mockery::mock( Client::class );
-		$this->admin_bar_menu = Mockery::mock( AdminBar::class . '[exit]', [ $this->options, $this->client, '/' ] )
+		$this->admin_bar_menu = Mockery::mock( AdminBar::class . '[exit]', [ $this->client, '/' ] )
 			->shouldAllowMockingProtectedMethods();
 		parent::setUp();
 	}

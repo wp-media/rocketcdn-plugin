@@ -4,7 +4,6 @@ namespace RocketCDN\Tests\Unit\src\Front\CDN;
 
 use Mockery;
 use RocketCDN\Front\CDN;
-use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
@@ -21,13 +20,11 @@ use Brain\Monkey\Functions;
  */
 class Test_EndBuffering extends TestCase {
 
-	protected $options;
 	protected $cdn;
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->options = Mockery::mock( Options::class );
-		$this->cdn     = Mockery::mock( CDN::class . '[rewrite_url]', [ $this->options ] );
+		$this->cdn     = Mockery::mock( CDN::class . '[rewrite_url]' );
 	}
 	/**
 	 * @dataProvider configTestData

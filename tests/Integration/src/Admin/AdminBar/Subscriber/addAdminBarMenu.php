@@ -27,8 +27,8 @@ class Test_AddAdminBarMenu extends AdminTestCase {
 		add_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
 	}
 
-	public function tearDown() {
-		parent::tearDown();
+	public function tear_down() {
+		parent::tear_down();
 
 		remove_filter( 'show_admin_bar', [ $this, 'return_true' ] );
 		remove_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );

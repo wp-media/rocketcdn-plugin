@@ -7,6 +7,9 @@ use WPMedia\PHPUnit\Integration\TestCase as BaseTestCase;
 abstract class AdminTestCase extends BaseTestCase {
 
 	use DBTrait;
+
+    protected $user_id;
+
 	public static function setUpBeforeClass() : void {
 		parent::setUpBeforeClass();
 		remove_action( 'admin_init', '_maybe_update_core' );
@@ -18,19 +21,19 @@ abstract class AdminTestCase extends BaseTestCase {
 	public function setUp() : void {
 		parent::setUp();
 
-		DBTrait::removeDBHooks();
+		self::removeDBHooks();
 
 		// Suppress warnings from "Cannot modify header information - headers already sent by".
 		$this->error_level = error_reporting();
 		error_reporting( $this->error_level & ~E_WARNING );
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 		$_POST = [];
 		$_GET  = [];
 		unset( $GLOBALS['post'], $GLOBALS['comment'] );
 
-		parent::tearDown();
+		parent::tear_down();
 
 		error_reporting( $this->error_level );
 		set_current_screen( 'front' );

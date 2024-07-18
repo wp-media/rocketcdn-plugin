@@ -3,8 +3,8 @@
 namespace RocketCDN\Tests\Unit\src\Front\CDN;
 
 use Mockery;
+use RocketCDN\Dependencies\LaunchpadOptions\Options;
 use RocketCDN\Front\CDN;
-use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 
 /**
@@ -20,7 +20,8 @@ class Test_AddPreconnectCdn extends TestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->options = Mockery::mock( Options::class );
-		$this->cdn     = Mockery::mock( CDN::class . '[should_rewrite]', [ $this->options ] )->shouldAllowMockingProtectedMethods();
+		$this->cdn     = Mockery::mock( CDN::class . '[should_rewrite]' )->shouldAllowMockingProtectedMethods();
+        $this->cdn->set_options($this->options);
 	}
 	/**
 	 * @dataProvider configTestData

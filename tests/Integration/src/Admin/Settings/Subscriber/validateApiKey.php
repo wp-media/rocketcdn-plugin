@@ -14,12 +14,14 @@ use WP_Error;
  * @group Admin
  */
 class Test_ValidateApiKey extends AjaxTestCase {
+    use CapTrait;
+
 	protected $api_key;
 	private static $admin_user_id = 0;
 
 	public static function setUpBeforeClass() : void {
 		parent::setUpBeforeClass();
-		CapTrait::setAdminCap();
+        self::setAdminCap();
 		self::$admin_user_id = static::factory()->user->create( [ 'role' => 'administrator' ] );
 	}
 
@@ -34,9 +36,9 @@ class Test_ValidateApiKey extends AjaxTestCase {
 		$this->assertCallbackRegistered( 'wp_ajax_rocketcdn_validate_key', 'validate_api_key' );
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 		delete_transient( 'rocketcdn_customer_data' );
 		remove_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
 	}

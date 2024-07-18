@@ -4,7 +4,6 @@ namespace RocketCDN\Tests\Unit\src\Front\CDN;
 
 use Mockery;
 use RocketCDN\Front\CDN;
-use RocketCDN\Options\Options;
 use RocketCDN\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 
@@ -20,8 +19,7 @@ class Test_StartBuffering extends TestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$options   = Mockery::mock( Options::class );
-		$this->cdn = new CDN( $options );
+		$this->cdn = new CDN();
 	}
 	/**
 	 * @dataProvider configTestData

@@ -4,8 +4,8 @@ namespace RocketCDN\Tests\Unit\src\Admin\Settings\Page;
 use Mockery;
 use RocketCDN\Admin\Settings\Page;
 use RocketCDN\API\Client;
-use RocketCDN\Options\Options;
 use Brain\Monkey\Functions;
+use RocketCDN\Dependencies\LaunchpadOptions\Options;
 use RocketCDN\Tests\Unit\TestCase;
 
 /**
@@ -23,7 +23,8 @@ class Test_RenderPage extends TestCase {
 		parent::setUp();
 		$this->options = Mockery::mock( Options::class );
 		$this->client  = Mockery::mock( Client::class );
-		$this->page    = new Page( $this->options, $this->client,  WP_ROCKET_CDN_PLUGIN_ROOT . '/views/', '/' );
+		$this->page    = new Page( $this->client,  WP_ROCKET_CDN_PLUGIN_ROOT . '/views/', '/' );
+        $this->page->set_options($this->options);
 	}
 
 	/**
