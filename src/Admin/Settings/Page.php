@@ -110,10 +110,12 @@ class Page {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( __( 'You do not have permissions to perform this action.', 'rocketcdn' ) );
+			return;
 		}
 
 		if ( ! isset( $_POST['api_key'] ) ) {
 			wp_send_json_error( __( 'They API key field is not set', 'rocketcdn' ) );
+			return;
 		}
 
 		$api_key = sanitize_key( $_POST['api_key'] );
@@ -122,6 +124,7 @@ class Page {
 
 		if ( empty( $valid_key ) ) {
 			wp_send_json_error( __( 'Invalid API key', 'rocketcdn' ) );
+			return;
 		}
 
 		$is_sync = $this->api_client->is_website_sync( $api_key );
@@ -135,6 +138,7 @@ class Page {
 			);
 
 			wp_send_json_error( $message );
+			return;
 		}
 
 		wp_send_json_success();
@@ -150,16 +154,19 @@ class Page {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( __( 'You do not have permissions to perform this action.', 'rocketcdn' ) );
+			return;
 		}
 
 		if ( ! isset( $_POST['api_key'] ) ) {
 			wp_send_json_error( __( 'They API key field is not set', 'rocketcdn' ) );
+			return;
 		}
 
 		$api_key = sanitize_key( $_POST['api_key'] );
 
 		if ( empty( $api_key ) ) {
 			wp_send_json_error( __( 'The API key field is empty', 'rocketcdn' ) );
+			return;
 		}
 
 		delete_transient( 'rocketcdn_customer_data' );
@@ -168,6 +175,7 @@ class Page {
 
 		if ( empty( $valid_key ) ) {
 			wp_send_json_error( __( 'Invalid API key', 'rocketcdn' ) );
+			return;
 		}
 
 		$is_sync = $this->api_client->is_website_sync( $api_key );
@@ -181,6 +189,7 @@ class Page {
 			);
 
 			wp_send_json_error( $message );
+			return;
 		}
 
 		$this->options->set( 'api_key', $api_key );
@@ -213,12 +222,14 @@ class Page {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( __( 'You do not have permissions to perform this action.', 'rocketcdn' ) );
+			return;
 		}
 
 		$result = $this->api_client->purge_cache();
 
 		if ( ! $result['success'] ) {
 			wp_send_json_error( $result['message'] );
+			return;
 		}
 
 		wp_send_json_success( __( 'Done! Your cache has been cleared', 'rocketcdn' ) );
