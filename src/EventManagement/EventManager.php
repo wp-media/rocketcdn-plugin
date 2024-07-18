@@ -97,8 +97,8 @@ class EventManager {
 	 * of the WordPress plugin API.
 	 *
 	 * @param SubscriberInterface $subscriber SubscriberInterface implementation.
-	 * @param string              $hook_name  Hook name.
-	 * @param mixed               $parameters Parameters, can be a string, an array or a multidimensional array.
+	 * @param string               $hook_name  Hook name.
+	 * @param mixed                $parameters Parameters, can be a string, an array or a multidimensional array.
 	 */
 	private function add_subscriber_callback( SubscriberInterface $subscriber, $hook_name, $parameters ) {
 		if ( is_string( $parameters ) ) {
@@ -117,8 +117,8 @@ class EventManager {
 	 * of the WordPress plugin API.
 	 *
 	 * @param SubscriberInterface $subscriber SubscriberInterface implementation.
-	 * @param string              $hook_name  Hook name.
-	 * @param mixed               $parameters Parameters, can be a string, an array or a multidimensional array.
+	 * @param string               $hook_name  Hook name.
+	 * @param mixed                $parameters Parameters, can be a string, an array or a multidimensional array.
 	 */
 	private function remove_subscriber_callback( SubscriberInterface $subscriber, $hook_name, $parameters ) {
 		if ( is_string( $parameters ) ) {

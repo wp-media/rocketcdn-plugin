@@ -2,8 +2,6 @@
 /.git
 /.github
 /.wordpress-org
-/bin
-/tests
 
 .distignore
 .gitignore
