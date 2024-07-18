@@ -61,7 +61,7 @@ class CDN {
 	 *
 	 * @return bool
 	 */
-	protected function should_rewrite(): bool {
+	private function should_rewrite(): bool {
 		if (
 			! isset( $_SERVER['REQUEST_METHOD'] )
 			||
@@ -91,7 +91,6 @@ class CDN {
 	 */
 	private function rewrite( string $html ): string {
 		$pattern = '#[("\']\s*(?<url>(?:(?:https?:|)' . preg_quote( $this->get_base_url(), '#' ) . ')\/(?:(?:(?:' . $this->get_allowed_paths() . ')[^"\',)]+))|\/[^/](?:[^"\')\s>]+\.[[:alnum:]]+))\s*["\')]#i';
-
 		return preg_replace_callback(
 			$pattern,
 			function( $matches ) {

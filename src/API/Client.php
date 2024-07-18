@@ -99,6 +99,7 @@ class Client {
 		}
 
 		$hostname = $this->extract_hostname( home_url() );
+
 		foreach ( $customer_data['websites'] as $website ) {
 			if ( ! isset( $website['hostname'] ) ) {
 				continue;
