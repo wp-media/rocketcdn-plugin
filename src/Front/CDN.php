@@ -3,31 +3,18 @@ declare(strict_types=1);
 
 namespace RocketCDN\Front;
 
-use RocketCDN\Options\Options;
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Interfaces\OptionsAwareInterface;
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
+use RocketCDN\Dependencies\LaunchpadOptions\Interfaces\OptionsInterface;
 
-class CDN {
-	/**
-	 * Options instance
-	 *
-	 * @var Options
-	 */
-	private $options;
-
+class CDN implements OptionsAwareInterface {
+	use OptionsAwareTrait;
 	/**
 	 * Home URL host
 	 *
 	 * @var string
 	 */
 	private $home_host = '';
-
-	/**
-	 * Instantiates the class
-	 *
-	 * @param Options $options Options instance.
-	 */
-	public function __construct( Options $options ) {
-		$this->options = $options;
-	}
 
 	/**
 	 * Setup output buffering
@@ -137,6 +124,10 @@ class CDN {
 	 * @return string
 	 */
 	public function rewrite_url( string $url ): string {
+		if ( false !== stripos( $url, admin_url() ) ) {
+			return $url;
+		}
+
 		$cdn_url = $this->options->get( 'cdn_url' );
 
 		if ( ! $cdn_url ) {

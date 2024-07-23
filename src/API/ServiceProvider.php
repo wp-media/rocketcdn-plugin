@@ -3,25 +3,15 @@ declare(strict_types=1);
 
 namespace RocketCDN\API;
 
-use RocketCDN\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
-
+use RocketCDN\Dependencies\LaunchpadCore\Container\AbstractServiceProvider;
 class ServiceProvider extends AbstractServiceProvider {
-	/**
-	 * Services provided by this provider
-	 *
-	 * @var array
-	 */
-	protected $provides = [
-		'api_client',
-	];
 
 	/**
-	 * Registers the provided classes
+	 * Register the services.
 	 *
 	 * @return void
 	 */
-	public function register() {
-		$this->getContainer()->add( 'api_client', 'RocketCDN\API\Client' )
-			->addArgument( $this->getContainer()->get( 'options' ) );
+	public function define() {
+		$this->register_service( Client::class );
 	}
 }

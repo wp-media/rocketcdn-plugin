@@ -19,14 +19,14 @@ class Test_PurgeCache extends TestCase
     public static function setUpBeforeClass() : void {
         parent::setUpBeforeClass();
 
-        CapTrait::hasAdminCapBeforeClass();
-        CapTrait::setAdminCap();
+        self::hasAdminCapBeforeClass();
+        self::setAdminCap();
     }
 
     public static function tearDownAfterClass(): void {
         parent::tearDownAfterClass();
 
-        CapTrait::resetAdminCap();
+        self::resetAdminCap();
     }
 
     public function set_up() {

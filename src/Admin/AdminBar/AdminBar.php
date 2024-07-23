@@ -4,15 +4,11 @@ declare(strict_types=1);
 namespace RocketCDN\Admin\AdminBar;
 
 use RocketCDN\API\Client;
-use RocketCDN\Options\Options;
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Interfaces\OptionsAwareInterface;
+use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
 
-class AdminBar {
-	/**
-	 * Options instance
-	 *
-	 * @var Options
-	 */
-	private $options;
+class AdminBar implements OptionsAwareInterface {
+	use OptionsAwareTrait;
 
 	/**
 	 * API client instance
@@ -31,12 +27,10 @@ class AdminBar {
 	/**
 	 * Instantiate the class
 	 *
-	 * @param Options $options Options instance.
-	 * @param Client  $api_client API client instance.
-	 * @param string  $assets_baseurl Assets base URL.
+	 * @param Client $api_client API client instance.
+	 * @param string $assets_baseurl Assets base URL.
 	 */
-	public function __construct( Options $options, Client $api_client, $assets_baseurl ) {
-		$this->options        = $options;
+	public function __construct( Client $api_client, $assets_baseurl ) {
 		$this->api_client     = $api_client;
 		$this->assets_baseurl = $assets_baseurl;
 	}
@@ -171,7 +165,7 @@ class AdminBar {
 	 * @return void
 	 */
 	protected function exit() {
-		WP_ROCKET_CDN_IS_TESTING ? wp_die() : exit;
+		defined( 'WP_ROCKET_CDN_IS_TESTING' ) && constant( 'WP_ROCKET_CDN_IS_TESTING' ) ? wp_die() : exit;
 	}
 
 	/**

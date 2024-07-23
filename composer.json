@@ -16,7 +16,12 @@
     ],
     "type": "wordpress-plugin",
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+
     },
     "support": {
         "issues": "https://github.com/wp-media/rocketcdn-plugin/issues",
@@ -34,12 +39,13 @@
         "league/container": "^3.3",
         "phpcompatibility/phpcompatibility-wp": "^2.0",
         "phpstan/phpstan": "^0.12",
-        "phpunit/phpunit": "^7.5 || ^8 || ^9",
         "phpunit/php-file-iterator": "2.0.3",
-        "psr/container": "1.0.0",
+        "phpunit/phpunit": "^7.5 || ^8 || ^9",
         "roave/security-advisories": "dev-master",
         "szepeviktor/phpstan-wordpress": "^0.7.0",
         "wp-coding-standards/wpcs": "^2",
+        "wp-launchpad/core": "^0.2.6",
+        "wp-launchpad/framework-options": "^0.1.2",
         "wp-media/phpunit": "^3.0"
     },
     "autoload": {
@@ -59,7 +65,8 @@
             "classmap_directory": "/src/classes/dependencies/",
             "classmap_prefix": "RocketCDN_",
             "packages": [
-                "league/container"
+                "wp-launchpad/core",
+                "wp-launchpad/framework-options"
             ]
         }
     },

@@ -5,6 +5,7 @@ namespace RocketCDN\Tests\Integration;
 use WPMedia\PHPUnit\Integration\TestCase as BaseTestCase;
 
 abstract class AdminTestCase extends BaseTestCase {
+	use DBTrait;
 
     protected $user_id;
 
@@ -20,6 +21,8 @@ abstract class AdminTestCase extends BaseTestCase {
 
 	public function set_up() {
 		parent::set_up();
+
+		self::removeDBHooks();
 
 		// Suppress warnings from "Cannot modify header information - headers already sent by".
 		$this->error_level = error_reporting();
