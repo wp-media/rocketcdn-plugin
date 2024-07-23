@@ -3,6 +3,7 @@ return [
 	'testNoCdnShouldReturnUrl'              => [
 		'config'   => [
 			'homeurl'    => 'http://example.org',
+			'admin_url' => 'http://example.org/wp-admin/',
 			'host'       => 'example.org',
 			'cdn'        => null,
 			'url'        => 'http://example.org/wp-content/uploads/2018/03/sticker-mule-189122-unsplash-1568x1046.jpg',
@@ -16,6 +17,7 @@ return [
 	'testCdnShouldReturnUrlWithCdn'         => [
 		'config'   => [
 			'homeurl'    => 'http://example.org',
+			'admin_url' => 'http://example.org/wp-admin/',
 			'host'       => 'example.org',
 			'url'        => 'http://example.org/wp-content/uploads/2018/03/sticker-mule-189122-unsplash-1568x1046.jpg',
 			'cdn'        => 'cdn',
@@ -29,6 +31,7 @@ return [
 	'testCdnNoHostShouldReturnUrlWithCdn'   => [
 		'config'   => [
 			'homeurl'    => 'http://example.org',
+			'admin_url' => 'http://example.org/wp-admin/',
 			'host'       => 'example.org',
 			'url'        => '/wp-content/uploads/2018/03/sticker-mule-189122-unsplash-1568x1046.jpg',
 			'cdn'        => 'cdn',
@@ -36,16 +39,19 @@ return [
 		],
 		'expected' => 'cdn/wp-content/uploads/2018/03/sticker-mule-189122-unsplash-1568x1046.jpg',
 	],
-	'testCdnNoSchemeShouldReturnUrlWithCdn' => [
+'testCdnAndAdminShouldReturnNotUrlWithCdn'         => [
 		'config'   => [
+			'is_admin' => true,
 			'homeurl'    => 'http://example.org',
+			'admin_url' => 'http://example.org/wp-admin/',
 			'host'       => 'example.org',
-			'url'        => 'example.org/wp-content/uploads/2018/03/sticker-mule-189122-unsplash-1568x1046.jpg',
+			'url'        => 'http://example.org/wp-admin/wp-content/uploads/2018/03/sticker-mule-189122-unsplash-1568x1046.jpg',
 			'cdn'        => 'cdn',
 			'parsed_url' => [
-				'host' => 'example.org',
+				'host'   => 'example.org',
+				'scheme' => 'http',
 			],
 		],
-		'expected' => 'cdn/wp-content/uploads/2018/03/sticker-mule-189122-unsplash-1568x1046.jpg',
+		'expected' => 'http://example.org/wp-admin/wp-content/uploads/2018/03/sticker-mule-189122-unsplash-1568x1046.jpg',
 	],
 ];

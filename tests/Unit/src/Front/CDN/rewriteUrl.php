@@ -30,11 +30,18 @@ class Test_RewriteUrl extends TestCase {
 	 * @dataProvider configTestData
 	 */
 	public function testShouldReturnExpected( $config, $expected ) {
-		$this->options->expects()->get( 'cdn_url' )->andReturn( $config['cdn'] );
+
+		if( ! key_exists('is_admin', $config) || ! $config['is_admin']) {
+			$this->options->expects()->get( 'cdn_url' )->andReturn( $config['cdn'] );
+		}
 
 		Functions\expect( 'home_url' )
 			->with()
 			->andReturn( $config['homeurl'] );
+
+		Functions\expect( 'admin_url' )
+			->with()
+			->andReturn( $config['admin_url'] );
 
 		Functions\expect( 'wp_parse_url' )
 			->with( $config['url'] )->andReturnUsing(
