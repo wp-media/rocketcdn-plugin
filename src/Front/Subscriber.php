@@ -29,7 +29,7 @@ class Subscriber implements SubscriberInterface {
 	 */
 	public static function get_subscribed_events() {
 		return [
-			'template_redirect' => [ 'start_buffering', 2 ],
+			'template_redirect' => [ 'start_buffering', 5 ],
 			'wp_resource_hints' => [ 'add_preconnect_cdn', 10, 2 ],
 		];
 	}
