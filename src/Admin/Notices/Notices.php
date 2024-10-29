@@ -102,7 +102,7 @@ class Notices implements OptionsAwareInterface {
 			return;
 		}
 
-		$dismissed = get_user_meta( get_current_user_id(), 'rocketcdn_dismissed_notices', true );
+		$dismissed = (array) get_user_meta( get_current_user_id(), 'rocketcdn_dismissed_notices', true );
 
 		if ( in_array( 'update_notice', $dismissed, true ) ) {
 			return;
