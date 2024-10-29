@@ -94,6 +94,37 @@ h1.rocketcdn-logo {
     display: flex;
 }
 
+.rocketcdn-is-dismissible {
+    position: relative;
+    padding-right: 38px;
+}
+
+.rocketcdn-dismiss {
+    position: absolute;
+    top: 0;
+    right: 1px;
+    border: none;
+    margin: 0;
+    padding: 9px;
+    background: none;
+    cursor:pointer;
+}
+
+.rocketcdn-dismiss::after {
+    background: none;
+    color: #787c82;
+    content: "\f153";
+    display: block;
+    font: normal 16px/20px dashicons;
+    height: 20px;
+    text-align: center;
+    width: 20px;
+}
+
+.rocketcdn-notice-dismissed {
+    display: none;
+}
+
 .rocketcdn-notice-dismiss {
     border: 0;
     background: transparent;
