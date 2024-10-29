@@ -109,16 +109,17 @@ class Notices implements OptionsAwareInterface {
 		}
 
 		$message = sprintf(
+			// translators: %1$s = strong opening tag, %2$s = strong closing tag, %3$s = previous CNAME, %4$s = new CNAME, %5$s = link opening tag, %6$s = link closing tag.
 			__( '%1$sRocketCDN:%2$s We have updated your RocketCDN CNAME from %3$s to %4$s. The change is already applied to the plugin settings. If you were using the CNAME in your code, make sure to update it to: %4$s If you have any questions %5$sContact support%6$s.', 'rocketcdn' ),
 			'<strong>',
 			'</strong>',
-            $this->options->get( 'previous_cdn_url', '' ),
-            $this->options->get( 'cdn_url', '' ),
+			$this->options->get( 'previous_cdn_url', '' ),
+			$this->options->get( 'cdn_url', '' ),
 			'<a href="https://rocketcdn.me/contact/" target="_blank" rel="noopener">',
 			'</a>'
 		);
 
-		echo '<div class="notice notice-info rocketcdn-is-dismissible" data-notice="update_notice"><p>' . $message . '</p><button class="rocketcdn-dismiss"><span class="screen-reader-text">' . __( 'Do not show this message again', 'rocketcdn' ) . '</span></button></div>';
+		echo '<div class="notice notice-info rocketcdn-is-dismissible" data-notice="update_notice"><p>' . $message . '</p><button class="rocketcdn-dismiss"><span class="screen-reader-text">' . esc_html__( 'Do not show this message again', 'rocketcdn' ) . '</span></button></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -133,7 +134,11 @@ class Notices implements OptionsAwareInterface {
 			wp_send_json_error( __( 'You do not have permissions to perform this action.', 'rocketcdn' ) );
 		}
 
-		$notice = sanitize_key( $_POST['notice_id'] );
+		$notice = isset( $_POST['notice_id'] ) ? sanitize_key( $_POST['notice_id'] ) : '';
+
+		if ( empty( $notice ) ) {
+			wp_send_json_error( __( 'The notice ID is missing', 'rocketcdn' ) );
+		}
 
 		$dismissed = get_user_meta( get_current_user_id(), 'rocketcdn_dismissed_notices', true );
 

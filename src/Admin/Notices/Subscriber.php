@@ -29,7 +29,7 @@ class Subscriber implements SubscriberInterface {
 	 */
 	public static function get_subscribed_events() {
 		return [
-			'admin_notices' => [
+			'admin_notices'                    => [
 				[ 'empty_api_key_notice' ],
 				[ 'wrong_api_key_notice' ],
 				[ 'update_notice' ],
