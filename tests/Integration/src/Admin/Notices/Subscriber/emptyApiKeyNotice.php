@@ -41,9 +41,9 @@ class Test_EmptyApiKeyNotice extends AdminTestCase {
 		do_action( 'admin_notices' );
 
 		if ( $expected['contains'] ) {
-			$this->assertContains( ob_get_contents(), $expected );
+			$this->assertStringContainsString( ob_get_contents(), $expected['html'] );
 		} else {
-			$this->assertNotContains( ob_get_contents(), $expected );
+			$this->assertStringNotContainsString( ob_get_contents(), $expected['html'] );
 		}
 		ob_end_clean();
 	}
