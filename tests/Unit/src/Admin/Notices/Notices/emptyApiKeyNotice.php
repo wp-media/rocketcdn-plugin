@@ -45,7 +45,7 @@ class Test_EmptyApiKeyNotice extends TestCase {
 			->andReturn( $config['has_rights'] );
 		ob_start();
 		$this->notices->empty_api_key_notice();
-		$this->assertContains( ob_get_contents(), $expected );
+		$this->assertStringContainsString( ob_get_contents(), $expected );
 		ob_end_clean();
 	}
 }
