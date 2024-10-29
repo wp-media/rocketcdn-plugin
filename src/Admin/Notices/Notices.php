@@ -6,7 +6,6 @@ namespace RocketCDN\Admin\Notices;
 use RocketCDN\API\Client;
 use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Interfaces\OptionsAwareInterface;
 use RocketCDN\Dependencies\LaunchpadFrameworkOptions\Traits\OptionsAwareTrait;
-use RocketCDN\Options\Options;
 
 class Notices implements OptionsAwareInterface {
 	use OptionsAwareTrait;
@@ -78,10 +77,74 @@ class Notices implements OptionsAwareInterface {
 			__( '%1$sRocketCDN:%2$s Your API key is wrong. You can find your API key in your %3$sRocketCDN account%4$s.', 'rocketcdn' ),
 			'<strong>',
 			'</strong>',
-			'<a href="https://rocketcdn.me/account/sites/">',
+			'<a href="https://rocketcdn.me/account/sites/" target="_blank" rel="noopener">',
 			'</a>'
 		);
 
 		echo '<div class="notice notice-error"><p>' . $message . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
+	 * Displays a notice on update
+	 *
+	 * @return void
+	 */
+	public function update_notice() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		if ( ! $this->options->get( 'api_key', '' ) ) {
+			return;
+		}
+
+		if ( $this->options->get( 'previous_version', '' ) > '1.0.6' ) {
+			return;
+		}
+
+		$dismissed = get_user_meta( get_current_user_id(), 'rocketcdn_dismissed_notices', true );
+
+		if ( in_array( 'update_notice', $dismissed, true ) ) {
+			return;
+		}
+
+		$message = sprintf(
+			__( '%1$sRocketCDN:%2$s We have updated your RocketCDN CNAME from %3$s to %4$s. The change is already applied to the plugin settings. If you were using the CNAME in your code, make sure to update it to: %4$s If you have any questions %5$sContact support%6$s.', 'rocketcdn' ),
+			'<strong>',
+			'</strong>',
+            $this->options->get( 'previous_cdn_url', '' ),
+            $this->options->get( 'cdn_url', '' ),
+			'<a href="https://rocketcdn.me/contact/" target="_blank" rel="noopener">',
+			'</a>'
+		);
+
+		echo '<div class="notice notice-info rocketcdn-is-dismissible" data-notice="update_notice"><p>' . $message . '</p><button class="rocketcdn-dismiss"><span class="screen-reader-text">' . __( 'Do not show this message again', 'rocketcdn' ) . '</span></button></div>';
+	}
+
+	/**
+	 * Dismisses a notice
+	 *
+	 * @return void
+	 */
+	public function dismiss_notice() {
+		check_ajax_referer( 'rocketcdn_ajax', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( __( 'You do not have permissions to perform this action.', 'rocketcdn' ) );
+		}
+
+		$notice = sanitize_key( $_POST['notice_id'] );
+
+		$dismissed = get_user_meta( get_current_user_id(), 'rocketcdn_dismissed_notices', true );
+
+		if ( in_array( $notice, $dismissed, true ) ) {
+			wp_send_json_error( __( 'The notice is already dismissed', 'rocketcdn' ) );
+		}
+
+		$dismissed[] = $notice;
+
+		update_user_meta( get_current_user_id(), 'rocketcdn_dismissed_notices', $dismissed );
+
+		wp_send_json_success();
 	}
 }
