@@ -21,29 +21,30 @@ class Test_EmptyApiKeyNotice extends AdminTestCase {
 	}
 
 	public function tear_down() {
-		parent::tear_down();
 		remove_filter( 'pre_option_rocketcdn_api_key', [ $this, 'api_key' ] );
+
+		parent::tear_down();
 	}
 	/**
 	 * @dataProvider providerTestData
 	 */
 	public function testShouldMaybeDisplayNotice( $config, $expected ) {
-
 		$this->option = $config['option'];
 
-		$this->setCurrentUser( 'administrator' );
-
 		if ( false === $config['admin'] ) {
-			set_current_screen( 'front' );
+			$this->setCurrentUser( 'editor' );
+		} else {
+			$this->setCurrentUser( 'administrator' );
 		}
+
 		ob_start();
 
 		do_action( 'admin_notices' );
 
 		if ( $expected['contains'] ) {
-			$this->assertStringContainsString( ob_get_contents(), $expected['html'] );
+			$this->assertStringContainsString( $expected['html'], ob_get_contents() );
 		} else {
-			$this->assertStringNotContainsString( ob_get_contents(), $expected['html'] );
+			$this->assertStringNotContainsString( $expected['html'], ob_get_contents() );
 		}
 		ob_end_clean();
 	}
