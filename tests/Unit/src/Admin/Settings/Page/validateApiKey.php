@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace RocketCDN\Tests\Unit\src\Admin\Settings\Page;
 
 use Brain\Monkey\Functions;
@@ -13,14 +15,16 @@ use RocketCDN\Tests\Unit\TestCase;
  * @group Settings
  */
 class Test_ValidateApiKey extends TestCase {
-
 	protected $client;
 	protected $page;
 
 	protected function setUp(): void {
 		parent::setUp();
+
 		$this->client  = Mockery::mock( Client::class );
 		$this->page    = new Page( $this->client,  WP_ROCKET_CDN_PLUGIN_ROOT . '/views/', '/' );
+
+		$this->stubTranslationFunctions();
 	}
 
 	/**
@@ -28,23 +32,33 @@ class Test_ValidateApiKey extends TestCase {
 	 */
 	public function testShouldReturnAsExcepted( $config, $expected ) {
 		$_POST['api_key'] = $config['api'];
-		Functions\expect( '__' )->zeroOrMoreTimes()->andReturnFirstArg();
-		Functions\expect( 'sanitize_key' )->zeroOrMoreTimes()->andReturnFirstArg();
-		Functions\expect( 'check_ajax_referer' )->zeroOrMoreTimes();
-		Functions\expect( 'current_user_can' )->with( 'manage_options' )->andReturn( $config['has_right'] );
 
-		if ( $config['api'] ) {
-			$this->client->expects()->get_customer_data( $config['api'] )->andReturn( $config['is_valid'] );
-		}
-		if ( ! empty( $config['is_valid'] ) ) {
-			$this->client->expects()->is_website_sync( $config['api'] )->andReturn( $config['is_sync'] );
-		}
+		Functions\expect( 'check_ajax_referer' );
+		Functions\when( 'sanitize_key' )->returnArg();
+		Functions\when( 'current_user_can' )->justReturn( $config['has_right'] );
 
-		if ( $config['is_sync'] ) {
-			Functions\expect( 'wp_send_json_success' )->with();
-		} else {
-			Functions\expect( 'wp_send_json_error' )->with( $expected['message'] );
-		}
+		$this->client->expects()->get_customer_data( $config['api'] )
+			->atMost()
+			->once()	
+			->andReturn( $config['is_valid'] );
+
+		$this->client->expects()->is_website_sync( $config['api'] )
+			->atMost()
+			->once()
+			->andReturn( $config['is_sync'] );
+
+
+		Functions\when( 'wp_send_json_success' )->alias( function() use ( $expected ) {
+			throw new \Exception( $expected );
+		} );
+
+		Functions\when( 'wp_send_json_error' )->alias( function() use ( $expected ) {
+			throw new \Exception( $expected );
+		} );
+
+		$this->expectException( \Exception::class );
+		$this->expectExceptionMessage( $expected );
+
 		$this->page->validate_api_key();
 	}
 }
