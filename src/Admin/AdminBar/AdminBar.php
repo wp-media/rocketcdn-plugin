@@ -155,6 +155,7 @@ class AdminBar implements OptionsAwareInterface {
 		$this->api_client->purge_cache();
 
 		wp_safe_redirect( esc_url_raw( wp_get_referer() ) );
+		exit;
 	}
 
 	/**
