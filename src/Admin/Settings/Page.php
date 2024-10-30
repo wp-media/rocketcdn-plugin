@@ -109,7 +109,7 @@ class Page implements OptionsAwareInterface {
 		}
 
 		if ( ! isset( $_POST['api_key'] ) ) {
-			wp_send_json_error( __( 'They API key field is not set', 'rocketcdn' ) );
+			wp_send_json_error( __( 'The API key field is not set', 'rocketcdn' ) );
 		}
 
 		$api_key = sanitize_key( $_POST['api_key'] );
@@ -133,7 +133,7 @@ class Page implements OptionsAwareInterface {
 			wp_send_json_error( $message );
 		}
 
-		wp_send_json_success();
+		wp_send_json_success( __( 'Your website is synchronized.', 'rocketcdn' ) );
 	}
 
 	/**
@@ -149,7 +149,7 @@ class Page implements OptionsAwareInterface {
 		}
 
 		if ( ! isset( $_POST['api_key'] ) ) {
-			wp_send_json_error( __( 'They API key field is not set', 'rocketcdn' ) );
+			wp_send_json_error( __( 'The API key field is not set', 'rocketcdn' ) );
 		}
 
 		$api_key = sanitize_key( $_POST['api_key'] );
