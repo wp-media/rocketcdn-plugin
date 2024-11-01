@@ -150,6 +150,6 @@ class Notices implements OptionsAwareInterface {
 
 		update_user_meta( get_current_user_id(), 'rocketcdn_dismissed_notices', $dismissed );
 
-		wp_send_json_success( 'Notice dismissed');
+		wp_send_json_success( 'Notice dismissed' );
 	}
 }
