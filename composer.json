@@ -57,7 +57,7 @@
             "RocketCDN\\": "src/"
         },
         "files": [
-            "includes/constant.php"
+            "includes/constants.php"
         ]
     },
     "autoload-dev": {
