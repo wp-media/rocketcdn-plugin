@@ -6,7 +6,7 @@ namespace RocketCDN\Tests\Unit\src\Admin\Update;
 use Brain\Monkey\Functions;
 use Mockery;
 use RocketCDN\Admin\Update\Update;
-use RocketCDN\Api\Client;
+use RocketCDN\API\Client;
 use RocketCDN\Dependencies\LaunchpadOptions\Options;
 use RocketCDN\Tests\Unit\TestCase;
 
