@@ -14,6 +14,7 @@ parameters:
         - %currentWorkingDirectory%/tests/Fixtures/
     scanFiles:
         - %currentWorkingDirectory%/rocketcdn.php
+        - %currentWorkingDirectory%/includes/constants.php
         - %currentWorkingDirectory%/vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
         - %currentWorkingDirectory%/vendor/php-stubs/wordpress-tests-stubs/wordpress-tests-stubs.php
     excludePaths:
