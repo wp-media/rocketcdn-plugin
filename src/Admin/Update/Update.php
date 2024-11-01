@@ -34,27 +34,33 @@ class Update implements OptionsAwareInterface {
 	public function updater() {
 		$current_version = $this->options->get( 'current_version', '' );
 
-		if ( ROCKETCDN_VERSION !== $current_version ) {
-			do_action( 'rocketcdn_update', $current_version, ROCKETCDN_VERSION );
+		if ( rocketcdn_get_constant( 'ROCKETCDN_VERSION', '' ) !== $current_version ) {
+			/**
+			 * Fires when updating the plugin.
+			 *
+			 * @since 1.0.6
+			 *
+			 * @param string $current_version Current version.
+			 * @param string $new_version     New version.
+			 */
+			do_action( 'rocketcdn_update', $current_version, rocketcdn_get_constant( 'ROCKETCDN_VERSION', '' ) );
 		}
 
-		if ( did_action( 'rocketcdn_update' ) ) {
-			$this->options->set( 'current_version', ROCKETCDN_VERSION );
-
-			if ( empty( $current_version ) ) {
-				$current_version = ROCKETCDN_VERSION;
-			}
-
-			$this->options->set( 'previous_version', $current_version );
+		if ( ! did_action( 'rocketcdn_update' ) ) {
+			return;
 		}
+
+		$this->options->set( 'current_version', rocketcdn_get_constant( 'ROCKETCDN_VERSION', '' ) );
+
+		if ( empty( $current_version ) ) {
+			$current_version = rocketcdn_get_constant( 'ROCKETCDN_VERSION', '' );
+		}
+
+		$this->options->set( 'previous_version', $current_version );
 
 		$page = isset( $_GET['page'] ) ? sanitize_key( $_GET['page'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-		if (
-			'rocketcdn' === $page
-			&&
-			did_action( 'rocketcdn_update' )
-		) {
+		if ( 'rocketcdn' === $page ) {
 			wp_safe_redirect( esc_url_raw( admin_url( 'options-general.php?page=rocketcdn' ) ) );
 			exit;
 		}
@@ -68,11 +74,7 @@ class Update implements OptionsAwareInterface {
 	 * @return void
 	 */
 	public function update_cdn_url( $old_version ) {
-		if (
-			! empty( $old_version )
-			&&
-			version_compare( $old_version, '1.0.6', '>' )
-		) {
+		if ( version_compare( $old_version, '1.0.6', '>' ) ) {
 			return;
 		}
 
@@ -93,6 +95,6 @@ class Update implements OptionsAwareInterface {
 		}
 
 		$this->options->set( 'cdn_url', $cdn_url );
-		$this->options->set( 'previous_cdn_url', $this->options->get( 'cdn_url' ) );
+		$this->options->set( 'previous_cdn_url', $this->options->get( 'cdn_url', '' ) );
 	}
 }
