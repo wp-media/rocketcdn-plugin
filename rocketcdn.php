@@ -20,6 +20,7 @@ define( 'ROCKETCDN_VERSION', '1.0.6' );
 use function RocketCDN\Dependencies\LaunchpadCore\boot;
 
 require realpath( plugin_dir_path( __FILE__ ) ) . '/includes/RocketCDNRequirementsCheck.php';
+require realpath( plugin_dir_path( __FILE__ ) ) . '/includes/constants.php';
 
 $rocketcdn_rq_check = new RocketCDNRequirementsCheck(
 	[

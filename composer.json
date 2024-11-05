@@ -55,10 +55,7 @@
     "autoload": {
         "psr-4": {
             "RocketCDN\\": "src/"
-        },
-        "files": [
-            "includes/constants.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
