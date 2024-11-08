@@ -38,6 +38,8 @@ class TestUpdateNotice extends TestCase {
 	public function testShouldReturnExpected( $config, $expected ) {
 		Functions\when( 'current_user_can' )->justReturn( $config['current_user_can'] );
 
+        Functions\when( 'get_current_screen' )->justReturn( (object) [ 'id' => $config['current_screen_id'] ] );
+
         $this->options->shouldReceive( 'get' )
             ->with( 'api_key', '' )
             ->andReturn( $config['api_key'] );

@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'testShouldDoNothingWhenVersionGT106' => [
+    'testShouldDoNothingWhenVersionGT107' => [
         'config' => [
-            'old_version' => '1.0.7',
+            'old_version' => '1.0.8',
             'cdn_url' => 'https://xxxx.rocketcdn.me',
             'previous_cdn_url' => '',
             'remote_cdn_url' => 'https://xxxx.delivery.rocketcdn.me',

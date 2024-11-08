@@ -4,6 +4,19 @@ return [
     'testShouldDoNothingWhenNoCap' => [
         'config' => [
             'current_user_can' => false,
+            'current_screen_id' => 'settings_page_rocketcdn',
+            'api_key' => '123456',
+            'previous_version' => '1.0.5',
+            'user_meta' => false,
+            'cdn_url' => 'https://cdn.example.org',
+            'previous_cdn_url' => 'https://cdn.example.org',
+        ],
+        'expected' => '',
+    ],
+    'testShouldDoNothingWhenNotRocketCdnPage' => [
+        'config' => [
+            'current_user_can' => false,
+            'current_screen_id' => 'settings_page_wprocket',
             'api_key' => '123456',
             'previous_version' => '1.0.5',
             'user_meta' => false,
@@ -15,6 +28,7 @@ return [
     'testShouldDoNothingWhenNoApiKey' => [
         'config' => [
             'current_user_can' => true,
+            'current_screen_id' => 'settings_page_rocketcdn',
             'api_key' => '',
             'previous_version' => '1.0.5',
             'user_meta' => false,
@@ -26,6 +40,7 @@ return [
     'testShouldDoNothingWhenVgt106' => [
         'config' => [
             'current_user_can' => true,
+            'current_screen_id' => 'settings_page_rocketcdn',
             'api_key' => '123456',
             'previous_version' => '1.0.7',
             'user_meta' => false,
@@ -37,6 +52,7 @@ return [
     'testShouldDoNothingWhenDismissed' => [
         'config' => [
             'current_user_can' => true,
+            'current_screen_id' => 'settings_page_rocketcdn',
             'api_key' => '123456',
             'previous_version' => '1.0.5',
             'user_meta' => [
@@ -50,6 +66,7 @@ return [
     'testShouldDisplayNotice' => [
         'config' => [
             'current_user_can' => true,
+            'current_screen_id' => 'settings_page_rocketcdn',
             'api_key' => '123456',
             'previous_version' => '1.0.5',
             'user_meta' => [],
