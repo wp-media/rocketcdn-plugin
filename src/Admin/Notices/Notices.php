@@ -94,6 +94,12 @@ class Notices implements OptionsAwareInterface {
 			return;
 		}
 
+		$screen = get_current_screen();
+
+		if ( ! $screen || 'settings_page_rocketcdn' !== $screen->id ) {
+			return;
+		}
+
 		if ( ! $this->options->get( 'api_key', '' ) ) {
 			return;
 		}
