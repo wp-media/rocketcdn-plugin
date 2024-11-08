@@ -98,7 +98,7 @@ class Notices implements OptionsAwareInterface {
 			return;
 		}
 
-		if ( $this->options->get( 'previous_version', '' ) > '1.0.6' ) {
+		if ( $this->options->get( 'previous_version', '' ) > '1.0.7' ) {
 			return;
 		}
 

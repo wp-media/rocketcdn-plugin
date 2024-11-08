@@ -3,8 +3,8 @@
 return [
     'testShouldDoNothingWhenNoUpdate' => [
         'config' => [
-            'current_version' => '1.0.6',
-            'plugin_version' => '1.0.6',
+            'current_version' => '1.0.7',
+            'plugin_version' => '1.0.7',
             'page' => 'rocketcdn',
         ],
         'expected' => false,
@@ -12,7 +12,7 @@ return [
     'testShouldDoUpdate' => [
         'config' => [
             'current_version' => '',
-            'plugin_version' => '1.0.6',
+            'plugin_version' => '1.0.7',
             'page' => 'rocketcdn',
         ],
         'expected' => 'wp_safe_redirect',

@@ -21,7 +21,7 @@ return [
     ],
     'testShouldDoNothingWhenPreviousCdnUrlSet' => [
         'config' => [
-            'old_version' => '1.0.6',
+            'old_version' => '1.0.7',
             'cdn_url' => 'https://xxxx.delivery.rocketcdn.me',
             'previous_cdn_url' => 'https://xxxx.rocketcdn.me',
             'remote_cdn_url' => 'https://xxxx.delivery.rocketcdn.me',
@@ -30,7 +30,7 @@ return [
     ],
     'testShouldDoNothingWhenNoRemoteCdnUrl' => [
         'config' => [
-            'old_version' => '1.0.6',
+            'old_version' => '1.0.7',
             'cdn_url' => 'https://xxxx.rocketcdn.me',
             'previous_cdn_url' => '',
             'remote_cdn_url' => '',
@@ -39,7 +39,7 @@ return [
     ],
     'testShouldDoUpdate' => [
         'config' => [
-            'old_version' => '1.0.6',
+            'old_version' => '1.0.7',
             'cdn_url' => 'https://xxxx.rocketcdn.me',
             'previous_cdn_url' => '',
             'remote_cdn_url' => 'https://xxxx.delivery.rocketcdn.me',

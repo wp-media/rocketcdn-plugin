@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * NOTE: This function allows mocking constants when testing.
  *
- * @since 1.0.6
+ * @since 1.0.7
  *
  * @param string $constant_name Name of the constant to check.
  *
@@ -22,7 +22,7 @@ function rocketcdn_has_constant( $constant_name ) {
  *
  * NOTE: This function allows mocking constants when testing.
  *
- * @since 1.0.6
+ * @since 1.0.7
  *
  * @param string     $constant_name Name of the constant to check.
  * @param mixed|null $default Optional. Default value to return if constant is not defined.

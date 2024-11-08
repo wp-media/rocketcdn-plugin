@@ -38,7 +38,7 @@ class Update implements OptionsAwareInterface {
 			/**
 			 * Fires when updating the plugin.
 			 *
-			 * @since 1.0.6
+			 * @since 1.0.7
 			 *
 			 * @param string $current_version Current version.
 			 * @param string $new_version     New version.
@@ -74,7 +74,7 @@ class Update implements OptionsAwareInterface {
 	 * @return void
 	 */
 	public function update_cdn_url( $old_version ) {
-		if ( version_compare( $old_version, '1.0.6', '>' ) ) {
+		if ( version_compare( $old_version, '1.0.7', '>' ) ) {
 			return;
 		}
 
