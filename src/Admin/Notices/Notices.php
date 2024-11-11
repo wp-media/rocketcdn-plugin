@@ -106,7 +106,7 @@ class Notices implements OptionsAwareInterface {
 			! $this->options->get( 'cdn_url', '' )
 			&&
 			! $this->options->get( 'previous_cdn_url', '' )
-		){
+		) {
 			return;
 		}
 
