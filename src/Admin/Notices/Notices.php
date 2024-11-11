@@ -100,7 +100,13 @@ class Notices implements OptionsAwareInterface {
 			return;
 		}
 
-		if ( ! $this->options->get( 'api_key', '' ) ) {
+		if (
+			! $this->options->get( 'api_key', '' )
+			&&
+			! $this->options->get( 'cdn_url', '' )
+			&&
+			! $this->options->get( 'previous_cdn_url', '' )
+		){
 			return;
 		}
 
