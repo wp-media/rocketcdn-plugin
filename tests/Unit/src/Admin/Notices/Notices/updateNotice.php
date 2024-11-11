@@ -45,6 +45,14 @@ class TestUpdateNotice extends TestCase {
             ->andReturn( $config['api_key'] );
 
         $this->options->shouldReceive( 'get' )
+            ->with( 'cdn_url', '' )
+            ->andReturn( $config['cdn_url'] );
+
+        $this->options->shouldReceive( 'get' )
+            ->with( 'previous_cdn_url', '' )
+            ->andReturn( $config['previous_cdn_url'] );
+
+        $this->options->shouldReceive( 'get' )
             ->with( 'previous_version', '' )
             ->andReturn( $config['previous_version'] );
 
