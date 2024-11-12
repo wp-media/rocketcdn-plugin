@@ -152,7 +152,7 @@ class Notices implements OptionsAwareInterface {
 			wp_send_json_error( __( 'The notice ID is missing', 'rocketcdn' ) );
 		}
 
-		$dismissed = get_user_meta( get_current_user_id(), 'rocketcdn_dismissed_notices', true );
+		$dismissed = (array) get_user_meta( get_current_user_id(), 'rocketcdn_dismissed_notices', true );
 
 		if ( in_array( $notice, $dismissed, true ) ) {
 			wp_send_json_error( __( 'The notice is already dismissed', 'rocketcdn' ) );
