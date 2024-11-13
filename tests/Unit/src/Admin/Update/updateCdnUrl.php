@@ -43,8 +43,6 @@ class TestUpdateCdnUrl extends TestCase {
             ->with( 'previous_cdn_url', '' )
             ->andReturn( $config['previous_cdn_url'] );
 
-        Functions\when( 'delete_transient' )->justReturn();
-
         $this->api_client->shouldReceive( 'get_website_cdn_url' )
             ->andReturn( $config['remote_cdn_url'] );
 
