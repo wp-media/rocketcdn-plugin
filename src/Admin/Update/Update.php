@@ -78,7 +78,9 @@ class Update implements OptionsAwareInterface {
 			return;
 		}
 
-		if ( ! $this->options->get( 'cdn_url', '' ) ) {
+		$old_cdn_url = $this->options->get( 'cdn_url', '' );
+
+		if ( ! $old_cdn_url ) {
 			return;
 		}
 
@@ -95,6 +97,6 @@ class Update implements OptionsAwareInterface {
 		}
 
 		$this->options->set( 'cdn_url', $cdn_url );
-		$this->options->set( 'previous_cdn_url', $this->options->get( 'cdn_url', '' ) );
+		$this->options->set( 'previous_cdn_url', $old_cdn_url );
 	}
 }
