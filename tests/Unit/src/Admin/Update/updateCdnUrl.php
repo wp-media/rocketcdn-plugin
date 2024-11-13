@@ -43,7 +43,7 @@ class TestUpdateCdnUrl extends TestCase {
             ->with( 'previous_cdn_url', '' )
             ->andReturn( $config['previous_cdn_url'] );
 
-        $this->api_client->shouldReceive( 'get_website_cdn_url' )
+        $this->api_client->shouldReceive( 'get_raw_website_cdn_url' )
             ->andReturn( $config['remote_cdn_url'] );
 
         if ( $expected ) {
