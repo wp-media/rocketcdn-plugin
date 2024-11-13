@@ -88,9 +88,7 @@ class Update implements OptionsAwareInterface {
 			return;
 		}
 
-		delete_transient( 'rocketcdn_customer_data' );
-
-		$cdn_url = $this->api_client->get_website_cdn_url();
+		$cdn_url = $this->api_client->get_raw_website_cdn_url();
 
 		if ( empty( $cdn_url ) ) {
 			return;
