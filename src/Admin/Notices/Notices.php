@@ -102,9 +102,9 @@ class Notices implements OptionsAwareInterface {
 
 		if (
 			! $this->options->get( 'api_key', '' )
-			&&
+			||
 			! $this->options->get( 'cdn_url', '' )
-			&&
+			||
 			! $this->options->get( 'previous_cdn_url', '' )
 		) {
 			return;
