@@ -145,27 +145,17 @@ class AdminBar implements OptionsAwareInterface {
 	public function purge_cache() {
 		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'rocketcdn_purge_cache' ) ) {
 			wp_nonce_ays( '' );
-			return;
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die();
-			return;
+
 		}
 
 		$this->api_client->purge_cache();
 
 		wp_safe_redirect( esc_url_raw( wp_get_referer() ) );
-		$this->exit();
-	}
-
-	/**
-	 * Wrapped exit function to test
-	 *
-	 * @return void
-	 */
-	protected function exit() {
-		defined( 'WP_ROCKET_CDN_IS_TESTING' ) && constant( 'WP_ROCKET_CDN_IS_TESTING' ) ? wp_die() : exit;
+		exit;
 	}
 
 	/**

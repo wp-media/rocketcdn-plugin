@@ -7,9 +7,7 @@ return [
 			'is_valid'  => [],
 			'is_sync'   => false,
 		],
-		'expected' => [
-			'message' => 'You do not have permissions to perform this action.',
-		],
+		'expected' => 'You do not have permissions to perform this action.',
 	],
 	'testHasNoAPIShouldCallJsonError'       => [
 		'config'   => [
@@ -18,9 +16,7 @@ return [
 			'is_valid'  => [],
 			'is_sync'   => false,
 		],
-		'expected' => [
-			'message' => 'They API key field is not set',
-		],
+		'expected' => 'The API key field is not set',
 	],
 	'testHasInvalidAPIShouldCallJsonError'  => [
 		'config'   => [
@@ -29,9 +25,7 @@ return [
 			'is_valid'  => [],
 			'is_sync'   => false,
 		],
-		'expected' => [
-			'message' => 'They API key field is not set',
-		],
+		'expected' => 'The API key field is not set',
 	],
 	'testHasInvalidDataShouldCallJsonError' => [
 		'config'   => [
@@ -40,9 +34,7 @@ return [
 			'is_valid'  => [],
 			'is_sync'   => false,
 		],
-		'expected' => [
-			'message' => 'Invalid API key',
-		],
+		'expected' => 'Invalid API key',
 	],
 	'testHasNotSyncShouldCallJsonError'     => [
 		'config'   => [
@@ -51,9 +43,7 @@ return [
 			'is_valid'  => [ 'data' ],
 			'is_sync'   => false,
 		],
-		'expected' => [
-			'message' => 'Your website is not yet synchronized with your subscription. Please add your website from your <a href="https://rocketcdn.me/account/sites/" target="_blank" rel="noopener">RocketCDN account page</a>.',
-		],
+		'expected' => 'Your website is not yet synchronized with your subscription. Please add your website from your <a href="https://rocketcdn.me/account/sites/" target="_blank" rel="noopener">RocketCDN account page</a>.',
 	],
 	'testShouldCallJsonSuccess'             => [
 		'config'   => [
@@ -62,6 +52,6 @@ return [
 			'is_valid'  => [ 'data' ],
 			'is_sync'   => true,
 		],
-		'expected' => [],
+		'expected' => 'Your website is synchronized.',
 	],
 ];

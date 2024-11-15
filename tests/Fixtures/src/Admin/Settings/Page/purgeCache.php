@@ -8,23 +8,17 @@ return [
 				'message' => 'Message',
 			],
 		],
-		'expected' => [
-			'success' => false,
-			'message' => 'You do not have permissions to perform this action.',
-		],
+		'expected' => 'You do not have permissions to perform this action.',
 	],
 	'testFailedShouldReturnError'    => [
 		'config'   => [
 			'has_right' => true,
 			'response'  => [
 				'success' => false,
-				'message' => 'Message',
+				'message' => 'Error',
 			],
 		],
-		'expected' => [
-			'success' => false,
-			'message' => 'Message',
-		],
+		'expected' => 'Error',
 	],
 	'testSuccessShouldReturnSuccess' => [
 		'config'   => [
@@ -34,9 +28,6 @@ return [
 				'message' => 'Message',
 			],
 		],
-		'expected' => [
-			'success' => true,
-			'message' => 'Done! Your cache has been cleared',
-		],
+		'expected' => 'Done! Your cache has been cleared',
 	],
 ];

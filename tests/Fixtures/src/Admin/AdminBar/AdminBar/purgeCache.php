@@ -7,7 +7,7 @@ return [
 			'has_right'      => false,
 			'referer'        => '',
 		],
-		'expected' => '',
+		'expected' => 'wp_nonce_ays',
 	],
 	'testInvalidNonceShouldStop' => [
 		'config'   => [
@@ -16,7 +16,7 @@ return [
 			'has_right'      => false,
 			'referer'        => '',
 		],
-		'expected' => '',
+		'expected' => 'wp_nonce_ays',
 	],
 	'testNoRightShouldStop'      => [
 		'config'   => [
@@ -25,7 +25,8 @@ return [
 			'has_right'      => false,
 			'referer'        => '',
 		],
-		'expected' => '',
+		'expected' => 'wp_die',
+
 	],
 	'testShouldRedirect'         => [
 		'config'   => [
@@ -34,6 +35,6 @@ return [
 			'has_right'      => true,
 			'referer'        => 'ref',
 		],
-		'expected' => 'ref',
+		'expected' => 'wp_safe_redirect',
 	],
 ];

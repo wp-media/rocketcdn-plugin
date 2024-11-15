@@ -6,7 +6,8 @@
 		let formNoKey = document.querySelector( '#rocketcdn-no-key' ),
             formHasKey = document.querySelector( '#rocketcdn-has-key #rocketcdn_api_key' ),
             apiKey = document.getElementById( 'rocketcdn_api_key' ),
-            clearCache = document.getElementById( 'rocketcdn-purge-cache' );
+            clearCache = document.getElementById( 'rocketcdn-purge-cache' ),
+            notices = document.querySelectorAll( '.rocketcdn-dismiss' );
 
 		if ( null !== formNoKey ) {
 			formNoKey.addEventListener( 'submit', ( e ) => {
@@ -97,6 +98,32 @@
                 };
 			} );
 		}
+
+        notices.forEach( ( notice ) => {
+            notice.addEventListener( 'click', ( e ) => {
+                e.preventDefault();
+
+                let postData = '';
+
+                postData += 'action=rocketcdn_dismiss_notice';
+                postData += '&nonce=' + rocketcdn_ajax_data.nonce;
+                postData +=  '&notice_id=' + e.target.parentElement.getAttribute( 'data-notice' );
+
+                const request = sendHTTPRequest( postData );
+
+                request.onreadystatechange = () => {
+                    if ( request.readyState === XMLHttpRequest.DONE && 200 === request.status ) {
+                        let responseTxt = JSON.parse(request.responseText);
+
+                        if ( ! responseTxt.success ) {
+                            return;
+                        }
+
+                        e.target.parentElement.classList.add( 'rocketcdn-notice-dismissed' );
+                    }
+                }
+            } );
+        } );
 
         document.querySelector( '.rocketcdn-notice-dismiss' ).addEventListener( 'click', ( e ) => {
             e.preventDefault();

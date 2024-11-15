@@ -45,9 +45,9 @@ class Test_WrongApiKeyNotice extends AdminTestCase {
 		do_action( 'admin_notices' );
 
 		if ( $expected['contains'] ) {
-			$this->assertContains( $expected['html'], ob_get_contents() );
+			$this->assertStringContainsString( $expected['html'], ob_get_contents() );
 		} else {
-			$this->assertNotContains( $expected['html'], ob_get_contents() );
+			$this->assertStringNotContainsString( $expected['html'], ob_get_contents() );
 		}
 		ob_end_clean();
 	}

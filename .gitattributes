@@ -1,0 +1,14 @@
+// directories
+bin export-ignore
+tests export-ignore
+
+// files
+.gitattributes export-ignore
+.github export-ignore
+.gitignore export-ignore
+
+composer.lock export-ignore
+LICENSE export-ignore
+phpcs.xml export-ignore
+phpstan.neon.dist export-ignore
+README.md export-ignore
