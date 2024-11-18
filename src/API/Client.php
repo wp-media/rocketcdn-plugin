@@ -133,6 +133,39 @@ class Client implements OptionsAwareInterface {
 	}
 
 	/**
+	 * Gets the CDN URL associated with this website (without cache)
+	 *
+	 * @return string
+	 */
+	public function get_raw_website_cdn_url(): string {
+		$customer_data = $this->get_raw_customer_data( $this->options->get( 'api_key' ) );
+
+		if ( empty( $customer_data['websites'] ) ) {
+			return '';
+		}
+
+		$hostname = $this->extract_hostname( home_url() );
+
+		foreach ( $customer_data['websites'] as $website ) {
+			if ( ! isset( $website['hostname'] ) ) {
+				continue;
+			}
+
+			if ( false === strpos( $hostname, $website['hostname'] ) ) {
+				continue;
+			}
+
+			if ( ! isset( $website['cdn_url'] ) ) {
+				return '';
+			}
+
+			return $website['cdn_url'];
+		}
+
+		return '';
+	}
+
+	/**
 	 * Purges the cache for the current CDN URL
 	 *
 	 * @return array

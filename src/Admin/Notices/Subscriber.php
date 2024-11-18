@@ -29,10 +29,12 @@ class Subscriber implements SubscriberInterface {
 	 */
 	public static function get_subscribed_events() {
 		return [
-			'admin_notices' => [
+			'admin_notices'                    => [
 				[ 'empty_api_key_notice' ],
 				[ 'wrong_api_key_notice' ],
+				[ 'update_notice' ],
 			],
+			'wp_ajax_rocketcdn_dismiss_notice' => 'dismiss_notice',
 		];
 	}
 
@@ -52,5 +54,23 @@ class Subscriber implements SubscriberInterface {
 	 */
 	public function wrong_api_key_notice() {
 		$this->notices->wrong_api_key_notice();
+	}
+
+	/**
+	 * Displays a notice on update
+	 *
+	 * @return void
+	 */
+	public function update_notice() {
+		$this->notices->update_notice();
+	}
+
+	/**
+	 * Dismisses a notice
+	 *
+	 * @return void
+	 */
+	public function dismiss_notice() {
+		$this->notices->dismiss_notice();
 	}
 }

@@ -208,6 +208,9 @@ You can report any security bugs found in the source code of the site-reviews pl
 
 == Changelog ==
 
+= 1.0.7 =
+- Enhancement: Change the current CNAME value to the new one
+
 = 1.0.6 =
 - Launchpad framework integration
 
