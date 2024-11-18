@@ -2,7 +2,7 @@
 
 Contributors: wp_media
 Tested up to: 6.4
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 Requires at least: 5.4
 Requires PHP: 7.0
 License: GPLv2 or later
